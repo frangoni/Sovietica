@@ -9,4 +9,12 @@ router.post("/", productController.createProduct);
 router.put("/:id", productController.updateProduct);
 router.delete("/:id", productController.deleteProduct);
 
+// producto de determinada categoria
+
+router.get("/categoria/:id", productController.findByCategory)
+
+router.get("/search/:value", productController.findBySearch)
+
+
+
 module.exports = router;

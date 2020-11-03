@@ -45,6 +45,27 @@ const productController = {
       .then((all) => res.send(all))
       .catch((err) => res.send(err));
   },
+
+  // CATEGORIA
+
+  findByCategory(req, res) {
+    let categoria = req.params.id
+    ProductModel.findOne({categoria})
+    .then((categoria) => res.send(categoria))
+    .catch((err)=> res.send(err));
+  },
+
+
+// CHEQUEAR COMILLAS
+   findBySearch(req, res){
+    let search = req.params.value 
+    ProductModel.find({ nombre: {$regex: search, $options: 'i'}})
+    .then((productos) => res.send(productos))
+    .catch((err)=> res.send(err));
+   },
+
+   
+
 };
 
 module.exports = productController;
