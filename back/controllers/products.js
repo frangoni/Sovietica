@@ -1,6 +1,6 @@
 //REQUERIR MODELO DE MODELS CUANDO ESTE HECHO
-const ProductModel = require("../models/product");
-const CategoryModel = require("../models/category");
+const ProductModel = require("../models/Product");
+const CategoryModel = require("../models/Category");
 
 const productController = {
   findAll(req, res) {
@@ -12,26 +12,28 @@ const productController = {
   findOne(req, res) {
     ProductModel.findById(req.params.id)
       .populate("categoria")
-      .populate("rv")
-      .populate("talles")
+      .populate("talle")
       .populate("color")
       .then((all) => res.send(all))
       .catch((err) => res.send(err));
   },
   //VER NOMBRE DE COLUMNAS DE MODELOS
   createProduct(req, res) {
-    const { name, price, img, description, category } = req.body;
+    const { nombre, precio, foto, descripcion, categoria } = req.body;
     CategoryModel.findOne({
-      name: category,
-    }).then((category) =>
-      ProductModel.create({
-        name,
-        price,
-        img,
-        description,
-        category: category.id,
-      })
-    );
+      nombre: categoria,
+    })
+      .then((category) =>
+        ProductModel.create({
+          nombre,
+          precio,
+          foto,
+          descripcion,
+          categoria: category._id,
+        })
+      )
+      .then((all) => res.send(all))
+      .catch((err) => res.send(err));
   },
 
   updateProduct(req, res) {
@@ -49,23 +51,19 @@ const productController = {
   // CATEGORIA
 
   findByCategory(req, res) {
-    let categoria = req.params.id
-    ProductModel.findOne({categoria})
-    .then((categoria) => res.send(categoria))
-    .catch((err)=> res.send(err));
+    let categoria = req.params.id;
+    ProductModel.find({ categoria })
+      .then((categoria) => res.send(categoria))
+      .catch((err) => res.send(err));
   },
 
-
-// CHEQUEAR COMILLAS
-   findBySearch(req, res){
-    let search = req.params.value 
-    ProductModel.find({ nombre: {$regex: search, $options: 'i'}})
-    .then((productos) => res.send(productos))
-    .catch((err)=> res.send(err));
-   },
-
-   
-
+  // CHEQUEAR COMILLAS
+  findBySearch(req, res) {
+    let search = req.params.value;
+    ProductModel.find({ nombre: { $regex: search, $options: "i" } })
+      .then((productos) => res.send(productos))
+      .catch((err) => res.send(err));
+  },
 };
 
 module.exports = productController;
