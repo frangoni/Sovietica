@@ -31,6 +31,7 @@ let userSchema = new Schema({
   },
   rol: {
     type: String,
+    default : "user",
   },
   salt: {
     type: String,

@@ -11,7 +11,7 @@ const User = require('./models/User');
 const { db } = require("./models/User");
 // const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 // const FacebookStrategy = require('passport-facebook').Strategy;
-// const rutas = require("./routes/index");
+const rutas = require("./routes/index");
 
 app.use(volleyball);
 
@@ -96,7 +96,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// app.use("/api", rutas);
+app.use("/api", rutas);
 
 app.use("/", express.static(path.join(__dirname, "public")));
 app.get("/*", (req, res) => {
