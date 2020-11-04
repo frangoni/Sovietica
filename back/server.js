@@ -1,17 +1,16 @@
+require('./db/db') // esto si o si para mongodb
 const express = require("express");
 const app = express();
 const volleyball = require("volleyball");
 const path = require("path");
-const bodyParser = require("body-parser");
 const passport = require('passport')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const LocalStrategy = require('passport-local').Strategy
 const User = require('./models/User');
-const { db } = require("./models/User");
 // const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 // const FacebookStrategy = require('passport-facebook').Strategy;
-// const rutas = require("./routes/index");
+const rutas = require("./routes/index");
 
 app.use(volleyball);
 
@@ -92,13 +91,14 @@ passport.deserializeUser(function (_id, done) {
     .catch(done);
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// app.use("/api", rutas);
+app.use("/api", rutas);
 
-app.use("/", express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
+
 app.get("/*", (req, res) => {
   res.sendFile(__dirname + "/public/" + "index.html");
 });
@@ -111,5 +111,3 @@ app.use((err, req, res, next) => {
 
 
 app.listen(3000, () => console.log("listenning on port 3000"));
-
-

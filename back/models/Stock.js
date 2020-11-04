@@ -18,9 +18,9 @@ let stockSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Products",
-    },
+    }
   ],
 });
 
-const Stock = moogoose.model("Stocks", stockSchema);
+const Stock = mongoose.model("Stocks", stockSchema);
 module.exports = Stock;

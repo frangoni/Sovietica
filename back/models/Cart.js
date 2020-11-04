@@ -12,7 +12,7 @@ let cartSchema = new Schema ({
     }],
     productos:[{
       type: Schema.Types.ObjectId,
-      ref: "Products"
+      ref: "Stock"
     }]
 })
 
