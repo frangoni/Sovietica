@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 let orderSchema = new Schema ({
     estado:{
         type : String,
-        required: true
+        required: true,
+        default : "En preparacion"
     },
     total:{
       type: Number,
@@ -13,14 +14,18 @@ let orderSchema = new Schema ({
     direccion:{
       type : String,
       required: true
-  },
+    },
+    fecha :{
+      type : Date,
+      default : Date.now
+    },
     usuarios:[{
       type: Schema.Types.ObjectId,
       ref: "Users"
     }],
     productos:[{
       type: Schema.Types.ObjectId,
-      ref: "Products"
+      ref: "Stock"
     }],
    
 })
