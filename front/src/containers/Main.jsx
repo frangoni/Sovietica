@@ -1,28 +1,23 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-
-import "react-bootstrap";
-
-/* import CartContainer from "../containers/CartContainer"; */
-
-import NavbarContainer from "../containers/NavbarContainer";
-/* import UserContainer from "../containers/UserContainer"; */
 import ProductContainer from "../containers/ProductContainer"
+import LoginContainer from "../containers/LoginContainer";
+import RegisterContainer from "../containers/RegisterContainer";
+import { fetchIsLogged } from "../../store/action-creators/users";
 
-
-
-const mapStateToProps = (state) => {
-  return {};
-};
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    fetchIsLogged: () => {
+      dispatch(fetchIsLogged());
+    },
+  };
 };
 
 class Main extends React.Component {
-/*   componentDidMount() {
+  componentDidMount() {
     this.props.fetchIsLogged();
-  } */
+  }
 
   render() {
     return (
@@ -31,6 +26,8 @@ class Main extends React.Component {
         <Switch>
           <Route exact path="/home" />
           <Route exact path="/products/:id" component={ProductContainer} />
+          <Route exact path="/login" component={LoginContainer} />
+          <Route exact path="/register" component={RegisterContainer} />
           <Redirect to="/" from="/" />
         </Switch>
       </div>
@@ -38,4 +35,4 @@ class Main extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(null, mapDispatchToProps)(Main);
