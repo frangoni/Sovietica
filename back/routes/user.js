@@ -5,7 +5,7 @@ const userController = require("../controllers/user");
 const passport = require("passport")
 
 router.post("/register", userController.register);
-router.post("/login", passport.authenticate(["local","facebook","google"]), userController.login);
+router.post("/login", passport.authenticate("local"), userController.login);
 router.post("/logout", userController.logout);
 
 // persistencia
@@ -17,3 +17,5 @@ router.post("/admin", userController.admin)
 
 
 module.exports = router;
+
+// passport.authenticate(["local","facebook","google"]),

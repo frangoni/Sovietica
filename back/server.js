@@ -21,24 +21,23 @@ app.use(passport.session());
 
 // PASSPORT LOCALSTRATEGY
 
-passport.use(
+passport.use("local",
   new LocalStrategy(
     {
       usernameField: "email",
-      passwordField: "password",
+      passwordField: "clave",
     },
-    function (email, password, done) {
+    function (email, clave, done) {
       User.findOne({ email })
         .then((user) => {
           if (!user) {
             return done(null, false); // user not found
           }
-          user.hash(password, user.clave).then((hash) => {
+          user.hash(clave, user.salt).then((hash) => {
             if (hash !== user.clave) {
               return done(null, false); // invalid password
             }
- 
-            done(null, user); // success :D
+           return done(null, user); // success :D
           });
         })
         .catch(done);
@@ -95,9 +94,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use("/api", rutas);
+
 
 app.use(express.static("public"));
+app.use("/api", rutas);
 
 app.get("/*", (req, res) => {
   res.sendFile(__dirname + "/public/" + "index.html");
