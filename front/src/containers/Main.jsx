@@ -1,10 +1,29 @@
-import React from 'react';
+import React from "react";
+import { Route, Redirect, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import CartContainer from "../containers/CartContainer";
 
-export default class Main extends React.Component{
+const mapStateToProps = (state) => {
+  return {};
+};
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
 
-  render(){
+class Main extends React.Component {
+  render() {
     return (
-      <h1>SOVIETICA </h1>
-    )
+      <div>
+        <h1>SOVIETICA </h1>
+
+        <Switch>
+          <Route exact path="/home" />
+          <Route exact path="/cart" component={CartContainer} />
+          <Redirect to="/" from="/" />
+        </Switch>
+      </div>
+    );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
