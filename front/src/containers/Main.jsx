@@ -8,7 +8,7 @@ import NavbarContainer from "../containers/NavbarContainer";
 import SearchContainer from "../containers/SearchContainer";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import CartContainer from "../containers/CartContainer";
-import ProductContainer from "../containers/ProductContainer"
+import ProductContainer from "../containers/ProductContainer";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -26,8 +26,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <NavbarContainer/>
-
+        <NavbarContainer history={this.props.history} />
         <img
           id="logo"
           src="https://d26lpennugtm8s.cloudfront.net/stores/903/961/themes/common/logo-1845961916-1576018694-7eff1267abe4e50cd976a335b559c5f11576018695-480-0.png?0"
@@ -40,14 +39,10 @@ class Main extends React.Component {
           <Route exact path="/cart" component={CartContainer} />
           <Route exact path="/products/:id" component={ProductContainer} />
           <Redirect to="/home" from="/" />
-        
         </Switch>
 
         <a href="https://api.whatsapp.com/send/?phone=5491165604567&text&app_absent=0">
-          <WhatsAppIcon
-        
-            id="wpp"
-          />
+          <WhatsAppIcon id="wpp" />
         </a>
       </div>
     );

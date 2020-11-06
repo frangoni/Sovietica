@@ -13,7 +13,7 @@ const Product = ({
   handleSubmit,
   stocks,
   handleChangeColor,
-  handleChangeTalle
+  handleChangeTalle,
 }) => (
   <div>
     {/* 
@@ -37,7 +37,7 @@ const Product = ({
           <br />
           <b>Precio:</b> {precio}
           <br />
-          <b>Reviews:</b>
+          <b>Talle y Color:</b>
           {reviews &&
             reviews.map((review) => (
               <ul>
@@ -66,25 +66,23 @@ const Product = ({
             </label>
             <input type="submit" value="Submit" />
           </form> */}
-
-            <select name="talle" onChange={handleChangeTalle}>
-              {stocks &&
-                stocks.map((stock) => (
-                  <option value={stock.talle}>{stock.talle}</option>
-                ))}
-            </select>
-
-            <select name="color" onChange={handleChangeColor}>
-              {stocks &&
-                stocks.map((stock) => (
-                  <option value={stock.color}>{stock.color}</option>
-                ))}
-            </select>
-
-            <Link to="/cart">
-              <button onClick={handleSubmit}>Agregar a Carrito</button>
-            </Link>
-
+          <select name="talle" onChange={handleChangeTalle}>
+            <option value="" selected></option>
+            {stocks &&
+              stocks.map((stock) => (
+                <option value={stock.talle}>{stock.talle}</option>
+              ))}
+          </select>
+          <select name="color" onChange={handleChangeColor}>
+            <option value="" selected></option>
+            {stocks &&
+              stocks.map((stock) => (
+                <option value={stock.color}>{stock.color}</option>
+              ))}
+          </select>
+          <Link to="/cart">
+            <button onClick={handleSubmit}>Agregar a Carrito</button>
+          </Link>
         </Card.Text>
       </Card.Body>
     </Card>

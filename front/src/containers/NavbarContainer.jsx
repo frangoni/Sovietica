@@ -2,38 +2,39 @@ import React from "react";
 import { fetchSearchProducts } from "../../store/action-creators/products";
 import { connect } from "react-redux";
 import Navbar from "../components/Navbar";
-import {fetchLogout} from "../../store/action-creators/users";
+import { fetchLogout } from "../../store/action-creators/users";
 
-const mapStateToProps = function (state) {
+const mapStateToProps = function (state, { history }) {
   return {
     products: state.products.products,
-    user: state.user.user._id
+    user: state.user.user._id,
+    history,
   };
 };
 
 const mapDispatchToProps = function (dispatch) {
   return {
-    fetchSearchProducts: (value)=> dispatch(fetchSearchProducts(value)),
-    fetchLogout: ()=> dispatch(fetchLogout())
+    fetchSearchProducts: (value) => dispatch(fetchSearchProducts(value)),
+    fetchLogout: () => dispatch(fetchLogout()),
   };
 };
 
 class NavbarContainer extends React.Component {
   constructor(props) {
     super(props);
-      this.state = {
-        value: '',
-      };
+    this.state = {
+      value: "",
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleChange(evt) {
-    console.log(evt.target.value)
+    console.log(evt.target.value);
     const value = evt.target.value;
     this.setState({
-      value: value
+      value: value,
     });
   }
 
@@ -42,9 +43,9 @@ class NavbarContainer extends React.Component {
     this.props.fetchSearchProducts(this.state.value);
   }
 
-  handleLogout(){
+  handleLogout() {
     this.props.fetchLogout();
-    return this.props.history.push("/home")
+    this.props.history.push("/home");
   }
 
   render() {
@@ -57,10 +58,8 @@ class NavbarContainer extends React.Component {
         handleLogout={this.handleLogout}
         user={this.props.user}
       />
-    )
+    );
   }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavbarContainer);
