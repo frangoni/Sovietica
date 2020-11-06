@@ -7,6 +7,8 @@ import RegisterContainer from "../containers/RegisterContainer";
 import NavbarContainer from "../containers/NavbarContainer";
 import SearchContainer from "../containers/SearchContainer";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
+import CartContainer from "../containers/CartContainer";
+import ProductContainer from "../containers/ProductContainer"
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -35,6 +37,9 @@ class Main extends React.Component {
           <Route exact path="/home" component={SearchContainer} />
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
+          <Route exact path="/cart" component={CartContainer} />
+          <Route exact path="/products/:id" component={ProductContainer} />
+          <Redirect to="/home" from="/" />
         
         </Switch>
 

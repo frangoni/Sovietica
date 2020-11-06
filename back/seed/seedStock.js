@@ -1,11 +1,12 @@
-const Products = require("../models/Product");
+const Stock = require("../models/Stock");
 require("../db/db");
 
 const CamisaL = {
   cantidad: 10,
   talle: "L" ,
   color: "Blanco",
-  productos: {_id: "5fa55877ff38764c3b04f417"}, 
+  productos:  {_id: "5fa55877ff38764c3b04f417"}, 
+  
 };
 
 const CamisaM = {
@@ -66,27 +67,29 @@ const JeanL = {
 
 const VestidoCoraS = {
   cantidad: 10,
-  talle: "S" ,
+  talle: "S",
   color: "Negro",
   productos: {_id: "5fa55877ff38764c3b04f41a"}, 
 };
 
+
 const VestidoCoraM = {
   cantidad: 10,
-  talle: "M" ,
+  talle: "M",
   color: "Negro",
   productos: {_id: "5fa55877ff38764c3b04f41a"}, 
 };
 
 const VestidoCoraL = {
   cantidad: 0,
-  talle: "L" ,
+  talle: "L",
   color: "Negro",
   productos: {_id: "5fa55877ff38764c3b04f41a"}, 
 };
 
 
-Products.insertMany([CamisaS, CamisaM, CamisaL, CamperaS, CamperaM, CamperaL, JeanS, JeanM, JeanL,VestidoCoraS,VestidoCoraM, VestidoCoraL]).then(() => {
+Stock.insertMany([CamisaL,CamperaS, CamperaM, CamperaL, JeanS, JeanM, JeanL,VestidoCoraS,VestidoCoraM, VestidoCoraL,CamisaS, CamisaM, ]).then(() => {
   console.log("-----corrio el seed Products------")
   process.exit();
 });
+

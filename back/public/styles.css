@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 #logo {
   display: block;
  margin: 0 auto;
@@ -27,3 +31,12 @@
   position: fixed;
   width: 50%;
 }  
+#cart{
+    width: 70%;
+    margin-top: 3em;
+    overflow-x: auto;
+}
+
+#cartTable{
+    min-width: 700;
+}
