@@ -1,22 +1,22 @@
 import React from "react";
-// import { fetchMovies } from "../action-creators/movies";
+import { fetchSearchProducts } from "../../store/action-creators/products";
 import { connect } from "react-redux";
 import Navbar from "../components/Navbar";
-// import {logoutUser} from "../action-creators/usuarios";
+import {fetchLogout} from "../../store/action-creators/users";
 
-// const mapStateToProps = function (state) {
-//   return {
-//     movies: state.movies,
-//     user: state.user.id
-//   };
-// };
+const mapStateToProps = function (state) {
+  return {
+    products: state.products.products,
+    user: state.user.user._id
+  };
+};
 
-// const mapDispatchToProps = function (dispatch) {
-//   return {
-//     fetchMovies: (movie) => dispatch(fetchMovies(movie)),
-//     logoutUser: ()=> dispatch(logoutUser())
-//   };
-// };
+const mapDispatchToProps = function (dispatch) {
+  return {
+    fetchSearchProducts: (value)=> dispatch(fetchSearchProducts(value)),
+    fetchLogout: ()=> dispatch(fetchLogout())
+  };
+};
 
 class NavbarContainer extends React.Component {
   constructor(props) {
@@ -29,10 +29,6 @@ class NavbarContainer extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchMovies();
-  }
-
   handleChange(evt) {
     console.log(evt.target.value)
     const value = evt.target.value;
@@ -43,12 +39,12 @@ class NavbarContainer extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.fetchMovies(this.state.value);
+    this.props.fetchSearchProducts(this.state.value);
   }
 
   handleLogout(){
-    this.props.logoutUser();
-    return this.props.history.push("/movies")
+    this.props.fetchLogout();
+    return this.props.history.push("/home")
   }
 
   render() {
@@ -59,7 +55,7 @@ class NavbarContainer extends React.Component {
         handleSubmit={this.handleSubmit}
         user={this.props.user}
         handleLogout={this.handleLogout}
-        
+        user={this.props.user}
       />
     )
   }
