@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 let cartSchema = new Schema ({
     cantidad:{
       type: Number,
-      required: true
+      default : 1
     },
     usuarios:[{
       type: Schema.Types.ObjectId,

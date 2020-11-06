@@ -23,7 +23,6 @@ const cartController = {
         })
         .then(product=>{
             CartModel.create({
-                cantidad : req.body.cantidad,
                 usuarios : req.user.id,
                 productos : product._id
             })

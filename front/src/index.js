@@ -7,9 +7,9 @@ import Main from "./containers/Main";
 
 ReactDOM.render(
   <Provider store={store}>
-   <BrowserRouter>
-    <Route path="/" component={Main} />
-  </BrowserRouter>
-    </Provider>,
+    <BrowserRouter>
+      <Route path="/" component={Main} />
+    </BrowserRouter>
+  </Provider>,
    document.getElementById("app")
 );

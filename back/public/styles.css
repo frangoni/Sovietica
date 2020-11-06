@@ -1,0 +1,9 @@
+#cart{
+    width: 70%;
+    margin-top: 3em;
+    overflow-x: auto;
+}
+
+#cartTable{
+    min-width: 700;
+}
