@@ -25,7 +25,7 @@ let orderSchema = new Schema ({
     }],
     productos:[{
       type: Schema.Types.ObjectId,
-      ref: "Stock"
+      ref: "Stocks"
     }],
    
 })

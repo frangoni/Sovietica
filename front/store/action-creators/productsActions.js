@@ -11,6 +11,11 @@ const Review = (productId) => ({
     payload: productId,
 })
 
+const fetchOneStock = (productId) => ({
+    type: "FETCH_STOCK",
+    payload: productId,
+})
+
 
 export const fetchProduct = (productId) => {
     return (dispatch) =>
@@ -19,6 +24,12 @@ export const fetchProduct = (productId) => {
             .then((product) => dispatch(fetchOneProduct(product)))
 }
 
+export const fetchStock= (productId) => {
+    return (dispatch) =>
+        axios.get(`/api/stock/${productId}`)
+            .then((res) => res.data)
+            .then((product) => dispatch(fetchOneStock(product)))
+}
 
 export const fetchReviews = (productId) => {
       return (dispatch) =>

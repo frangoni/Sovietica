@@ -7,7 +7,7 @@ const cartController = {
     findOne(req,res) {
        UserModel.findById(req.user.id)
         .then(user =>{
-            CartModel.findOne({usuarios : user._id})
+            CartModel.find({usuarios : user._id})
             .populate("productos")
         }) 
         .then(userCart => res.send(userCart))

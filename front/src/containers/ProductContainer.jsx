@@ -1,19 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Product from "../components/Product"
-import {fetchProduct, fetchReviews, addCart} from "../../store/action-creators/productsActions"
+import {fetchProduct, fetchReviews, addCart, fetchStock} from "../../store/action-creators/productsActions"
 
 
 class ProductContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      talle: "",
+      color: "",
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeTalle = this.handleChangeTalle.bind(this);
+    this.handleChangeColor = this.handleChangeColor.bind(this);
   }
   componentDidMount() {
+    console.log("esto es idprocuto",this.props.idProducto )
     this.props.fetchProduct(this.props.idProducto)
     this.props.fetchReviews(this.props.idProducto)
+    this.props.fetchStock(this.props.idProducto)
   }
 
   /* componentDidUpdate(prevProps) {
@@ -23,12 +29,28 @@ class ProductContainer extends React.Component {
     }
   } */
 
+    handleChangeTalle(evt) {
+    console.log(evt.target.value)
+    const value = evt.target.value;
+    this.setState({
+      talle: value,
+    });
+  }
+
+  handleChangeColor(evt) {
+    console.log(evt.target.value)
+    const value = evt.target.value;
+    this.setState({
+      color: value,
+    });
+  }
+
 
   handleSubmit(event) {
-    const data = {talle : this.props.talle, color: this.props.color}
-    event.preventDefault();
-    this.props.addCart(this.props.idProducto, data)
-    console.log("agregado al carrito")
+    console.log("aca esta el handlesubmit", this.state)
+    // const data = {talle : this.props.talle, color: this.props.color}
+    this.props.addCart(this.props.idProducto, this.state)
+    // console.log("agregado al carrito")
   }
 
 
@@ -43,6 +65,9 @@ class ProductContainer extends React.Component {
           precio = {this.props.precio}
           reviews = {this.props.reviews}
           handleSubmit = {this.handleSubmit}
+          handleChangeColor= {this.handleChangeColor}
+          handleChangeTalle= {this.handleChangeTalle}
+          stocks = {this.props.stocks}
           /* talle = {this.props.talle}
           color = {this.props.color} */
         />
@@ -59,9 +84,9 @@ const mapStateToProps = function (state, ownProps) {
     descripcion: state.products.product.descripcion,
     foto: state.products.product.foto,
     precio: state.products.product.precio,
-    talle: state.products.product.talle,
-    color: state.products.product.color,
+    stocks: state.products.stock,
     reviews: state.products.product.reviews
+  
   }
 }
 
@@ -70,6 +95,7 @@ const mapDispatchToProps = function (dispatch) {
     fetchProduct: (str) => dispatch(fetchProduct(str)),
     fetchReviews: (str) => dispatch(fetchReviews(str)),
     addCart: (id, data) => dispatch(addCart(id, data)),
+    fetchStock: (str) => dispatch(fetchStock(str))
   }
 }
 

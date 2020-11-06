@@ -12,8 +12,6 @@ const productController = {
   findOne(req, res) {
     ProductModel.findById(req.params.id)
       .populate("categoria")
-      .populate("talle")
-      .populate("color")
       .then((all) => res.send(all))
       .catch((err) => res.send(err));
   },

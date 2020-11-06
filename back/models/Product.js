@@ -17,18 +17,18 @@ let productSchema = new Schema({
   descripcion: {
     type: String,
   },
-  talle: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Stocks",
-    },
-  ],
-  color: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Stocks",
-    },
-  ],
+  // talle: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Stocks",
+  //   },
+  // ],
+  // color: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Stocks",
+  //   },
+  // ],
   categoria: [
     {
       type: Schema.Types.ObjectId,
