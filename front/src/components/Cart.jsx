@@ -19,6 +19,7 @@ function Cart({ products, deleteCart, updateCart }) {
     });
     return resultado;
   };
+
   return (
     <>
       <Paper id="cart">

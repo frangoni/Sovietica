@@ -34,9 +34,9 @@
 //   search: {
 //     position: "relative",
 //     borderRadius: theme.shape.borderRadius,
-//     backgroundColor: fade(theme.palette.common.white, 0.15),
+//     backgroundColor: fade(theme.palette.common.black, 0.15),
 //     "&:hover": {
-//       backgroundColor: fade(theme.palette.common.white, 0.25),
+//       backgroundColor: fade(theme.palette.common.black, 0.25),
 //     },
 //     marginRight: theme.spacing(2),
 //     marginLeft: 0,
@@ -56,7 +56,7 @@
 //     justifyContent: "center",
 //   },
 //   inputRoot: {
-//     color: "inherit",
+//     color: "dark",
 //   },
 //   inputInput: {
 //     padding: theme.spacing(1, 1, 1, 0),
@@ -155,7 +155,7 @@
 //           aria-label="account of current user"
 //           aria-controls="primary-search-account-menu"
 //           aria-haspopup="true"
-//           color="inherit"
+//           color="dark"
 //         >
 //           <AccountCircle />
 //         </IconButton>
@@ -166,20 +166,16 @@
 
 //   return (
 //     <div className={classes.grow}>
-//       <AppBar position="static" style={{ backgroundColor: "#880e4f" }}>
+//       <AppBar position="static" style={{ backgroundColor: "#eeeeee" }} >
 //         <Toolbar>
 //           <IconButton
 //             edge="start"
 //             className={classes.menuButton}
-//             color="inherit"
+//             color="dark"
 //             aria-label="open drawer"
 //           >
 //             <MenuIcon />
 //           </IconButton>
-
-//           <Typography className={classes.title} variant="h6" noWrap>
-//             AWANTE SOVIETICA
-//           </Typography>
 //           <div className={classes.search}>
 //             <div className={classes.searchIcon}>
 //               <SearchIcon />
@@ -205,7 +201,7 @@
 //             </IconButton>
 //             {/* </Link> */}
 
-//             <IconButton aria-label="show 4 new mails" color="inherit">
+//             <IconButton aria-label="show 4 new mails" color="black">
 //               <Badge badgeContent={4} color="secondary">
 //                 <ShoppingCartRoundedIcon />
 //               </Badge>
@@ -217,12 +213,13 @@
 //               aria-controls={menuId}
 //               aria-haspopup="true"
 //               onClick={handleProfileMenuOpen}
-//               color="inherit"
+//               color="black"
 //             >
 //               <AccountCircle />
 //             </IconButton>
 //           </div>
 //           <div className={classes.sectionMobile}>
+
 //             <IconButton
 //               aria-label="show more"
 //               aria-controls={mobileMenuId}
@@ -232,6 +229,7 @@
 //             >
 //               <MoreIcon />
 //             </IconButton>
+
 //           </div>
 //         </Toolbar>
 //       </AppBar>
@@ -251,22 +249,27 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-// import { UserOutlined, UserAddOutlined, HomeOutlined } from "@ant-design/icons";
 
 export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
   <div>
     <Navbar bg="light" variant="light">
       <Nav className="mr-auto">
-        {user ? ( // Dropdown con Usuario Registrado -- deberia de poner en title en vez de 'Mi cuenta' -> nombre de usuario.
+        {user._id ? (
           <Nav className="text-dark">
             <NavDropdown
-              title="Mi cuenta"
+              title={user.nombre}
               id="basic-nav-dropdown"
               className="text-warning"
             >
               <NavDropdown.Item>
                 <Link to="/cart">Carrito</Link>
               </NavDropdown.Item>
+
+              {user.rol == "admin" ? (
+                <NavDropdown.Item>
+                  <Link to="/admin">Panel</Link>
+                </NavDropdown.Item>
+              ) : null}
 
               <NavDropdown.Divider />
 
@@ -276,19 +279,16 @@ export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
             </NavDropdown>
           </Nav>
         ) : (
-          // Login y Register
           <Nav>
             <Nav.Link className="text-dark">
               <Link to={"/login"} className="text-dark">
                 Log In
-                {/* <UserOutlined style={{ fontSize: "25px" }} /> */}
               </Link>
             </Nav.Link>
 
             <Nav.Link className="text-dark">
               <Link to={"/register"} className="text-dark ">
                 Register
-                {/* <UserAddOutlined style={{ fontSize: "25px" }} /> */}
               </Link>
             </Nav.Link>
           </Nav>
@@ -297,7 +297,6 @@ export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
       <Nav.Link>
         <Link to={"/home"} className="text-dark">
           Home
-          {/* <HomeOutlined style={{ fontSize: "25px" }} /> */}
         </Link>
       </Nav.Link>
 

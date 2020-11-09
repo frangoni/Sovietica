@@ -1,7 +1,7 @@
 import React from "react";
 /* import { Modal, Button } from 'react-bootstrap'; */
 import { Link } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import { Card, Row, Container, Col } from "react-bootstrap";
 import { Box } from "@material-ui/core";
 
 const Product = ({
@@ -34,58 +34,67 @@ const Product = ({
                 <b>Reviews:</b> {reviews}<br />
                 <button onClick={handleSubmit}>Agregar a Carrito</button>
             </Box> */}
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={foto} />
-      </Card>
-      <Card style={{ width: "18rem" }}>
-        <Card.Body>
-          <Card.Title>{nombre}</Card.Title>
-          <Card.Text>
-            <b>Descripcion:</b> {descripcion}
-            <br />
-            <b>Precio:</b> {precio}
-            <br />
-            <b>Talle:</b>
-            <select
-              name="talle"
-              onChange={(e) => {
-                console.log(e.target.value);
-                handleChangeTalle(e);
-              }}
-            >
-              <option value="" selected></option>
-              {singleTalles &&
-                singleTalles.map((talle) => (
-                  <option value={talle}>{talle}</option>
-                ))}
-            </select>
-            <br />
-            <b>Color:</b>
-            <select name="color" onChange={handleChangeColor}>
-              <option value="" selected></option>
-              {stocks &&
-                stocks.map((stock) => {
-                  if (stock.talle == talle && stock.cantidad > 0) {
-                    return <option value={stock.color}>{stock.color}</option>;
-                  }
-                })}
-            </select>
-            {reviews &&
-              reviews.map((review) => (
-                <ul>
-                  <li>{review.review}</li>
-                  <li>{review.calificacion}</li>
-                </ul>
-              ))}
-            <br />
-            <Link to="/cart">
-              <button disabled={!(talle && color)} onClick={handleSubmit}>
-                Agregar a Carrito
-              </button>
-            </Link>
-          </Card.Text>
-        </Card.Body>
-      </Card>
+
+      <Container style={{ marginBottom: "7%", marginTop: "3%" }}>
+        <Row>
+          <Col xs={3} className="mb-5">
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={foto} />
+            </Card>
+          </Col>
+
+          <Col>
+            <span>
+              <ul>
+                <h4> {nombre} </h4>
+                <br />
+                {descripcion}
+                <br />
+                <br />
+                <b>Precio:</b> ${precio}
+                <br />
+                <br />
+                <b>Talle</b>
+                <select name="talle" onChange={handleChangeTalle}>
+                  <option value="" selected></option>
+                  {singleTalles &&
+                    singleTalles.map((talle) => (
+                      <option value={talle}>{talle}</option>
+                    ))}
+                </select>
+                <br />
+                <br />
+                <b>Color</b>
+                <select name="color" onChange={handleChangeColor}>
+                  <option value="" selected></option>
+                  {stocks &&
+                    stocks.map((stock) => {
+                      if (stock.talle == talle && stock.cantidad > 0) {
+                        return (
+                          <option value={stock.color}>{stock.color}</option>
+                        );
+                      }
+                    })}
+                </select>
+                <br />
+                <br />
+                {reviews &&
+                  reviews.map((review) => (
+                    <ul>
+                      <li>{review.review}</li>
+                      <li>{review.calificacion}</li>
+                    </ul>
+                  ))}
+                <Link to="/cart">
+                  <button disabled={!(talles && color)} onClick={handleSubmit}>
+                    Agregar a Carrito
+                  </button>
+                </Link>
+              </ul>
+            </span>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
