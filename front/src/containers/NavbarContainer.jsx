@@ -56,7 +56,6 @@ class NavbarContainer extends React.Component {
         handleSubmit={this.handleSubmit}
         user={this.props.user}
         handleLogout={this.handleLogout}
-        user={this.props.user}
       />
     );
   }

@@ -35,7 +35,6 @@ class Main extends React.Component {
           id="logo"
           src="https://d26lpennugtm8s.cloudfront.net/stores/903/961/themes/common/logo-1845961916-1576018694-7eff1267abe4e50cd976a335b559c5f11576018695-480-0.png?0"
         ></img>
-
         <Switch>
           <Route exact path="/home" component={SearchContainer} />
          
@@ -47,7 +46,6 @@ class Main extends React.Component {
           <Route exact path="/checkout" component={CheckoutContainer}/>
           <Redirect to="/home" from="/" />
         </Switch>
-
         <a href="https://api.whatsapp.com/send/?phone=5491165604567&text&app_absent=0">
           <WhatsAppIcon id="wpp" />
         </a>

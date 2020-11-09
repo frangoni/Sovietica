@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-body{
+body {
   min-height: 100%;
 }
 
@@ -49,13 +49,16 @@ body{
   margin-left: 65%;
 }
 
+.botonCarrito {
+  margin-top: 1px;
+}
 
-#checkout{
+#checkout {
   width: 60%;
   margin: 0 auto;
 }
 
-#checkoutButton{
+#checkoutButton {
   text-decoration: none;
   color: white;
 }

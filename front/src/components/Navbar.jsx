@@ -194,13 +194,12 @@
 //           </div>
 //           <div className={classes.grow} />
 //           <div className={classes.sectionDesktop}>
-          
-//             <Link to="/home">
-//             <IconButton color="black">
+// {/*
+//             <Link to="/home"> */}
+//             <IconButton color="inherit">
 //               <HomeIcon />
 //             </IconButton>
-//             </Link>
-          
+//             {/* </Link> */}
 
 //             <IconButton aria-label="show 4 new mails" color="black">
 //               <Badge badgeContent={4} color="secondary">
@@ -252,58 +251,54 @@ import {
 import { Link } from "react-router-dom";
 
 export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
-  
   <div>
     <Navbar bg="light" variant="light">
-
       <Nav className="mr-auto">
-      {user._id? ( 
-        <Nav className="text-dark">
-          <NavDropdown
-            title={user.nombre}
-            id="basic-nav-dropdown"
-            className="text-warning"
-          >
-            <NavDropdown.Item>
-              <Link to="/cart">Carrito</Link>
-            </NavDropdown.Item>
-
-            { user.rol == "admin" ? (
+        {user._id ? (
+          <Nav className="text-dark">
+            <NavDropdown
+              title={user.nombre}
+              id="basic-nav-dropdown"
+              className="text-warning"
+            >
               <NavDropdown.Item>
-              <Link to="/admin">Panel</Link>
-            </NavDropdown.Item>
-            ):null
-            }
-            
-            <NavDropdown.Divider />
+                <Link to="/cart">Carrito</Link>
+              </NavDropdown.Item>
 
-            <NavDropdown.Item>
-            <p onClick={handleLogout}> Log Out </p>
-            </NavDropdown.Item>
-          </NavDropdown>
-          
-        </Nav>
-      ) : (
-        <Nav>
-          <Nav.Link className="text-dark">
-            <Link to={"/login"} className="text-dark">
-              Log In
-            </Link>
-          </Nav.Link>
+              {user.rol == "admin" ? (
+                <NavDropdown.Item>
+                  <Link to="/admin">Panel</Link>
+                </NavDropdown.Item>
+              ) : null}
 
-          <Nav.Link className="text-dark">
-            <Link to={"/register"} className="text-dark ">
-              Register
-            </Link>
-          </Nav.Link>
-        </Nav>
-      )}
+              <NavDropdown.Divider />
+
+              <NavDropdown.Item>
+                <p onClick={handleLogout}> Log Out </p>
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        ) : (
+          <Nav>
+            <Nav.Link className="text-dark">
+              <Link to={"/login"} className="text-dark">
+                Log In
+              </Link>
+            </Nav.Link>
+
+            <Nav.Link className="text-dark">
+              <Link to={"/register"} className="text-dark ">
+                Register
+              </Link>
+            </Nav.Link>
+          </Nav>
+        )}
       </Nav>
       <Nav.Link>
-          <Link to={"/home"} className="text-dark">
-            Home
-          </Link>
-        </Nav.Link>
+        <Link to={"/home"} className="text-dark">
+          Home
+        </Link>
+      </Nav.Link>
 
       <Form onSubmit={handleSubmit} inline>
         <FormControl
@@ -313,14 +308,11 @@ export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
           onChange={handleChange}
           value={value}
         />
-        
 
         <Button type="submit" variant="dark">
           Search
         </Button>
-
       </Form>
     </Navbar>
   </div>
 );
-

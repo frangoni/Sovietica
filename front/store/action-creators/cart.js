@@ -19,13 +19,17 @@ export const fetchCart = () => {
 };
 
 export const deleteCart = (idProduct) => {
-  return () => {
-    axios.delete(`/api/cart/${idProduct}`).then((rta) => rta.data);
+  return (dispatch) => {
+    axios
+      .delete(`/api/cart/${idProduct}`)
+      .then((products) => dispatch(traerCarrito(products.data)));
   };
 };
 
-export const updateCart = (idProduct) => {
-  return () => {
-    axios.put(`/api/cart/${idProduct}`, cantidad).then((rta) => rta.data);
+export const updateCart = (idProduct, cantidad) => {
+  return (dispatch) => {
+    axios
+      .put(`/api/cart/${idProduct}`, cantidad)
+      .then((products) => dispatch(traerCarrito(products.data)));
   };
 };
