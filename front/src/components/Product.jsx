@@ -17,11 +17,18 @@ const Product = ({
   talle,
   color,
 }) => {
+  //TALLES SIN DUPLICAR
   let talles = [];
   for (let i = 0; i < stocks.length; i++) {
     talles.push(stocks[i].talle);
   }
   let singleTalles = [...new Set(talles)];
+
+  //CANTIDAD EXACTA DE ITEMS
+  let q = 0;
+  for (let i = 0; i < stocks.length; i++) {
+    q += stocks[i].cantidad;
+  }
   return (
     <div>
       {/* 
@@ -54,30 +61,38 @@ const Product = ({
                 <b>Precio:</b> ${precio}
                 <br />
                 <br />
-                <b>Talle</b>
-                <select name="talle" onChange={handleChangeTalle}>
-                  <option value="" selected></option>
-                  {singleTalles &&
-                    singleTalles.map((talle) => (
-                      <option value={talle}>{talle}</option>
-                    ))}
-                </select>
-                <br />
-                <br />
-                <b>Color</b>
-                <select name="color" onChange={handleChangeColor}>
-                  <option value="" selected></option>
-                  {stocks &&
-                    stocks.map((stock) => {
-                      if (stock.talle == talle && stock.cantidad > 0) {
-                        return (
-                          <option value={stock.color}>{stock.color}</option>
-                        );
-                      }
-                    })}
-                </select>
-                <br />
-                <br />
+                {q ? (
+                  <>
+                    <b>Talle</b>
+                    <select name="talle" onChange={handleChangeTalle}>
+                      <option value="" selected></option>
+                      {singleTalles &&
+                        singleTalles.map((talle) => (
+                          <option value={talle}>{talle}</option>
+                        ))}
+                    </select>
+                    <br />
+                    <br />
+                    <b>Color</b>
+                    <select name="color" onChange={handleChangeColor}>
+                      <option value="" selected></option>
+                      {stocks &&
+                        stocks.map((stock) => {
+                          if (stock.talle == talle && stock.cantidad > 0) {
+                            return (
+                              <option value={stock.color}>{stock.color}</option>
+                            );
+                          }
+                        })}
+                    </select>
+                    <br />
+                    {q <= 35 ? <p>QUEDAN {q} UNIDADES</p> : null}
+                    <br />
+                    <br />
+                  </>
+                ) : (
+                  <h4>NO HAY STOCK DISPONIBLE!</h4>
+                )}
                 {reviews &&
                   reviews.map((review) => (
                     <ul>
