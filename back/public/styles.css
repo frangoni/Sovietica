@@ -48,3 +48,14 @@ body{
 #cartBoton {
   margin-left: 65%;
 }
+
+
+#checkout{
+  width: 60%;
+  margin: 0 auto;
+}
+
+#checkoutButton{
+  text-decoration: none;
+  color: white;
+}
