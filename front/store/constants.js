@@ -9,3 +9,6 @@ export const FETCH_REVIEWS = "FETCH_REVIEWS";
 
 //Cart
 export const TRAER_CARRITO = "TRAER_CARRITO";
+
+// Admin
+export const SEARCH_USERS = "SEARCH_USERS"

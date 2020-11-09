@@ -11,9 +11,13 @@ class CartContainer extends React.Component {
   componentDidMount() {
     this.props.fetchCart();
   }
-  /*  componentDidUpdate(prevProps) {
-    if (this.props.products != prevProps.products) this.props.fetchCart();
-  } */
+
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.products != prevProps.products){
+  //     this.props.fetchCart(this.props.products);
+  //   } 
+  // } 
+
   render() {
     return (
       <Cart
