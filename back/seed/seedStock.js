@@ -12,19 +12,19 @@ const CamisaTinaL = {
   cantidad: 10,
   talle: "L",
   color: "Blanco",
-  productos: { _id: "5fa5912eafbe2f636a32bc36" },
+  productos: { _id: "5fa696e9d215db16526a2d69" },
 };
 const CamisaTinaM = {
   cantidad: 10,
   talle: "M",
   color: "Roja",
-  productos: { _id: "5fa5912eafbe2f636a32bc36" },
+  productos: { _id: "5fa696e9d215db16526a2d69" },
 };
 const CamisaTinaXL = {
   cantidad: 10,
   talle: "XL",
   color: "Negra",
-  productos: { _id: "5fa5912eafbe2f636a32bc36" },
+  productos: { _id: "5fa696e9d215db16526a2d69" },
 };
 
 const CamisaM = {
@@ -121,6 +121,6 @@ Stock.insertMany([
   CamisaTinaL,
   CamisaTinaXL,
 ]).then(() => {
-  console.log("-----corrio el seed Products------");
+  console.log("-----corrio el seed Stocks------");
   process.exit();
 });
