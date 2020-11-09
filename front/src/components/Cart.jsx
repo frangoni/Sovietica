@@ -13,12 +13,14 @@ import { Link } from "react-router-dom";
 
 function Cart({ products, deleteCart, updateCart }) {
   const total = () => {
-    let resultado;
+    let resultado=0;
     products.map((product) => {
       resultado += product.productos[0].productos[0].precio * product.cantidad;
     });
     return resultado;
   };
+
+
   return (
     <>
       <Paper id="cart">
@@ -82,7 +84,7 @@ function Cart({ products, deleteCart, updateCart }) {
               ))}
             <TableRow>
               <TableCell>Total</TableCell>
-              <TableCell align="right">{total()}</TableCell>
+              <TableCell align="right"> ${total()}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

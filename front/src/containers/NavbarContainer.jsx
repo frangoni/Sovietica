@@ -7,7 +7,7 @@ import { fetchLogout } from "../../store/action-creators/users";
 const mapStateToProps = function (state, { history }) {
   return {
     products: state.products.products,
-    user: state.user.user._id,
+    user: state.user.user,
     history,
   };
 };

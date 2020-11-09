@@ -36,12 +36,10 @@ class LoginContainer extends React.Component {
   }
 
   handleEmail(e){
-    // console.log('-----handleEmail-----',this.state.email)
     this.setState({email: e.target.value})
   }
 
   handleClave(e){
-    // console.log('----handlePassword----',this.state.password)
     this.setState({clave: e.target.value})
   }
 
