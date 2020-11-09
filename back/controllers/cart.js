@@ -5,7 +5,7 @@ const StockModel = require("../models/Stock");
 const cartController = {
   // ENCONTRAR CARRITO DE USUARIO
   findOne(req, res) {
-    UserModel.findById(req.user.id)
+    UserModel.findById(req.user._id)
       .then((user) => {
         return CartModel.find({ usuarios: user._id }).populate({
           path: "productos",
@@ -26,8 +26,9 @@ const cartController = {
       color: req.body.color,
     })
       .then((product) => {
+        console.log(req.user);
         CartModel.create({
-          usuarios: req.user.id,
+          usuarios: req.user._id,
           productos: product._id,
         });
       })
@@ -37,19 +38,31 @@ const cartController = {
 
   //UPDATEAR CANTIDAD DE PRODUCTO
   updateCart(req, res) {
-    CartModel.findByIdAndUpdate(
-      req.params.idProduct,
-      { cantidad: req.body },
-      { overwrite: true }
-    )
-      .then(() => res.status(200).send("Producto modificado"))
+    CartModel.findByIdAndUpdate(req.params.idProduct, req.body)
+      .then(() => {
+        return CartModel.find({ usuarios: req.user._id }).populate({
+          path: "productos",
+          populate: { path: "productos" },
+        });
+      })
+      .then((all) => {
+        res.send(all);
+      })
       .catch((err) => res.status(500).send(err));
   },
 
   // ELIMINAR PRODUCTO (ENVIAR POR PARAMS ID DE PRODUCTO EN EL CARRITO)
   deleteCart(req, res) {
     CartModel.findByIdAndDelete(req.params.idProduct)
-      .then(() => res.status(204).send("Producto eliminado"))
+      .then(() => {
+        return CartModel.find({ usuarios: req.user._id }).populate({
+          path: "productos",
+          populate: { path: "productos" },
+        });
+      })
+      .then((all) => {
+        res.send(all);
+      })
       .catch((err) => res.status(500).send(err));
   },
 };

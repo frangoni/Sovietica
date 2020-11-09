@@ -198,13 +198,12 @@
 //           </div>
 //           <div className={classes.grow} />
 //           <div className={classes.sectionDesktop}>
-// {/*             
+// {/*
 //             <Link to="/home"> */}
 //             <IconButton color="inherit">
 //               <HomeIcon />
 //             </IconButton>
 //             {/* </Link> */}
-          
 
 //             <IconButton aria-label="show 4 new mails" color="inherit">
 //               <Badge badgeContent={4} color="secondary">
@@ -257,53 +256,50 @@ import { Link } from "react-router-dom";
 export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
   <div>
     <Navbar bg="light" variant="light">
-
       <Nav className="mr-auto">
+        {user ? ( // Dropdown con Usuario Registrado -- deberia de poner en title en vez de 'Mi cuenta' -> nombre de usuario.
+          <Nav className="text-dark">
+            <NavDropdown
+              title="Mi cuenta"
+              id="basic-nav-dropdown"
+              className="text-warning"
+            >
+              <NavDropdown.Item>
+                <Link to="/cart">Carrito</Link>
+              </NavDropdown.Item>
 
-      {user ? ( // Dropdown con Usuario Registrado -- deberia de poner en title en vez de 'Mi cuenta' -> nombre de usuario.
-        <Nav className="text-dark">
-          <NavDropdown
-            title="Mi cuenta"
-            id="basic-nav-dropdown"
-            className="text-warning"
-          >
+              <NavDropdown.Divider />
 
-            <NavDropdown.Item>
-              <Link to="/cart">Carrito</Link>
-            </NavDropdown.Item>
+              <NavDropdown.Item>
+                <p onClick={handleLogout}> Log Out </p>
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        ) : (
+          // Login y Register
+          <Nav>
+            <Nav.Link className="text-dark">
+              <Link to={"/login"} className="text-dark">
+                Log In
+                {/* <UserOutlined style={{ fontSize: "25px" }} /> */}
+              </Link>
+            </Nav.Link>
 
-            <NavDropdown.Divider />
-
-            <NavDropdown.Item>
-            <p onClick={handleLogout}> Log Out </p>
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      ) : (
-        // Login y Register
-        <Nav>
-          <Nav.Link className="text-dark">
-            <Link to={"/login"} className="text-dark">
-              Log In
-              {/* <UserOutlined style={{ fontSize: "25px" }} /> */}
-            </Link>
-          </Nav.Link>
-
-          <Nav.Link className="text-dark">
-            <Link to={"/register"} className="text-dark ">
-              Register
-              {/* <UserAddOutlined style={{ fontSize: "25px" }} /> */}
-            </Link>
-          </Nav.Link>
-        </Nav>
-      )}
+            <Nav.Link className="text-dark">
+              <Link to={"/register"} className="text-dark ">
+                Register
+                {/* <UserAddOutlined style={{ fontSize: "25px" }} /> */}
+              </Link>
+            </Nav.Link>
+          </Nav>
+        )}
       </Nav>
       <Nav.Link>
-          <Link to={"/home"} className="text-dark">
-            Home
-            {/* <HomeOutlined style={{ fontSize: "25px" }} /> */}
-          </Link>
-        </Nav.Link>
+        <Link to={"/home"} className="text-dark">
+          Home
+          {/* <HomeOutlined style={{ fontSize: "25px" }} /> */}
+        </Link>
+      </Nav.Link>
 
       <Form onSubmit={handleSubmit} inline>
         <FormControl
@@ -317,7 +313,6 @@ export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
         <Button type="submit" variant="dark">
           Search
         </Button>
-
       </Form>
     </Navbar>
   </div>

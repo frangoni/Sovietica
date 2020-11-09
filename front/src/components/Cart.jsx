@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 function Cart({ products, deleteCart, updateCart }) {
   const total = () => {
-    let resultado;
+    let resultado = 0;
     products.map((product) => {
       resultado += product.productos[0].productos[0].precio * product.cantidad;
     });
@@ -48,28 +48,35 @@ function Cart({ products, deleteCart, updateCart }) {
                     <TableCell> {product.productos[0].talle} </TableCell>
                     <TableCell>
                       <Icon
+                        className="botonCarrito"
                         color="action"
-                        onClick={() => updateCart(product.cantidad - 1)}
+                        onClick={() => {
+                          if (product.cantidad > 0) {
+                            updateCart(product._id, product.cantidad - 1);
+                          }
+                        }}
                       >
-                        remove_circle{" "}
+                        remove_circle
                       </Icon>
                       {product.cantidad}
                       <Icon
+                        className="botonCarrito"
                         color="secondary"
-                        onClick={() => updateCart(product.cantidad + 1)}
+                        onClick={() => {
+                          updateCart(product._id, product.cantidad + 1);
+                        }}
                       >
                         add_circle
                       </Icon>
                     </TableCell>
                     <TableCell>
-                      {" "}
                       ${product.productos[0].productos[0].precio}{" "}
                     </TableCell>
                     <Button
                       size="small"
                       variant="contained"
                       color="secondary"
-                      id="botonCarrito"
+                      className="botonCarrito"
                       onClick={() => {
                         deleteCart(product._id);
                       }}
@@ -82,7 +89,7 @@ function Cart({ products, deleteCart, updateCart }) {
               ))}
             <TableRow>
               <TableCell>Total</TableCell>
-              <TableCell align="right">{total()}</TableCell>
+              <TableCell align="right">${total()}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

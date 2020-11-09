@@ -6,7 +6,7 @@ import { fetchLogout } from "../../store/action-creators/users";
 
 const mapStateToProps = function (state, { history }) {
   return {
-    products: state.products.products,
+    /*products: state.products.products,*/
     user: state.user.user._id,
     history,
   };
@@ -56,7 +56,6 @@ class NavbarContainer extends React.Component {
         handleSubmit={this.handleSubmit}
         user={this.props.user}
         handleLogout={this.handleLogout}
-        user={this.props.user}
       />
     );
   }
