@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import Navbar from "../components/Navbar";
 import { fetchLogout } from "../../store/action-creators/users";
 
+import ToggledMenu from "../containers/ToggledMenu";
+
 const mapStateToProps = function (state, { history }) {
   return {
     products: state.products.products,
@@ -24,10 +26,12 @@ class NavbarContainer extends React.Component {
     super(props);
     this.state = {
       value: "",
+      toggle: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
   handleChange(evt) {
@@ -48,15 +52,25 @@ class NavbarContainer extends React.Component {
     this.props.history.push("/home");
   }
 
+  handleToggle() {
+    this.setState({ toggle: !this.state.toggle });
+  }
+
   render() {
     return (
-      <Navbar
-        value={this.state.value}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-        user={this.props.user}
-        handleLogout={this.handleLogout}
-      />
+      <>
+        <Navbar
+          value={this.state.value}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          user={this.props.user}
+          handleLogout={this.handleLogout}
+          user={this.props.user}
+          handleToggle={this.handleToggle}
+          toggle={this.state.toggle}
+        />
+        {this.state.toggle ? <ToggledMenu /> : null}
+      </>
     );
   }
 }

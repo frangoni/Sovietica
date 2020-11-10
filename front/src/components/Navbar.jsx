@@ -250,10 +250,32 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
+import HamburgerMenu from "react-hamburger-menu";
+
+export default ({
+  handleSubmit,
+  handleChange,
+  value,
+  user,
+  handleLogout,
+  handleToggle,
+  toggle,
+}) => (
   <div>
     <Navbar bg="light" variant="light">
       <Nav className="mr-auto">
+        <HamburgerMenu
+          isOpen={toggle}
+          menuClicked={handleToggle}
+          width={23}
+          height={16}
+          strokeWidth={1}
+          rotate={0}
+          color={"green"}
+          animationDuration={0.5}
+          borderRadius={0}
+        />
+
         {user._id ? (
           <Nav className="text-dark">
             <NavDropdown
@@ -263,6 +285,10 @@ export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
             >
               <NavDropdown.Item>
                 <Link to="/cart">Carrito</Link>
+              </NavDropdown.Item>
+
+              <NavDropdown.Item>
+                <Link to="/orders">Ordenes</Link>
               </NavDropdown.Item>
 
               {user.rol == "admin" ? (
