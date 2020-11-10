@@ -11,9 +11,7 @@ class CartContainer extends React.Component {
   componentDidMount() {
     this.props.fetchCart();
   }
-  /*  componentDidUpdate(prevProps) {
-    if (this.props.products != prevProps.products) this.props.fetchCart();
-  } */
+
   render() {
     return (
       <Cart
@@ -30,11 +28,12 @@ const mapStateToProps = (state) => {
     products: state.cart.products,
   };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchCart: () => dispatch(fetchCart()),
     deleteCart: (id) => dispatch(deleteCart(id)),
-    updateCart: (n) => dispatch(updateCart(n)),
+    updateCart: (id, n) => dispatch(updateCart(id, { cantidad: n })),
   };
 };
 

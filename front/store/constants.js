@@ -11,3 +11,6 @@ export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
 
 //Cart
 export const TRAER_CARRITO = "TRAER_CARRITO";
+
+// Admin
+export const SEARCH_USERS = "SEARCH_USERS"

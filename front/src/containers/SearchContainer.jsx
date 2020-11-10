@@ -21,11 +21,7 @@ class SearchContainer extends React.Component {
   }
 
   render() {
-    return (
-      <Search
-      products={this.props.products}
-      />
-    )
+    return <Search products={this.props.products} />;
   }
 }
 

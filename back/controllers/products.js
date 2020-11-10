@@ -15,7 +15,7 @@ const productController = {
       .then((all) => res.send(all))
       .catch((err) => res.send(err));
   },
-  //VER NOMBRE DE COLUMNAS DE MODELOS
+
   createProduct(req, res) {
     const { nombre, precio, foto, descripcion, categoria } = req.body;
     CategoryModel.findOne({

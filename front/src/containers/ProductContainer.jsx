@@ -20,7 +20,6 @@ class ProductContainer extends React.Component {
     this.handleChangeColor = this.handleChangeColor.bind(this);
   }
   componentDidMount() {
-    console.log("esto es idprocuto", this.props.idProducto);
     this.props.fetchProduct(this.props.idProducto);
     this.props.fetchReviews(this.props.idProducto);
     this.props.fetchStock(this.props.idProducto);
@@ -34,24 +33,20 @@ class ProductContainer extends React.Component {
   } */
 
   handleChangeTalle(evt) {
-    console.log(evt.target.value);
     const value = evt.target.value;
-    this.setState({
-      talle: value,
-    });
+    this.setState({ talle: value });
+    this.setState({ color: "" });
   }
 
   handleChangeColor(evt) {
-    console.log(evt.target.value);
     const value = evt.target.value;
-    this.setState({
-      color: value,
-    });
+    this.setState({ color: value });
   }
 
   handleSubmit() {
-    console.log("aca esta el handlesubmit", this.state);
-    this.props.addCart(this.props.idProducto, this.state);
+    if (this.props.user._id) {
+      this.props.addCart(this.props.idProducto, this.state);
+    }
   }
 
   render() {
@@ -68,8 +63,8 @@ class ProductContainer extends React.Component {
           handleChangeColor={this.handleChangeColor}
           handleChangeTalle={this.handleChangeTalle}
           stocks={this.props.stocks}
-          /* talle = {this.props.talle}
-          color = {this.props.color} */
+          talle={this.state.talle}
+          color={this.state.color}
         />
       </div>
     );
@@ -77,7 +72,6 @@ class ProductContainer extends React.Component {
 }
 
 const mapStateToProps = function (state, ownProps) {
-  console.log("state", state);
   return {
     nombre: state.products.product.nombre,
     idProducto: ownProps.match.params.id,
@@ -86,6 +80,7 @@ const mapStateToProps = function (state, ownProps) {
     precio: state.products.product.precio,
     stocks: state.products.stock,
     reviews: state.products.product.reviews,
+    user: state.user.user,
   };
 };
 
