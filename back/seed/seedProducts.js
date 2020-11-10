@@ -8,7 +8,7 @@ const Camisa = {
     "Corte oversize, manga larga. Tela: Poplin de algodon blanco con spandex. Lavado: Suavizado",
   foto:
     "https://d26lpennugtm8s.cloudfront.net/stores/903/961/products/whatsapp-image-2020-10-13-at-15-18-1111-b83924276bc27214bd16026222422487-1024-1024.jpeg",
-  categoria: { _id: "5fa1b4387e8dca254050d764" },
+  categoria: { _id: "5faacf62a8d6b8220a693fd8" },
 };
 
 const Campera = {
@@ -18,7 +18,7 @@ const Campera = {
     "Campera rompeviento. Corte Oversize, Unisex. Tela: Semi-impermeable. Forrada con mesh (red)",
   foto:
     "https://d26lpennugtm8s.cloudfront.net/stores/903/961/products/dsc_10771-ee94b89daf6e9a431915998867326418-1024-1024.jpg",
-  categoria: { _id: "5fa1b4387e8dca254050d765" },
+  categoria: { _id: "5faacf62a8d6b8220a693fd9" },
 };
 
 const Jean = {
@@ -28,7 +28,7 @@ const Jean = {
     "5 bolsillos, ajustado en la cintura, relajado desde la cadera hasta el tobillo, bota semi ajustada. La tela es 99% algodon 1% elastano. Tiene muy poca elasticidad, la tela es super suave, logrando un calce muy comodo para todos los dias. El lavado es azul oscuro, con hilos color ocre para lograr un aspecto vintage.",
   foto:
     "https://d26lpennugtm8s.cloudfront.net/stores/903/961/products/img_3535-21-cd8beb5fbe3c1e1db115989991604044-1024-1024.jpg",
-  categoria: { _id: "5fa1b4387e8dca254050d763" },
+  categoria: { _id: "5faacf62a8d6b8220a693fd7" },
   //en las rutas populate para ver el nombre
 };
 

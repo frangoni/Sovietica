@@ -198,13 +198,12 @@
 //           </div>
 //           <div className={classes.grow} />
 //           <div className={classes.sectionDesktop}>
-// {/*             
+// {/*
 //             <Link to="/home"> */}
 //             <IconButton color="inherit">
 //               <HomeIcon />
 //             </IconButton>
 //             {/* </Link> */}
-          
 
 //             <IconButton aria-label="show 4 new mails" color="inherit">
 //               <Badge badgeContent={4} color="secondary">
@@ -252,58 +251,83 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-// import { UserOutlined, UserAddOutlined, HomeOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  MenuOutlined,
+  SearchOutlined,
+  ShoppingOutlined,
+} from "@ant-design/icons";
 
-export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
+import HamburgerMenu from "react-hamburger-menu";
+
+export default ({
+  handleSubmit,
+  handleChange,
+  value,
+  user,
+  handleLogout,
+  handleToggle,
+  toggle,
+}) => (
   <div>
     <Navbar bg="light" variant="light">
-
       <Nav className="mr-auto">
+        <HamburgerMenu
+          isOpen={toggle}
+          menuClicked={handleToggle}
+          width={23}
+          height={16}
+          strokeWidth={1}
+          rotate={0}
+          color={"green"}
+          animationDuration={0.5}
+          borderRadius={0}
+        />
+        {user ? ( // Dropdown con Usuario Registrado -- deberia de poner en title en vez de 'Mi cuenta' -> nombre de usuario.
+          <Nav className="text-dark">
+            <UserOutlined />
 
-      {user ? ( // Dropdown con Usuario Registrado -- deberia de poner en title en vez de 'Mi cuenta' -> nombre de usuario.
-        <Nav className="text-dark">
-          <NavDropdown
-            title="Mi cuenta"
-            id="basic-nav-dropdown"
-            className="text-warning"
-          >
+            <NavDropdown
+              title="Mi cuenta"
+              id="basic-nav-dropdown"
+              className="text-warning"
+            >
+              <NavDropdown.Item>
+                <Link to="/cart">Carrito</Link>
+              </NavDropdown.Item>
 
-            <NavDropdown.Item>
-              <Link to="/cart">Carrito</Link>
-            </NavDropdown.Item>
+              <NavDropdown.Divider />
 
-            <NavDropdown.Divider />
+              <NavDropdown.Item>
+                <p onClick={handleLogout}> Log Out </p>
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        ) : (
+          // Login y Register
+          <Nav>
+            <Nav.Link className="text-dark">
+              <Link to={"/login"} className="text-dark">
+                Log In
+                {/* <UserOutlined style={{ fontSize: "25px" }} /> */}
+              </Link>
+            </Nav.Link>
 
-            <NavDropdown.Item>
-            <p onClick={handleLogout}> Log Out </p>
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      ) : (
-        // Login y Register
-        <Nav>
-          <Nav.Link className="text-dark">
-            <Link to={"/login"} className="text-dark">
-              Log In
-              {/* <UserOutlined style={{ fontSize: "25px" }} /> */}
-            </Link>
-          </Nav.Link>
-
-          <Nav.Link className="text-dark">
-            <Link to={"/register"} className="text-dark ">
-              Register
-              {/* <UserAddOutlined style={{ fontSize: "25px" }} /> */}
-            </Link>
-          </Nav.Link>
-        </Nav>
-      )}
+            <Nav.Link className="text-dark">
+              <Link to={"/register"} className="text-dark ">
+                Register
+                {/* <UserAddOutlined style={{ fontSize: "25px" }} /> */}
+              </Link>
+            </Nav.Link>
+          </Nav>
+        )}
       </Nav>
       <Nav.Link>
-          <Link to={"/home"} className="text-dark">
-            Home
-            {/* <HomeOutlined style={{ fontSize: "25px" }} /> */}
-          </Link>
-        </Nav.Link>
+        <Link to={"/home"} className="text-dark">
+          Home
+          {/* <HomeOutlined style={{ fontSize: "25px" }} /> */}
+        </Link>
+      </Nav.Link>
 
       <Form onSubmit={handleSubmit} inline>
         <FormControl
@@ -317,7 +341,6 @@ export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
         <Button type="submit" variant="dark">
           Search
         </Button>
-
       </Form>
     </Navbar>
   </div>

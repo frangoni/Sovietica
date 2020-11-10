@@ -9,6 +9,7 @@ import SearchContainer from "../containers/SearchContainer";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import CartContainer from "../containers/CartContainer";
 import ProductContainer from "../containers/ProductContainer";
+import CategoriesContainer from "../containers/CategoriesContainer";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -33,12 +34,13 @@ class Main extends React.Component {
         ></img>
 
         <Switch>
+          <Route exact path="/categories" component={CategoriesContainer} />
           <Route exact path="/home" component={SearchContainer} />
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
           <Route exact path="/cart" component={CartContainer} />
           <Route exact path="/products/:id" component={ProductContainer} />
-          <Redirect to="/home" from="/" />
+          {/* <Redirect to="/home" from="/" /> */}
         </Switch>
 
         <a href="https://api.whatsapp.com/send/?phone=5491165604567&text&app_absent=0">

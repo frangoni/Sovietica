@@ -17,6 +17,8 @@ const categoriesController = {
       .then((all) => res.status(201).send(all))
       .catch((err) => res.status(500).send(err));
   },
+
+  
 };
 
 module.exports = categoriesController;

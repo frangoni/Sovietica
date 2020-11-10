@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Search({ products }) {
   return (
-    <div >
-      
+    <div>
       <Container>
         <Row style={{ margin: "20px" }}>
           {products ? (
@@ -35,12 +34,13 @@ export default function Search({ products }) {
               </Col>
             ))
           ) : (
-                  <Alert variant="dark" onClose={() => setShow(false)} dismissible>
-                    <Alert.Heading>Producto no encontrado</Alert.Heading>
-                    <p>
-                      The movie or serie that you are searching for is not in our data base.
-                    </p>
-                  </Alert>
+            <Alert variant="dark" onClose={() => setShow(false)} dismissible>
+              <Alert.Heading>Producto no encontrado</Alert.Heading>
+              <p>
+                The movie or serie that you are searching for is not in our data
+                base.
+              </p>
+            </Alert>
           )}
         </Row>
       </Container>
