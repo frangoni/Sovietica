@@ -9,10 +9,11 @@ import SearchContainer from "../containers/SearchContainer";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import CartContainer from "../containers/CartContainer";
 import ProductContainer from "../containers/ProductContainer";
-import Footer from "../components/Footer"
-import AdminContainer from "../containers/AdminContainer"
-import CheckoutContainer from "../containers/CheckoutContainer"
-
+import Footer from "../components/Footer";
+import AdminContainer from "../containers/AdminContainer";
+import CheckoutContainer from "../containers/CheckoutContainer";
+import OrdersContainer from "../containers/OrdersContainer";
+import ReviewContainer from "../containers/ReviewContainer";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -37,19 +38,21 @@ class Main extends React.Component {
         ></img>
         <Switch>
           <Route exact path="/home" component={SearchContainer} />
-         
+
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
           <Route exact path="/cart" component={CartContainer} />
           <Route exact path="/products/:id" component={ProductContainer} />
           <Route exact path="/admin" component={AdminContainer} />
-          <Route exact path="/checkout" component={CheckoutContainer}/>
+          <Route exact path="/checkout" component={CheckoutContainer} />
+          <Route exact path="/orders" component={OrdersContainer} />
+          <Route exact path="/review/:id" component={ReviewContainer} />
           <Redirect to="/home" from="/" />
         </Switch>
         <a href="https://api.whatsapp.com/send/?phone=5491165604567&text&app_absent=0">
           <WhatsAppIcon id="wpp" />
         </a>
-        <Footer/>
+        <Footer />
       </div>
     );
   }
