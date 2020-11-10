@@ -266,9 +266,17 @@ export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
               </NavDropdown.Item>
 
               {user.rol == "admin" ? (
-                <NavDropdown.Item>
-                  <Link to="/admin">Panel</Link>
-                </NavDropdown.Item>
+                <>
+                  <NavDropdown.Item>
+                    <Link to="/adminusers">Users</Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                    <Link to="/adminproducts">Products</Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <Link to="/adminedit">Edit products</Link>
+                  </NavDropdown.Item>
+                </>
               ) : null}
 
               <NavDropdown.Divider />

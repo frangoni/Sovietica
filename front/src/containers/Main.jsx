@@ -10,9 +10,10 @@ import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import CartContainer from "../containers/CartContainer";
 import ProductContainer from "../containers/ProductContainer";
 import Footer from "../components/Footer"
-import AdminContainer from "../containers/AdminContainer"
+import AdminUsersContainer from "../containers/AdminUsersContainer"
 import CheckoutContainer from "../containers/CheckoutContainer"
-
+import AdminProductsContainer from "../containers/AdminProductsContainer"
+import AdminProductosContainer from "../containers/AdminProductosContainer"
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -42,7 +43,9 @@ class Main extends React.Component {
           <Route path="/register" component={RegisterContainer} />
           <Route exact path="/cart" component={CartContainer} />
           <Route exact path="/products/:id" component={ProductContainer} />
-          <Route exact path="/admin" component={AdminContainer} />
+          <Route exact path="/adminusers" component={AdminUsersContainer} />
+          <Route exact path="/adminproducts" component={AdminProductsContainer} />
+          <Route exact path="/adminedit" component={AdminProductosContainer} />
           <Route exact path="/checkout" component={CheckoutContainer}/>
           <Redirect to="/home" from="/" />
         </Switch>
