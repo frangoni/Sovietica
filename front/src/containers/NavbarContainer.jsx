@@ -3,7 +3,7 @@ import { fetchSearchProducts } from "../../store/action-creators/products";
 import { connect } from "react-redux";
 import Navbar from "../components/Navbar";
 import { fetchLogout } from "../../store/action-creators/users";
-import HamburgerMenu from "react-hamburger-menu";
+
 import ToggledMenu from "../containers/ToggledMenu";
 
 const mapStateToProps = function (state, { history }) {
@@ -58,7 +58,6 @@ class NavbarContainer extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <>
         <Navbar
           value={this.state.value}
@@ -72,15 +71,6 @@ class NavbarContainer extends React.Component {
         />
         {this.state.toggle ? <ToggledMenu /> : null}
       </>
-=======
-      <Navbar
-        value={this.state.value}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-        user={this.props.user}
-        handleLogout={this.handleLogout}
-      />
->>>>>>> 128004528ebd12c59c35d023eb877f926052c0bd
     );
   }
 }
