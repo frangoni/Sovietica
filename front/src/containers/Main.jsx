@@ -15,9 +15,6 @@ import CheckoutContainer from "../containers/CheckoutContainer";
 import OrdersContainer from "../containers/OrdersContainer";
 import ReviewContainer from "../containers/ReviewContainer";
 import CategoriesContainer from "../containers/CategoriesContainer";
-import Footer from "../components/Footer";
-import AdminContainer from "../containers/AdminContainer";
-import CheckoutContainer from "../containers/CheckoutContainer";
 
 const mapDispatchToProps = (dispatch) => {
   return {
