@@ -14,6 +14,10 @@ import AdminContainer from "../containers/AdminContainer";
 import CheckoutContainer from "../containers/CheckoutContainer";
 import OrdersContainer from "../containers/OrdersContainer";
 import ReviewContainer from "../containers/ReviewContainer";
+import CategoriesContainer from "../containers/CategoriesContainer";
+import Footer from "../components/Footer";
+import AdminContainer from "../containers/AdminContainer";
+import CheckoutContainer from "../containers/CheckoutContainer";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -37,6 +41,7 @@ class Main extends React.Component {
           src="https://d26lpennugtm8s.cloudfront.net/stores/903/961/themes/common/logo-1845961916-1576018694-7eff1267abe4e50cd976a335b559c5f11576018695-480-0.png?0"
         ></img>
         <Switch>
+          <Route exact path="/categories" component={CategoriesContainer} />
           <Route exact path="/home" component={SearchContainer} />
 
           <Route path="/login" component={LoginContainer} />
