@@ -9,6 +9,11 @@ import SearchContainer from "../containers/SearchContainer";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import CartContainer from "../containers/CartContainer";
 import ProductContainer from "../containers/ProductContainer";
+import Footer from "../components/Footer";
+import AdminContainer from "../containers/AdminContainer";
+import CheckoutContainer from "../containers/CheckoutContainer";
+import OrdersContainer from "../containers/OrdersContainer";
+import ReviewContainer from "../containers/ReviewContainer";
 import CategoriesContainer from "../containers/CategoriesContainer";
 import Footer from "../components/Footer";
 import AdminContainer from "../containers/AdminContainer";
@@ -45,6 +50,8 @@ class Main extends React.Component {
           <Route exact path="/products/:id" component={ProductContainer} />
           <Route exact path="/admin" component={AdminContainer} />
           <Route exact path="/checkout" component={CheckoutContainer} />
+          <Route exact path="/orders" component={OrdersContainer} />
+          <Route exact path="/review/:id" component={ReviewContainer} />
           <Redirect to="/home" from="/" />
         </Switch>
         <a href="https://api.whatsapp.com/send/?phone=5491165604567&text&app_absent=0">

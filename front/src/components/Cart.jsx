@@ -52,7 +52,7 @@ function Cart({ products, deleteCart, updateCart }) {
                         className="botonCarrito"
                         color="action"
                         onClick={() => {
-                          if (product.cantidad > 0) {
+                          if (product.cantidad > 1) {
                             updateCart(product._id, product.cantidad - 1);
                           }
                         }}
@@ -64,7 +64,9 @@ function Cart({ products, deleteCart, updateCart }) {
                         className="botonCarrito"
                         color="secondary"
                         onClick={() => {
-                          updateCart(product._id, product.cantidad + 1);
+                          if (product.cantidad < 5) {
+                            updateCart(product._id, product.cantidad + 1);
+                          }
                         }}
                       >
                         add_circle
