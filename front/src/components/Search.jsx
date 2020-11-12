@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function Album({ products }) {
   const classes = useStyles();
 
@@ -69,16 +68,13 @@ export default function Album({ products }) {
                   </CardContent>
                   <CardActions>
                     <Link to={`/products/${product._id}`}>
-                      <Button
-                        size="small"
-                        color="secondary"
-                      >
+                      <Button size="small" color="secondary">
                         Detalle
                       </Button>
                     </Link>
                   </CardActions>
                 </Card>
-              </Grid> 
+              </Grid>
             ))}
           </Grid>
         </Container>
@@ -86,4 +82,3 @@ export default function Album({ products }) {
     </React.Fragment>
   );
 }
-

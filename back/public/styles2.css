@@ -1,0 +1,30 @@
+#toggledMenu {
+  padding: 20px;
+  background-color: white;
+  position: absolute;
+
+  /* right: 0;
+  bottom: 0; */
+}
+
+#row {
+  float: right;
+  margin-left: 40px;
+  margin-top: 220px;
+  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px;
+  width: 80%;
+}
+
+#imagen {
+  width: 60%;
+  height: 100%;
+}
+
+#cards {
+  width: 60%;
+  height: 100%;
+}

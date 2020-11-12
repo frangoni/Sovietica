@@ -73,7 +73,6 @@ class ProductContainer extends React.Component {
 }
 
 const mapStateToProps = function (state, ownProps) {
-  console.log("ownProps-----", ownProps);
   return {
     nombre: state.products.product.nombre,
     idProducto: ownProps.match.params.id,

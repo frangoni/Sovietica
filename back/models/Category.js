@@ -7,7 +7,7 @@ let categorySchema = new Schema ({
         required: true
     },
     foto: {
-        type: String,
+        type: String, 
         url: "",
       },
 })

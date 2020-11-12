@@ -6,8 +6,11 @@ const orderControllers = {
   //MUESTRA LAS ORDENES DEL USUARIO
   findAll(req, res) {
     OrderModel.find({ usuarios: req.user.id })
-      .populate("productos")
-      .then((orders) => res.status(200).send("Ordenes del usuario", orders))
+      .populate({
+        path: "productos",
+        populate: { path: "productos" },
+      })
+      .then((orders) => res.status(200).send(orders))
       .catch((err) => res.status(500).send(err));
   },
   //CREA ORDEN LUEGO DE CONFIRMAR LA COMPRA

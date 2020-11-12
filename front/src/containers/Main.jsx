@@ -16,6 +16,10 @@ import AdminAddProductsContainer from "../containers/AdminAddProductsContainer"
 import AdminAddStockContainer from "../containers/AdminAddStockContainer"
 import AdminStockContainer from "../containers/AdminStockContainer"
 import AdminProductsContainer from "../containers/AdminProductsContainer"
+import AdminCategoriesContainer from "../containers/AdminCategoriesContainer"
+import OrdersContainer from "../containers/OrdersContainer";
+import ReviewContainer from "../containers/ReviewContainer";
+import CategoriesContainer from "../containers/CategoriesContainer";
 
 
 const mapDispatchToProps = (dispatch) => {
@@ -40,8 +44,9 @@ class Main extends React.Component {
           src="https://d26lpennugtm8s.cloudfront.net/stores/903/961/themes/common/logo-1845961916-1576018694-7eff1267abe4e50cd976a335b559c5f11576018695-480-0.png?0"
         ></img>
         <Switch>
+          <Route exact path="/categories" component={CategoriesContainer} />
+          <Route exact path="/admincategories" component={AdminCategoriesContainer} />
           <Route exact path="/home" component={SearchContainer} />
-         
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
           <Route exact path="/cart" component={CartContainer} />
@@ -52,12 +57,15 @@ class Main extends React.Component {
           <Route exact path="/admineditstock" component={AdminStockContainer} />
           <Route exact path="/admineditproducts" component={AdminProductsContainer} />
           <Route exact path="/checkout" component={CheckoutContainer}/>
+          <Route exact path="/orders" component={OrdersContainer} />
+          <Route exact path="/review/:id" component={ReviewContainer} />
+
           <Redirect to="/home" from="/" />
         </Switch>
         <a href="https://api.whatsapp.com/send/?phone=5491165604567&text&app_absent=0">
           <WhatsAppIcon id="wpp" />
         </a>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

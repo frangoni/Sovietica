@@ -41,6 +41,16 @@ body {
   overflow-x: auto;
 }
 
+.category {
+  width: 35%;
+  margin: 3em auto;
+  overflow-x: auto;
+}
+
+#categoryTable {
+width: 100%;
+}
+
 #cartTable {
   min-width: 700;
 }
@@ -53,6 +63,14 @@ body {
   margin-top: 1px;
 }
 
+a:hover {
+  text-decoration: none !important;
+}
+
+#reviewBtn {
+  color: white !important;
+}
+
 #checkout {
   width: 60%;
   margin: 0 auto;
@@ -61,4 +79,33 @@ body {
 #checkoutButton {
   text-decoration: none;
   color: white;
+}
+
+#review {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#review textarea {
+  width: 150%;
+}
+
+#review legend {
+  padding-left: 1.5em;
+}
+.MuiInputBase-root {
+  margin-bottom: 50px;
+}
+#reviewCard {
+  width: 400px;
+}
+
+#reviewContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 3em;
 }

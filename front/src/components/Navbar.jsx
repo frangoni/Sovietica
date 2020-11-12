@@ -11,8 +11,20 @@ import { Link } from "react-router-dom";
 
 export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
   <div>
-    <Navbar bg="light" variant="light" >
+    <Navbar bg="light" variant="light">
       <Nav className="mr-auto">
+        <HamburgerMenu
+          isOpen={toggle}
+          menuClicked={handleToggle}
+          width={23}
+          height={16}
+          strokeWidth={1}
+          rotate={0}
+          color={"green"}
+          animationDuration={0.5}
+          borderRadius={0}
+        />
+
         {user._id ? (
           <Nav className="text-dark">
             <NavDropdown
@@ -20,30 +32,61 @@ export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
               id="basic-nav-dropdown"
               className="text-dark"
             >
-              
-
               {user.rol == "admin" ? (
                 <>
                   <NavDropdown.Item>
-                    <Link to="/adminusers" className="text-dark">Users</Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                    <Link to="/adminaddproducts" className="text-dark" >Añadir Products</Link>
+                    <Link to="/adminusers" className="text-dark">
+                      Users
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/adminaddstock" className="text-dark" >Añadir Stock</Link>
+                    <Link to="/adminaddproducts" className="text-dark">
+                      Añadir Products
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/admineditproducts" className="text-dark" > Editar Productos</Link>
+                    <Link to="/adminaddstock" className="text-dark">
+                      Añadir Stock
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/admineditstock" className="text-dark" > Editar Stock </Link>
+                    <Link to="/admineditproducts" className="text-dark">
+                      {" "}
+                      Editar Productos
+                    </Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <Link to="/admineditstock" className="text-dark">
+                      {" "}
+                      Editar Stock{" "}
+                    </Link>
                   </NavDropdown.Item>
                 </>
-              ) : <NavDropdown.Item>
-              <Link to="/cart" className="text-dark" >Carrito</Link>
-            </NavDropdown.Item>
-            }
+              ) : (
+                <>
+                  <NavDropdown.Item>
+                    <Link to="/cart" className="text-dark">
+                      Carrito
+                    </Link>
+                  </NavDropdown.Item>
+
+                  <NavDropdown.Item>
+                    <Link to="/orders">Ordenes</Link>
+                  </NavDropdown.Item>
+                </>
+              )}
+
+              {user.rol == "admin" ? (
+                <NavDropdown.Item>
+                  <Link to="/admin">Panel</Link>
+                </NavDropdown.Item>
+              ) : null}
+
+              {user.rol == "admin" ? (
+                <NavDropdown.Item>
+                  <Link to="/admincategories">Categorias</Link>
+                </NavDropdown.Item>
+              ) : null}
 
               <NavDropdown.Divider />
 

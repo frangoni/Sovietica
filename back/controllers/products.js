@@ -49,9 +49,9 @@ const productController = {
   // CATEGORIA
 
   findByCategory(req, res) {
-    let categoria = req.params.id;
+    let categoria = req.params.categoryId;
     ProductModel.find({ categoria })
-      .then((categoria) => res.send(categoria))
+      .then((productos) => res.send(productos))
       .catch((err) => res.send(err));
   },
 

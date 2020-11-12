@@ -26,7 +26,6 @@ const cartController = {
       color: req.body.color,
     })
       .then((product) => {
-        console.log(req.user);
         CartModel.create({
           usuarios: req.user._id,
           productos: product._id,

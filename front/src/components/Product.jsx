@@ -1,5 +1,4 @@
 import React from "react";
-/* import { Modal, Button } from 'react-bootstrap'; */
 import { Link } from "react-router-dom";
 import { Card, Row, Container, Col } from "react-bootstrap";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -32,6 +31,7 @@ const Product = ({
   talle,
   color,
 }) => {
+  //TALLES SIN DUPLICAR
   let talles = [];
   for (let i = 0; i < stocks.length; i++) {
     talles.push(stocks[i].talle);
@@ -60,55 +60,69 @@ const Product = ({
                 <br />
                 <hr />
                 {/* SELECT DE TALLE*/}
+                {q ? (
+                  <>
+                    <FormControl
+                      variant="outlined"
+                      className={classes.formControl}
+                    >
+                      <InputLabel id="demo-simple-select-outlined-label">
+                        Talle
+                      </InputLabel>
+                      <Select
+                        onChange={handleChangeTalle}
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        name="talle"
+                        fullWidth
+                        label="Talle"
+                      >
+                        <MenuItem value=""> </MenuItem>
+                        {singleTalles &&
+                          singleTalles.map((talle) => (
+                            <MenuItem value={talle}>{talle}</MenuItem>
+                          ))}
+                      </Select>
+                    </FormControl>
 
-                <FormControl variant="outlined" className={classes.formControl}>
-                  <InputLabel id="demo-simple-select-outlined-label">
-                    Talle
-                  </InputLabel>
-                  <Select
-                    onChange={handleChangeTalle}
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    name="talle"
-                    fullWidth
-                    label="Talle"
-                  >
-                    <MenuItem value=""> </MenuItem>
-                    {singleTalles &&
-                      singleTalles.map((talle) => (
-                        <MenuItem value={talle}>{talle}</MenuItem>
-                      ))}
-                  </Select>
-                </FormControl>
-
-                <br />
-                {/* SELECT DE COLOR */}
-                <FormControl variant="outlined" className={classes.formControl}>
-                  <InputLabel id="demo-simple-select-outlined-label">
-                    Color
-                  </InputLabel>
-                  <Select
-                    onChange={handleChangeColor}
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    name="color"
-                    fullWidth
-                    label="Color"
-                  >
-                    <MenuItem value=""> </MenuItem>
-                    {stocks &&
-                      stocks.map((stock) => {
-                        if (stock.talle == talle && stock.cantidad > 0) {
-                          return (
-                            <MenuItem value={stock.color}>
-                              {stock.color}
-                            </MenuItem>
-                          );
-                        }
-                      })}
-                  </Select>
-                </FormControl>
-
+                    <br />
+                    {/* SELECT DE COLOR */}
+                    <FormControl
+                      variant="outlined"
+                      className={classes.formControl}
+                    >
+                      <InputLabel id="demo-simple-select-outlined-label">
+                        Color
+                      </InputLabel>
+                      <Select
+                        onChange={handleChangeColor}
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        name="color"
+                        fullWidth
+                        label="Color"
+                      >
+                        <MenuItem value=""> </MenuItem>
+                        {stocks &&
+                          stocks.map((stock) => {
+                            if (stock.talle == talle && stock.cantidad > 0) {
+                              return (
+                                <MenuItem value={stock.color}>
+                                  {stock.color}
+                                </MenuItem>
+                              );
+                            }
+                          })}
+                      </Select>
+                    </FormControl>
+                    <br />
+                    {q <= 35 ? <p>QUEDAN {q} UNIDADES</p> : null}
+                    <br />
+                    <br />
+                  </>
+                ) : (
+                  <h4>NO HAY STOCK DISPONIBLE!</h4>
+                )}
                 <br />
                 {reviews &&
                   reviews.map((review) => (
@@ -118,17 +132,16 @@ const Product = ({
                     </ul>
                   ))}
 
-
-                  <Button 
+                <Button
                   disabled={!(talles && color)}
-                   onClick={handleSubmit}
-                   type="submit"
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
-                   >
-                    Agregar a Carrito
-                  </Button>
+                  onClick={handleSubmit}
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                  className={classes.submit}
+                >
+                  Agregar a Carrito
+                </Button>
               </ul>
             </span>
           </Col>
