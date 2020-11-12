@@ -12,8 +12,11 @@ import ProductContainer from "../containers/ProductContainer";
 import Footer from "../components/Footer"
 import AdminUsersContainer from "../containers/AdminUsersContainer"
 import CheckoutContainer from "../containers/CheckoutContainer"
+import AdminAddProductsContainer from "../containers/AdminAddProductsContainer"
+import AdminAddStockContainer from "../containers/AdminAddStockContainer"
+import AdminStockContainer from "../containers/AdminStockContainer"
 import AdminProductsContainer from "../containers/AdminProductsContainer"
-import AdminProductosContainer from "../containers/AdminProductosContainer"
+
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -44,8 +47,10 @@ class Main extends React.Component {
           <Route exact path="/cart" component={CartContainer} />
           <Route exact path="/products/:id" component={ProductContainer} />
           <Route exact path="/adminusers" component={AdminUsersContainer} />
-          <Route exact path="/adminproducts" component={AdminProductsContainer} />
-          <Route exact path="/adminedit" component={AdminProductosContainer} />
+          <Route exact path="/adminaddproducts" component={AdminAddProductsContainer} />
+          <Route exact path="/adminaddstock" component={AdminAddStockContainer} />
+          <Route exact path="/admineditstock" component={AdminStockContainer} />
+          <Route exact path="/admineditproducts" component={AdminProductsContainer} />
           <Route exact path="/checkout" component={CheckoutContainer}/>
           <Redirect to="/home" from="/" />
         </Switch>

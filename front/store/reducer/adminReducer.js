@@ -1,9 +1,10 @@
-import { SEARCH_USERS , SET_PRODUCTS} from "../constants";
+import { SEARCH_USERS, SET_PRODUCTS } from "../constants";
 
 const initialState = {
   users: [],
-  products : [],
-  categories : []
+  products: [],
+  categories: [],
+  stock: [],
 };
 
 export default (state = initialState, action) => {
@@ -11,9 +12,11 @@ export default (state = initialState, action) => {
     case SEARCH_USERS:
       return { ...state, users: action.users };
     case SET_PRODUCTS:
-        return { ...state, products: action.products };
+      return { ...state, products: action.products };
     case "GET_CATEGORY":
-        return { ...state, categories: action.category };
+      return { ...state, categories: action.category };
+    case "GET_STOCK":
+      return { ...state, stock: action.stock };
     default:
       return state;
   }

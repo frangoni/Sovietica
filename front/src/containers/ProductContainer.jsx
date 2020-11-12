@@ -47,6 +47,7 @@ class ProductContainer extends React.Component {
     if (this.props.user._id) {
       this.props.addCart(this.props.idProducto, this.state);
     }
+    return this.props.history.push("/cart")
   }
 
   render() {

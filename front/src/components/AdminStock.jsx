@@ -10,86 +10,88 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import Avatar from "@material-ui/core/Avatar";
 
 
-export default function AdminProducts({
-  products,
-  deleteProducts,
+export default function AdminStock({
+  stocks,
+  deleteStock,
   handleSubmit,
-  handleNombre,
-  handlePrecio,
-  handleFoto,
-  handleDescripcion,
+  handleColor,
+  handleCantidad,
+  handleTalle,
 }) {
   return (
     <>
       <Paper id="cart">
-        <h1>Listado de Productos</h1>
+        <h1>Listado de Stock de Productos</h1>
         <Table id="cartTable">
           <TableHead>
             <TableRow>
               <TableCell>Foto</TableCell>
               <TableCell>Nombre</TableCell>
-              <TableCell>Precio</TableCell>
-              <TableCell>Descripcion</TableCell>
+              <TableCell>Talle</TableCell>
+              <TableCell>Color</TableCell>
+              <TableCell>Cantidad</TableCell>
               <TableCell>Editar</TableCell>
               <TableCell>Eliminar</TableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
-            {products && products.map((product) => (
+            {stocks.map((stock) => (
               <>
-                <TableRow key={product._id}>
+                <TableRow key={stock._id}>
                   {/* FOTO */}
                   <TableCell>
-                    <Avatar src={product.foto} />
+                    <Avatar src={stock.productos[0].foto} />
                   </TableCell>
 
                   {/* NOMBRE */}
+                  <TableCell>{stock.productos[0].nombre}</TableCell>
+
+                  {/* TALLE */}
                   <TableCell>
                   <form action="">
                       <input
                         type="text"
-                        onChange={handleNombre}
-                        placeholder={product.nombre}
-                        style={{border:"none", width:"100%"}}
+                        onChange={handleTalle}
+                        placeholder={stock.talle}
+                    
+                        style={{border:"none", width:"50%"}}
                       />
                     </form>
                     </TableCell>
 
-                  {/* PRECIO */}
+                  {/* COLOR */}
                   <TableCell>
                     <form action="">
                       <input
                         type="text"
-                        onChange={handlePrecio}
-                        placeholder={product.precio}
-                        style={{border:"none", width:"30%"}}
+                        onChange={handleColor}
+                        placeholder={stock.color}
+                        style={{border:"none", width:"50%"}}
                       />
                     </form>
-                    </TableCell>
+                  </TableCell>
 
-
-                  {/* DESCRIPCION */}
-                  <TableCell > 
-                  <form >
-                      <textarea
+                  {/* CANTIDAD */}
+                  <TableCell> 
+                  <form action="">
+                      <input
                         type="text"
-                        onChange={handleDescripcion}
-                        placeholder={product.descripcion}
-                        style={{border:"none", width: "100%"}}
-                        
+                        onChange={handleCantidad}
+                        placeholder={stock.cantidad} 
+                        style={{border:"none", width:"50%"}}
                       />
                     </form>
-                    </TableCell>
+                  </TableCell>
 
                   <TableCell>
                     <Button
                       size="small"
                       variant="contained"
                       color="secondary"
-                      onClick={() => handleSubmit(product._id)}
+                      onClick={() => handleSubmit(stock._id)}
                     >
-                      Edit
+                      Actualizar
                     </Button>
                   </TableCell>
 
@@ -99,7 +101,7 @@ export default function AdminProducts({
                       variant="contained"
                       color="secondary"
                       className="botonCarrito"
-                      onClick={() => deleteProducts(product._id)}
+                      onClick={() => {deleteStock(stock._id)}}
                     >
                       <DeleteIcon />
                     </Button>

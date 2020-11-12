@@ -1,64 +1,11 @@
-// import React from "react";
-// import { Card, Button, Container, Row, Col, Alert } from "react-bootstrap";
-// import { Link } from "react-router-dom";
-
-// export default function Search({ products }) {
-//   return (
-//     <div >
-
-//       <Container>
-//         <Row style={{ margin: "20px" }}>
-//           {products ? (
-//             products.map((product) => (
-//               <Col xs={3} className="mb-5" key={product._id}>
-//                 <Card className="h-100 shadow-sm bg-white rounded">
-//                   <Card.Img variant="top" src={product.foto} />
-
-//                   <Card.Body className="d-flex w-150 flex-column">
-//                     <div className="d-flex mb-2 justify-content-between">
-//                       <Card.Title className="mb-0 font-weight-bold ">
-//                         {product.nombre}
-//                       </Card.Title>
-//                     </div>
-
-//                     <Link to={`/products/${product._id}`}>
-//                       <Button
-//                         className="mt-auto font-weight-bold "
-//                         variant="dark"
-//                         block
-//                       >
-//                         Detalle
-//                       </Button>
-//                     </Link>
-//                   </Card.Body>
-//                 </Card>
-//               </Col>
-//             ))
-//           ) : (
-//                   <Alert variant="dark" onClose={() => setShow(false)} dismissible>
-//                     <Alert.Heading>Producto no encontrado</Alert.Heading>
-//                     <p>
-//                       The movie or serie that you are searching for is not in our data base.
-//                     </p>
-//                   </Alert>
-//           )}
-//         </Row>
-//       </Container>
-//     </div>
-//   );
-// }
-
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
-import CameraIcon from "@material-ui/icons/PhotoCamera";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -104,35 +51,7 @@ export default function Album({ products }) {
     <React.Fragment>
       <CssBaseline />
       <main>
-        {/* Hero unit */}
-        {/* <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Album layout
-            </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
-            </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
-          </Container>
-        </div> */}
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {products.map((product) => (
               <Grid item key={product._id} xs={12} sm={6} md={3}>
@@ -157,9 +76,6 @@ export default function Album({ products }) {
                         Detalle
                       </Button>
                     </Link>
-                    {/* <Button size="small" color="secondary">
-                      Comprar
-                    </Button> */}
                   </CardActions>
                 </Card>
               </Grid> 
