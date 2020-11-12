@@ -8,23 +8,33 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import HamburgerMenu from "react-hamburger-menu";
 
-export default ({ handleSubmit, handleChange, value, user, handleLogout }) => (
+export default ({
+  handleSubmit,
+  handleChange,
+  value,
+  user,
+  handleLogout,
+  handleToggle,
+  toggle,
+}) => (
   <div>
     <Navbar bg="light" variant="light">
       <Nav className="mr-auto">
-        <HamburgerMenu
-          isOpen={toggle}
-          menuClicked={handleToggle}
-          width={23}
-          height={16}
-          strokeWidth={1}
-          rotate={0}
-          color={"green"}
-          animationDuration={0.5}
-          borderRadius={0}
-        />
-
+        <Nav.Link>
+          <HamburgerMenu
+            isOpen={toggle}
+            menuClicked={handleToggle}
+            width={23}
+            height={16}
+            strokeWidth={1}
+            rotate={0}
+            color={"fuchsia"}
+            animationDuration={0.5}
+            borderRadius={0}
+          />
+        </Nav.Link>
         {user._id ? (
           <Nav className="text-dark">
             <NavDropdown

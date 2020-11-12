@@ -13,3 +13,13 @@ export const fetchReview = (id) => (dispatch) => {
     .get(`/api/review/user/${id}`)
     .then((res) => dispatch(getReview(res.data)));
 };
+
+export const addReview = (id, data) => {
+  axios.post(`/api/review/${id}`, data);
+};
+
+export const getReviews = (id) => (dispatch) => {
+  return axios
+    .get(`/api/review/${id}`)
+    .then((res) => dispatch(getReview(res.data)));
+};

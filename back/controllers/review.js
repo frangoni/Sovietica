@@ -1,20 +1,21 @@
-//REQUERIR MODELO DE MODELS CUANDO ESTE HECHO
-const ReviewModel = require("../models/User");
+const ReviewModel = require("../models/Review");
 
 const reviewController = {
   addReview(req, res) {
     let usuario = req.user.id;
     let producto = req.params.id;
     let data = Object.assign(req.body, { usuario }, { producto });
-    console.log(data);
     ReviewModel.create(data)
-      .then((all) => res.send(all))
+      .then((all) => {
+        res.send(all);
+      })
       .catch((err) => res.send(err));
   },
 
   getReviews(req, res) {
     let producto = req.params.id;
     ReviewModel.find({ producto })
+      .populate("usuario")
       .then((all) => res.send(all))
       .catch((err) => res.send(err));
   },

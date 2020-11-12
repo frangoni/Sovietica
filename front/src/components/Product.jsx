@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card, Row, Container, Col } from "react-bootstrap";
+import TextField from "@material-ui/core/TextField";
+import Rating from "@material-ui/lab/Rating";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
@@ -18,6 +22,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const StyledRating = withStyles({
+  iconFilled: {
+    color: "#ff6d75",
+  },
+})(Rating);
 const Product = ({
   nombre,
   descripcion,
@@ -37,6 +46,11 @@ const Product = ({
     talles.push(stocks[i].talle);
   }
   let singleTalles = [...new Set(talles)];
+  //CANTIDAD EXACTA DE ITEMS
+  let q = 0;
+  for (let i = 0; i < stocks.length; i++) {
+    q += stocks[i].cantidad;
+  }
 
   const classes = useStyles();
   return (
@@ -45,7 +59,7 @@ const Product = ({
         <Row>
           <Col xs={3} className="mb-5">
             <Card style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={foto} />
+              <Card.Img id="productView" variant="top" src={foto} />
             </Card>
           </Col>
 
@@ -123,14 +137,6 @@ const Product = ({
                 ) : (
                   <h4>NO HAY STOCK DISPONIBLE!</h4>
                 )}
-                <br />
-                {reviews &&
-                  reviews.map((review) => (
-                    <ul>
-                      <li>{review.review}</li>
-                      <li>{review.calificacion}</li>
-                    </ul>
-                  ))}
 
                 <Button
                   disabled={!(talles && color)}
@@ -146,6 +152,33 @@ const Product = ({
             </span>
           </Col>
         </Row>
+        <br />
+        <h3>REVIEWS</h3>
+        <br />
+        {reviews &&
+          reviews.map((review) => (
+            <div id="reviewsInProduct">
+              <TextField
+                key={review._id}
+                id="outlined-read-only-input"
+                label={review.usuario[0].nombre}
+                defaultValue={review.review}
+                InputProps={{
+                  readOnly: true,
+                }}
+                variant="outlined"
+              />
+              <StyledRating
+                key={review._id + "."}
+                readOnly
+                name="read-only"
+                value={review.calificacion}
+                icon={<FavoriteIcon fontSize="inherit" />}
+              />
+              <br />
+              <br />
+            </div>
+          ))}
       </Container>
     </div>
   );

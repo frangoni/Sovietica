@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Categories from "../components/Categories";
 
 import { fetchCategories } from "../../store/action-creators/categories";
-import {fetchProductsByCat} from "../../store/action-creators/products"
+import { fetchProductsByCat } from "../../store/action-creators/products";
 import Search from "../components/Search";
 
 class CategoriesContainer extends React.Component {
@@ -13,9 +13,7 @@ class CategoriesContainer extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    console.log("componenDM");
     this.props.fetchCategories();
-    // this.props.fetchProductsByCat();
   }
 
   handleClick(id) {
@@ -25,14 +23,17 @@ class CategoriesContainer extends React.Component {
   render() {
     return (
       <div>
-        <Categories categorias={this.props.categorias} handleClick={this.handleClick} />
+        <Categories
+          categorias={this.props.categorias}
+          handleClick={this.handleClick}
+        />
         <Search products={this.props.productos} />
       </div>
     );
   }
 }
 
-const mapStateToProps = function (state, ownProps) {
+const mapStateToProps = function (state) {
   console.log("state de CATEGORIES", state.categories.categories);
   return {
     productos: state.products.products,

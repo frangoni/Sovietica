@@ -27,12 +27,16 @@ const cartController = {
     })
       .then((product) => {
         CartModel.create({
-          usuarios: req.user._id,
+          usuarios: req.user.id,
           productos: product._id,
+          cantidad: req.body.cantidad || 1,
         });
       })
       .then((newProduct) => res.send(newProduct))
-      .catch((err) => res.status(500).send(err));
+      .catch((err) => {
+        console.log(err);
+        res.status(500).send(err);
+      });
   },
 
   //UPDATEAR CANTIDAD DE PRODUCTO
@@ -63,6 +67,27 @@ const cartController = {
         res.send(all);
       })
       .catch((err) => res.status(500).send(err));
+  },
+
+  //RUTAS PARA LOCALSTORAGE
+  createLocalCart(req, res) {
+    StockModel.findOne({
+      productos: req.params.idProduct,
+      talle: req.body.talle,
+      color: req.body.color,
+    })
+      .populate("productos")
+      .then((producto) => {
+        console.log(producto);
+        res.send(producto);
+      });
+  },
+
+  createCartWithLocal(req, res) {
+    CartModel.create({
+      usuarios: req.user._id,
+      productos: product._id,
+    });
   },
 };
 

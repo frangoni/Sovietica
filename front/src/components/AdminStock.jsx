@@ -9,7 +9,6 @@ import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Avatar from "@material-ui/core/Avatar";
 
-
 export default function AdminStock({
   stocks,
   deleteStock,
@@ -36,79 +35,81 @@ export default function AdminStock({
           </TableHead>
 
           <TableBody>
-            {stocks.map((stock) => (
-              <>
-                <TableRow key={stock._id}>
-                  {/* FOTO */}
-                  <TableCell>
-                    <Avatar src={stock.productos[0].foto} />
-                  </TableCell>
-
-                  {/* NOMBRE */}
-                  <TableCell>{stock.productos[0].nombre}</TableCell>
-
-                  {/* TALLE */}
-                  <TableCell>
-                  <form action="">
-                      <input
-                        type="text"
-                        onChange={handleTalle}
-                        placeholder={stock.talle}
-                    
-                        style={{border:"none", width:"50%"}}
-                      />
-                    </form>
+            {stocks &&
+              stocks.map((stock) => (
+                <>
+                  <TableRow key={stock._id}>
+                    {/* FOTO */}
+                    <TableCell>
+                      <Avatar src={stock.productos[0].foto} />
                     </TableCell>
 
-                  {/* COLOR */}
-                  <TableCell>
-                    <form action="">
-                      <input
-                        type="text"
-                        onChange={handleColor}
-                        placeholder={stock.color}
-                        style={{border:"none", width:"50%"}}
-                      />
-                    </form>
-                  </TableCell>
+                    {/* NOMBRE */}
+                    <TableCell>{stock.productos[0].nombre}</TableCell>
 
-                  {/* CANTIDAD */}
-                  <TableCell> 
-                  <form action="">
-                      <input
-                        type="text"
-                        onChange={handleCantidad}
-                        placeholder={stock.cantidad} 
-                        style={{border:"none", width:"50%"}}
-                      />
-                    </form>
-                  </TableCell>
+                    {/* TALLE */}
+                    <TableCell>
+                      <form action="">
+                        <input
+                          type="text"
+                          onChange={handleTalle}
+                          placeholder={stock.talle}
+                          style={{ border: "none", width: "50%" }}
+                        />
+                      </form>
+                    </TableCell>
 
-                  <TableCell>
-                    <Button
-                      size="small"
-                      variant="contained"
-                      color="secondary"
-                      onClick={() => handleSubmit(stock._id)}
-                    >
-                      Actualizar
-                    </Button>
-                  </TableCell>
+                    {/* COLOR */}
+                    <TableCell>
+                      <form action="">
+                        <input
+                          type="text"
+                          onChange={handleColor}
+                          placeholder={stock.color}
+                          style={{ border: "none", width: "50%" }}
+                        />
+                      </form>
+                    </TableCell>
 
-                  <TableCell>
-                    <Button
-                      size="small"
-                      variant="contained"
-                      color="secondary"
-                      className="botonCarrito"
-                      onClick={() => {deleteStock(stock._id)}}
-                    >
-                      <DeleteIcon />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              </>
-            ))}
+                    {/* CANTIDAD */}
+                    <TableCell>
+                      <form action="">
+                        <input
+                          type="text"
+                          onChange={handleCantidad}
+                          placeholder={stock.cantidad}
+                          style={{ border: "none", width: "50%" }}
+                        />
+                      </form>
+                    </TableCell>
+
+                    <TableCell>
+                      <Button
+                        size="small"
+                        variant="contained"
+                        color="secondary"
+                        onClick={() => handleSubmit(stock._id)}
+                      >
+                        Actualizar
+                      </Button>
+                    </TableCell>
+
+                    <TableCell>
+                      <Button
+                        size="small"
+                        variant="contained"
+                        color="secondary"
+                        className="botonCarrito"
+                        onClick={() => {
+                          deleteStock(stock._id);
+                        }}
+                      >
+                        <DeleteIcon />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                </>
+              ))}
           </TableBody>
         </Table>
       </Paper>
