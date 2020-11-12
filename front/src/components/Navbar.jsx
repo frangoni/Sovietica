@@ -261,84 +261,94 @@ export default ({
   handleToggle,
   toggle,
 }) => (
-  <div>
-    <Navbar bg="light" variant="light">
-      <Nav className="mr-auto">
-        <HamburgerMenu
-          isOpen={toggle}
-          menuClicked={handleToggle}
-          width={23}
-          height={16}
-          strokeWidth={1}
-          rotate={0}
-          color={"green"}
-          animationDuration={0.5}
-          borderRadius={0}
-        />
+    <div>
+      <Navbar bg="light" variant="light">
+        <Nav className="mr-auto">
+          <HamburgerMenu
+            isOpen={toggle}
+            menuClicked={handleToggle}
+            width={23}
+            height={16}
+            strokeWidth={1}
+            rotate={0}
+            color={"green"}
+            animationDuration={0.5}
+            borderRadius={0}
+          />
 
-        {user._id ? (
-          <Nav className="text-dark">
-            <NavDropdown
-              title={user.nombre}
-              id="basic-nav-dropdown"
-              className="text-warning"
-            >
-              <NavDropdown.Item>
-                <Link to="/cart">Carrito</Link>
-              </NavDropdown.Item>
-
-              <NavDropdown.Item>
-                <Link to="/orders">Ordenes</Link>
-              </NavDropdown.Item>
-
-              {user.rol == "admin" ? (
+          {user._id ? (
+            <Nav className="text-dark">
+              <NavDropdown
+                title={user.nombre}
+                id="basic-nav-dropdown"
+                className="text-warning"
+              >
                 <NavDropdown.Item>
-                  <Link to="/admin">Panel</Link>
+                  <Link to="/cart">Carrito</Link>
                 </NavDropdown.Item>
-              ) : null}
 
-              <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Link to="/orders">Ordenes</Link>
+                </NavDropdown.Item>
 
-              <NavDropdown.Item>
-                <p onClick={handleLogout}> Log Out </p>
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        ) : (
-          <Nav>
-            <Nav.Link className="text-dark">
-              <Link to={"/login"} className="text-dark">
-                Log In
+                {user.rol == "admin" ? (
+                  <NavDropdown.Item>
+                    <Link to="/admin">Panel</Link>
+                  </NavDropdown.Item>
+                ) : null}
+
+                {user.rol == "admin" ? (
+                  <NavDropdown.Item>
+                    <Link to="/admincategories">Categorias</Link>
+                  </NavDropdown.Item>
+                ) : null}
+
+                <NavDropdown.Divider />
+
+                <NavDropdown.Item>
+                  <p onClick={handleLogout}> Log Out </p>
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          ) : (
+              <Nav>
+                <Nav.Link className="text-dark">
+                  <Link to={"/login"} className="text-dark">
+                    Log In
               </Link>
-            </Nav.Link>
+                </Nav.Link>
 
-            <Nav.Link className="text-dark">
-              <Link to={"/register"} className="text-dark ">
-                Register
+                <Nav.Link className="text-dark">
+                  <Link to={"/register"} className="text-dark ">
+                    Register
               </Link>
-            </Nav.Link>
-          </Nav>
-        )}
-      </Nav>
-      <Nav.Link>
-        <Link to={"/home"} className="text-dark">
-          Home
+                </Nav.Link>
+              </Nav>
+            )}
+        </Nav>
+        <Nav.Link>
+          <Link to={"/home"} className="text-dark">
+            Home
         </Link>
-      </Nav.Link>
+        </Nav.Link>
 
-      <Form onSubmit={handleSubmit} inline>
-        <FormControl
-          type="text"
-          placeholder="Buscar Prenda"
-          className="mr-sm-3 "
-          onChange={handleChange}
-          value={value}
-        />
+        <Form onSubmit={handleSubmit} inline>
+          <FormControl
+            type="text"
+            placeholder="Buscar Prenda"
+            className="mr-sm-3 "
+            onChange={handleChange}
+            value={value}
+          />
 
-        <Button type="submit" variant="dark">
-          Search
+          <Button type="submit" variant="dark">
+            Search
         </Button>
-      </Form>
-    </Navbar>
-  </div>
-);
+        </Form>
+      </Navbar>
+    </div>
+  );
+
+
+
+

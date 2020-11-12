@@ -37,7 +37,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
-
+import {Carousel} from "react-bootstrap"
 const useStyles = makeStyles((theme) => ({
   ///////////////////////
   root: {
@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${
       theme.spacing(1) + 6
-    }px`,
+      }px`,
   },
   imageMarked: {
     height: 3,
@@ -114,58 +114,72 @@ const useStyles = makeStyles((theme) => ({
     left: "calc(50% - 9px)",
     transition: theme.transitions.create("opacity"),
   },
+
 }));
 
-export default function Categories({ categorias }) {
+export default function Categories({ categorias, handleClick }) {
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <CssBaseline />
       <main>
-        <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={4}>
-            {categorias.map((categoria) => (
-              <ButtonBase
-                focusRipple
-                key={categoria.nombre}
-                className={classes.image}
-                focusVisibleClassName={classes.focusVisible}
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  flexDirection: "row",
-                  backgroundColor: "",
-                  justifyContent: "space-between",
-                  margin: "50px",
-                  width: "200px",
-                  height: "240px",
-                }}
-              >
-                <span
-                  className={classes.imageSrc}
-                  style={{
-                    backgroundImage: `url(${categoria.foto})`,
-                    borderRadius: "15px",
-                  }}
-                />
-                <span className={classes.imageBackdrop} />
-                <span className={classes.imageButton}>
-                  <Typography
-                    component="span"
-                    variant="subtitle1"
-                    color="inherit"
-                    className={classes.imageTitle}
-                  >
-                    {categoria.nombre}
-                    <span className={classes.imageMarked} />
-                  </Typography>
-                </span>
-              </ButtonBase>
-            ))}
-          </Grid>
-        </Container>
+ 
+            <Container className={classes.cardGrid} maxWidth="lg">
+              <Grid container spacing={4}>
+                {categorias.map((categoria) => (
+                
+                  <Link onClick={() => handleClick(categoria._id)}>
+                    
+                    <ButtonBase
+                      focusRipple
+                      key={categoria.nombre}
+                      className={classes.image}
+                      focusVisibleClassName={classes.focusVisible}
+                      style={{
+                        display: "flex",
+                        flexWrap: "nowrap",
+                        flexDirection: "row",
+                        backgroundColor: "",
+                        justifyContent: "space-between",
+                        margin: "10px",
+                        width: "200px",
+                        height: "260px",
+                      }}
+                    >
+                 
+                        <span
+                           
+                          className={classes.imageSrc}
+                          style={{
+                            backgroundImage: `url(${categoria.foto})`,
+                            borderRadius: "15px",
+                          }}
+                        />
+                        
+                        <span className={classes.imageBackdrop} />
+                        <span className={classes.imageButton}>
+                        
+                          <Typography
+                            component="span"
+                            variant="subtitle1"
+                            color="inherit"
+                            className={classes.imageTitle}
+                          >
+                            {categoria.nombre}
+                            <span className={classes.imageMarked} />
+                          </Typography>
+                        </span>
+                        
+                    </ButtonBase>
+                  </Link>
+                  
+                ))}
+               
+              </Grid>
+            </Container>
       </main>
     </React.Fragment>
   );
+ 
 }
