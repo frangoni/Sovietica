@@ -1,8 +1,6 @@
 import React from "react";
-/* import { Modal, Button } from 'react-bootstrap'; */
 import { Link } from "react-router-dom";
 import { Card, Row, Container, Col } from "react-bootstrap";
-import { Box } from "@material-ui/core";
 
 const Product = ({
   nombre,

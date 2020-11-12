@@ -14,4 +14,10 @@ export const ADD_CATEGORIES = "ADD_CATEGORIES"
 export const TRAER_CARRITO = "TRAER_CARRITO";
 
 // Admin
-export const SEARCH_USERS = "SEARCH_USERS"
+export const SEARCH_USERS = "SEARCH_USERS";
+
+//Order
+export const GET_ORDER = "GET_ORDER";
+
+//Review
+export const GET_REVIEW = "GET_REVIEW";
