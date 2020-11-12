@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 import Product from "../components/Product";
 import {
   fetchProduct,
-  fetchReviews,
   addCart,
   fetchStock,
 } from "../../store/action-creators/productsActions";
+import { getReviews } from "../../store/action-creators/review";
+import Axios from "axios";
 
 class ProductContainer extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class ProductContainer extends React.Component {
   }
   componentDidMount() {
     this.props.fetchProduct(this.props.idProducto);
-    this.props.fetchReviews(this.props.idProducto);
+    this.props.getReviews(this.props.idProducto);
     this.props.fetchStock(this.props.idProducto);
   }
 
@@ -46,6 +47,16 @@ class ProductContainer extends React.Component {
   handleSubmit() {
     if (this.props.user._id) {
       this.props.addCart(this.props.idProducto, this.state);
+      this.props.history.push("/cart");
+    } else {
+      Axios.post(`/api/cart/local/${this.props.idProducto}`, this.state)
+        .then((producto) => {
+          let storage = JSON.parse(localStorage.getItem("producto"));
+          if (storage == null) storage = [];
+          storage.push({ cantidad: 1, productos: [producto.data] });
+          localStorage.setItem("producto", JSON.stringify(storage));
+        })
+        .then(() => this.props.history.push("/cart"));
     }
   }
 
@@ -65,6 +76,7 @@ class ProductContainer extends React.Component {
           stocks={this.props.stocks}
           talle={this.state.talle}
           color={this.state.color}
+          user={this.props.user}
         />
       </div>
     );
@@ -79,15 +91,16 @@ const mapStateToProps = function (state, ownProps) {
     foto: state.products.product.foto,
     precio: state.products.product.precio,
     stocks: state.products.stock,
-    reviews: state.products.product.reviews,
+    reviews: state.review.reviews,
     user: state.user.user,
+    history: ownProps.history,
   };
 };
 
 const mapDispatchToProps = function (dispatch) {
   return {
     fetchProduct: (str) => dispatch(fetchProduct(str)),
-    fetchReviews: (str) => dispatch(fetchReviews(str)),
+    getReviews: (str) => dispatch(getReviews(str)),
     addCart: (id, data) => dispatch(addCart(id, data)),
     fetchStock: (str) => dispatch(fetchStock(str)),
   };

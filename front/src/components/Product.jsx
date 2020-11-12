@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card, Row, Container, Col } from "react-bootstrap";
+import TextField from "@material-ui/core/TextField";
+import Rating from "@material-ui/lab/Rating";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import { withStyles } from "@material-ui/core/styles";
 
+const StyledRating = withStyles({
+  iconFilled: {
+    color: "#ff6d75",
+  },
+})(Rating);
 const Product = ({
   nombre,
   descripcion,
@@ -44,7 +53,7 @@ const Product = ({
         <Row>
           <Col xs={3} className="mb-5">
             <Card style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={foto} />
+              <Card.Img id="productView" variant="top" src={foto} />
             </Card>
           </Col>
 
@@ -63,22 +72,26 @@ const Product = ({
                   <>
                     <b>Talle</b>
                     <select name="talle" onChange={handleChangeTalle}>
-                      <option value="" selected></option>
+                      <option value="-----" defaultValue></option>
                       {singleTalles &&
                         singleTalles.map((talle) => (
-                          <option value={talle}>{talle}</option>
+                          <option key={talle} value={talle}>
+                            {talle}
+                          </option>
                         ))}
                     </select>
                     <br />
                     <br />
                     <b>Color</b>
                     <select name="color" onChange={handleChangeColor}>
-                      <option value="" selected></option>
+                      <option value="-----" defaultValue></option>
                       {stocks &&
                         stocks.map((stock) => {
                           if (stock.talle == talle && stock.cantidad > 0) {
                             return (
-                              <option value={stock.color}>{stock.color}</option>
+                              <option key={stock._id} value={stock.color}>
+                                {stock.color}
+                              </option>
                             );
                           }
                         })}
@@ -91,22 +104,38 @@ const Product = ({
                 ) : (
                   <h4>NO HAY STOCK DISPONIBLE!</h4>
                 )}
-                {reviews &&
-                  reviews.map((review) => (
-                    <ul>
-                      <li>{review.review}</li>
-                      <li>{review.calificacion}</li>
-                    </ul>
-                  ))}
-                <Link to="/cart">
-                  <button disabled={!(talles && color)} onClick={handleSubmit}>
-                    Agregar a Carrito
-                  </button>
-                </Link>
+                <button disabled={!(talles && color)} onClick={handleSubmit}>
+                  Agregar a Carrito
+                </button>
               </ul>
             </span>
           </Col>
         </Row>
+        <br />
+        <h3>REVIEWS</h3>
+        <br />
+        {reviews &&
+          reviews.map((review) => (
+            <div id="reviewsInProduct">
+              <TextField
+                key={review._id}
+                id="outlined-read-only-input"
+                label={review.usuario[0].nombre}
+                defaultValue={review.review}
+                InputProps={{
+                  readOnly: true,
+                }}
+                variant="outlined"
+              />
+              <StyledRating
+                key={review._id + "."}
+                readOnly
+                name="read-only"
+                value={review.calificacion}
+                icon={<FavoriteIcon fontSize="inherit" />}
+              />
+            </div>
+          ))}
       </Container>
     </div>
   );
