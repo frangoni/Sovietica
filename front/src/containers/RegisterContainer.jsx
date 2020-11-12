@@ -5,8 +5,7 @@ import Register from "../components/Register";
 
 const mapDispachToProps = (dispatch) => {
   return {
-    fetchUser: (nombre, apellido, email, direccion, telefono, clave) =>
-      dispatch(fetchUser(nombre, apellido, email, direccion, telefono, clave)),
+    fetchUser: (data) => dispatch(fetchUser(data)),
   };
 };
 
@@ -34,14 +33,7 @@ class RegisterContainer extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.fetchUser(
-      this.state.nombre,
-      this.state.apellido,
-      this.state.email,
-      this.state.direccion,
-      this.state.telefono,
-      this.state.clave
-    );
+    this.props.fetchUser(this.state);
     return this.props.history.push("/login");
   }
 

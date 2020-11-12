@@ -1,23 +1,21 @@
 import React from "react";
-import { fetchUsers, updateUsers,deleteUsers} from "../../store/action-creators/admin";
+import { fetchUsers, updateUsers, deleteUsers} from "../../store/action-creators/admin";
 import { connect } from "react-redux";
-import Admin from "../components/Admin";
+import AdminUsers from "../components/AdminUsers";
 
 const mapStateToProps = function (state) {
-  return {
-    users: state.admin.users,
-  };
+  return { users: state.admin.users };
 };
 
 const mapDispatchToProps = function (dispatch) {
   return {
-    fetchUsers: ()=> dispatch(fetchUsers()),
-    updateUsers: (rol, id)=> dispatch(updateUsers(rol, id)),
+    fetchUsers: () => dispatch(fetchUsers()),
+    updateUsers: (rol, id) => dispatch(updateUsers(rol, id)),
     deleteUsers: (id) => dispatch(deleteUsers(id))
   };
 };
 
-class AdminContainer extends React.Component {
+class AdminUsersContainer extends React.Component {
 
   constructor(props){
     super(props);
@@ -42,8 +40,7 @@ class AdminContainer extends React.Component {
   }
 
   handleSubmit(id){
-    console.log(id," a ver que es esto")
- this.props.updateUsers(id, this.state.rol)
+   this.props.updateUsers(id, this.state.rol)
   }
 
   deleteUsers(id){
@@ -53,7 +50,8 @@ class AdminContainer extends React.Component {
 
   render() {
     return (
-      <Admin
+      <AdminUsers
+      
       users={this.props.users}
       handleEdit={this.handleEdit}
       handleSubmit={this.handleSubmit}
@@ -63,4 +61,4 @@ class AdminContainer extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminContainer );
+export default connect(mapStateToProps, mapDispatchToProps)( AdminUsersContainer );

@@ -32,7 +32,7 @@ const Jean = {
   //en las rutas populate para ver el nombre
 };
 
-const VestidoCora = {
+/* const VestidoCora = {
   nombre: "Vestido Cora",
   precio: 1700,
   descripcion:
@@ -88,18 +88,18 @@ const JumperJessie = {
     "Tela: Jean 99% algodon 1% elastano. Tiene un lavado azul suave con hilos en color ocre para darle a la prenda un estilo 'vintage'. La tela es muy suave y tiene un poco de espandex, de esta forma la prenda se adapta bien y es muy comoda para el uso diario.Con bolsillos delanteros y cartera con broches de metal. Esta prenda viene desde el talle S al XXL. Tomar las medidas sobre el contorno de busto, cintura y cadera (Ver tabla de talles expresada en centimetros).",
   foto:
     "http://d26lpennugtm8s.cloudfront.net/stores/903/961/products/whatsapp-image-2019-12-17-at-00-15-091-8d4c3241dc475704b815996857710073-1024-1024.jpeg",
-};
+}; */
 
 Products.insertMany([
   Camisa,
   Campera,
   Jean,
-  VestidoCora,
+  /* VestidoCora,
   RemeraPiper,
   BlazeBlondie,
   TopApa,
   PantalonApa,
-  JumperJessie,
+  JumperJessie, */
 ]).then(() => {
   console.log("-----corrio el seed Products------");
   process.exit();

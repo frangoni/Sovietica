@@ -12,6 +12,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 
 function Cart({ products, deleteCart, updateCart }) {
+  {console.log("esto es product-----",products)}
   const total = () => {
     let resultado = 0;
     products.map((product) => {
@@ -40,7 +41,8 @@ function Cart({ products, deleteCart, updateCart }) {
                 <>
                   <TableRow key={product._id}>
                     <TableCell>
-                      <Avatar src={product.productos[0].productos[0].foto} />{" "}
+                      
+                      <Avatar src={product.productos[0].productos[0].foto} />
                     </TableCell>
                     <TableCell>
                       {product.productos[0].productos[0].nombre}{" "}
@@ -73,7 +75,7 @@ function Cart({ products, deleteCart, updateCart }) {
                       </Icon>
                     </TableCell>
                     <TableCell>
-                      ${product.productos[0].productos[0].precio}{" "}
+                      ${product.productos[0].productos[0].precio * product.cantidad}
                     </TableCell>
                     <Button
                       size="small"
