@@ -43,6 +43,21 @@ a:hover {
   width: 70%;
   margin: 3em auto;
 }
+
+.category {
+  width: 35%;
+  margin: 3em auto;
+  overflow-x: auto;
+}
+
+#categoryTable {
+  width: 100%;
+}
+
+#cartTable {
+  min-width: 700;
+}
+
 #cartBoton {
   margin-left: 40%;
   display: flex;
@@ -92,17 +107,18 @@ a:hover {
 }
 
 .MuiInputBase-root {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 #reviewsInProduct {
   display: flex;
   flex-flow: column wrap;
-  width: 20%;
+  width: 50%;
+  text-align: center;
+  justify-content: space-between;
+  align-items: unset;
 }
 
 #productView {
   box-shadow: 0px 0px 30px -8px rgba(0, 0, 0, 0.75);
-  /*   border-radius: 10%;
- */
 }

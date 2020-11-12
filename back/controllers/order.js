@@ -1,5 +1,6 @@
 const OrderModel = require("../models/Order");
 const CartModel = require("../models/Cart");
+const nodemailer = require("nodemailer");
 
 const orderControllers = {
   //MUESTRA LAS ORDENES DEL USUARIO
@@ -28,12 +29,39 @@ const orderControllers = {
           direccion: req.body.direccion,
           usuarios: req.user.id,
           productos: orderProducts,
-        }).then(() => CartModel.deleteMany({ usuarios: req.user.id }));
+        });
       })
-      .then(() => res.status(200).send("Orden creada"))
+      .then(() => {
+        CartModel.deleteMany({ usuarios: req.user.id });
+      })
+      .then(() => {
+        const transporter = nodemailer.createTransport({
+          host: "localhost",
+          port: 1025,
+          auth: {
+            user: "project.1",
+            pass: "secret.1",
+          },
+        });
+
+        const mailOptions = {
+          from: "sovieticaindumentaria@gmail.com",
+          to: req.body.email,
+          subject: "SOVIETICA",
+          text: "Gracias por su compra, vuelva pronto!",
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Email sent: ");
+          }
+          res.status(200).send("Orden creada");
+        });
+      })
       .catch((err) => res.status(500).send(err));
   },
-  //BORRAR EN STOCK SEGUN CANTIDAD
 };
 
 module.exports = orderControllers;

@@ -58,6 +58,7 @@ class ProductContainer extends React.Component {
         })
         .then(() => this.props.history.push("/cart"));
     }
+    return this.props.history.push("/cart")
   }
 
   render() {

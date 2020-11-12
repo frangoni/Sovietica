@@ -51,7 +51,7 @@ function Cart({ products, deleteCart, updateCart, user, handleRefresh }) {
                 <>
                   <TableRow key={product._id}>
                     <TableCell>
-                      <Avatar src={product.productos[0].productos[0].foto} />{" "}
+                      <Avatar src={product.productos[0].productos[0].foto} />
                     </TableCell>
                     <TableCell>
                       {product.productos[0].productos[0].nombre}{" "}
@@ -116,7 +116,9 @@ function Cart({ products, deleteCart, updateCart, user, handleRefresh }) {
                       </Icon>
                     </TableCell>
                     <TableCell>
-                      ${product.productos[0].productos[0].precio}{" "}
+                      $
+                      {product.productos[0].productos[0].precio *
+                        product.cantidad}
                     </TableCell>
                     <Button
                       size="small"

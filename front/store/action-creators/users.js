@@ -6,8 +6,8 @@ const receiveUser = (user) => ({
   user,
 });
 
-export const fetchUser = (nombre, apellido, email, direccion, telefono, clave) => dispatch =>
-  axios.post("/api/user/register", {nombre, apellido, email, direccion, telefono, clave})
+export const fetchUser = (data) => dispatch =>
+  axios.post("/api/user/register", data)
     .then(res => res.data)
 
 

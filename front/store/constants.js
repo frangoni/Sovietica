@@ -8,6 +8,7 @@ export const FETCH_STOCK = "FETCH_STOCK";
 export const FETCH_REVIEWS = "FETCH_REVIEWS";
 export const GET_PRODUCTS_BY_CAT = "GET_PRODUCTS_BY_CAT";
 export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
+export const ADD_CATEGORIES = "ADD_CATEGORIES"
 
 //Cart
 export const TRAER_CARRITO = "TRAER_CARRITO";

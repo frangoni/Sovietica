@@ -3,32 +3,37 @@ import { connect } from "react-redux";
 import Categories from "../components/Categories";
 
 import { fetchCategories } from "../../store/action-creators/categories";
-
+import { fetchProductsByCat } from "../../store/action-creators/products";
 import Search from "../components/Search";
 
 class CategoriesContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    console.log("componenDM");
     this.props.fetchCategories();
-    // this.props.fetchProductsByCat();
+  }
+
+  handleClick(id) {
+    this.props.fetchProductsByCat(id);
   }
 
   render() {
     return (
       <div>
-        <Categories categorias={this.props.categorias} />
+        <Categories
+          categorias={this.props.categorias}
+          handleClick={this.handleClick}
+        />
         <Search products={this.props.productos} />
       </div>
     );
   }
 }
 
-const mapStateToProps = function (state, ownProps) {
+const mapStateToProps = function (state) {
   console.log("state de CATEGORIES", state.categories.categories);
   return {
     productos: state.products.products,
@@ -39,7 +44,7 @@ const mapStateToProps = function (state, ownProps) {
 const mapDispatchToProps = function (dispatch) {
   return {
     fetchCategories: () => dispatch(fetchCategories()),
-    fetchProductsByCat: (str) => dispatch(fetchProductsByCat(str)),
+    fetchProductsByCat: (id) => dispatch(fetchProductsByCat(id)),
   };
 };
 

@@ -5,6 +5,22 @@ import TextField from "@material-ui/core/TextField";
 import Rating from "@material-ui/lab/Rating";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { withStyles } from "@material-ui/core/styles";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    width: "20%",
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
 const StyledRating = withStyles({
   iconFilled: {
@@ -30,25 +46,15 @@ const Product = ({
     talles.push(stocks[i].talle);
   }
   let singleTalles = [...new Set(talles)];
-
   //CANTIDAD EXACTA DE ITEMS
   let q = 0;
   for (let i = 0; i < stocks.length; i++) {
     q += stocks[i].cantidad;
   }
+
+  const classes = useStyles();
   return (
     <div>
-      {/* 
-            <Box component="div" textOverflow="clip">
-                {nombre}
-            </Box>
-            <Box component="div" textOverflow="ellipsis">
-                <b>Descripcion:</b> {descripcion}<br />
-                <b>Precio:</b> {precio}<br />
-                <b>Reviews:</b> {reviews}<br />
-                <button onClick={handleSubmit}>Agregar a Carrito</button>
-            </Box> */}
-
       <Container style={{ marginBottom: "7%", marginTop: "3%" }}>
         <Row>
           <Col xs={3} className="mb-5">
@@ -60,42 +66,69 @@ const Product = ({
           <Col>
             <span>
               <ul>
-                <h4> {nombre} </h4>
+                <h2> {nombre} </h2>
+                <br />
+                <h4>${precio}</h4>
                 <br />
                 {descripcion}
                 <br />
-                <br />
-                <b>Precio:</b> ${precio}
-                <br />
-                <br />
+                <hr />
+                {/* SELECT DE TALLE*/}
                 {q ? (
                   <>
-                    <b>Talle</b>
-                    <select name="talle" onChange={handleChangeTalle}>
-                      <option value="-----" defaultValue></option>
-                      {singleTalles &&
-                        singleTalles.map((talle) => (
-                          <option key={talle} value={talle}>
-                            {talle}
-                          </option>
-                        ))}
-                    </select>
+                    <FormControl
+                      variant="outlined"
+                      className={classes.formControl}
+                    >
+                      <InputLabel id="demo-simple-select-outlined-label">
+                        Talle
+                      </InputLabel>
+                      <Select
+                        onChange={handleChangeTalle}
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        name="talle"
+                        fullWidth
+                        label="Talle"
+                      >
+                        <MenuItem value=""> </MenuItem>
+                        {singleTalles &&
+                          singleTalles.map((talle) => (
+                            <MenuItem value={talle}>{talle}</MenuItem>
+                          ))}
+                      </Select>
+                    </FormControl>
+
                     <br />
-                    <br />
-                    <b>Color</b>
-                    <select name="color" onChange={handleChangeColor}>
-                      <option value="-----" defaultValue></option>
-                      {stocks &&
-                        stocks.map((stock) => {
-                          if (stock.talle == talle && stock.cantidad > 0) {
-                            return (
-                              <option key={stock._id} value={stock.color}>
-                                {stock.color}
-                              </option>
-                            );
-                          }
-                        })}
-                    </select>
+                    {/* SELECT DE COLOR */}
+                    <FormControl
+                      variant="outlined"
+                      className={classes.formControl}
+                    >
+                      <InputLabel id="demo-simple-select-outlined-label">
+                        Color
+                      </InputLabel>
+                      <Select
+                        onChange={handleChangeColor}
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        name="color"
+                        fullWidth
+                        label="Color"
+                      >
+                        <MenuItem value=""> </MenuItem>
+                        {stocks &&
+                          stocks.map((stock) => {
+                            if (stock.talle == talle && stock.cantidad > 0) {
+                              return (
+                                <MenuItem value={stock.color}>
+                                  {stock.color}
+                                </MenuItem>
+                              );
+                            }
+                          })}
+                      </Select>
+                    </FormControl>
                     <br />
                     {q <= 35 ? <p>QUEDAN {q} UNIDADES</p> : null}
                     <br />
@@ -104,9 +137,17 @@ const Product = ({
                 ) : (
                   <h4>NO HAY STOCK DISPONIBLE!</h4>
                 )}
-                <button disabled={!(talles && color)} onClick={handleSubmit}>
+
+                <Button
+                  disabled={!(talles && color)}
+                  onClick={handleSubmit}
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                  className={classes.submit}
+                >
                   Agregar a Carrito
-                </button>
+                </Button>
               </ul>
             </span>
           </Col>
@@ -134,6 +175,8 @@ const Product = ({
                 value={review.calificacion}
                 icon={<FavoriteIcon fontSize="inherit" />}
               />
+              <br />
+              <br />
             </div>
           ))}
       </Container>
