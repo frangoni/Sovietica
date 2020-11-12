@@ -13,6 +13,7 @@ import CategoriesContainer from "../containers/CategoriesContainer";
 import Footer from "../components/Footer";
 import AdminContainer from "../containers/AdminContainer";
 import CheckoutContainer from "../containers/CheckoutContainer";
+import AdminCategoriesContainer from "../containers/AdminCategoriesContainer"
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -37,8 +38,8 @@ class Main extends React.Component {
         ></img>
         <Switch>
           <Route exact path="/categories" component={CategoriesContainer} />
+          <Route exact path="/admincategories" component={AdminCategoriesContainer} />
           <Route exact path="/home" component={SearchContainer} />
-
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
           <Route exact path="/cart" component={CartContainer} />

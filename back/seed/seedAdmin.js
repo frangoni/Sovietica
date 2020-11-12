@@ -11,7 +11,20 @@ const Pili = {
   rol:"admin"
 };
 
-User.insertMany([Pili]).then(() => {
+
+const PiliAdmin = {
+  nombre: "Pili",
+  apellido:"Fernandez",
+  email:"pf@pf.com",
+  direccion: "Lerma 581, Villa Crespo",
+  clave: "sovietica",
+  telefono:1134516914,
+  rol:"admin"
+};
+
+
+
+User.insertMany([Pili, PiliAdmin]).then(() => {
   console.log("------- corrio el seed User ------");
   process.exit();
 });

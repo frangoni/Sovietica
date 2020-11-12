@@ -41,6 +41,16 @@ body {
   overflow-x: auto;
 }
 
+.category {
+  width: 35%;
+  margin: 3em auto;
+  overflow-x: auto;
+}
+
+#categoryTable {
+width: 100%;
+}
+
 #cartTable {
   min-width: 700;
 }
