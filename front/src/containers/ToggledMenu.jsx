@@ -36,7 +36,7 @@ class ToggledMenu extends React.Component {
     return (
       <div>
         <div id="toggledMenu">
-        <Link to={"/categories"}>
+          <Link to={"/categories"}>
             <h5>
               <b>Categorias</b>
             </h5>
@@ -44,10 +44,12 @@ class ToggledMenu extends React.Component {
           <p>
             {this.props.categorias.map((categoria) => {
               return (
-                <Link onClick={() => this.handleClick(categoria._id)} >
+                <Link
+                  to={`/categories/${categoria._id}`}
+                  onClick={() => this.handleClick(categoria._id)}
+                >
                   <p>{categoria.nombre}</p>
                 </Link>
-
               );
             })}
           </p>

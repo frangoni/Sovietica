@@ -3,20 +3,18 @@
 }
 
 body {
-  min-height: 100%;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+hr {
+  width: 80%;
+  background-color: fuchsia;
+  border: none;
 }
 
 a:hover {
   text-decoration: none !important;
-}
-#logo {
-  display: block;
-  margin: 0 auto;
-  width: 25%;
-}
-#nav {
-  position: fixed;
-  width: 50%;
 }
 
 /* WHATSAPP LOGO */
@@ -44,14 +42,21 @@ a:hover {
   margin: 3em auto;
 }
 
-.category {
-  width: 35%;
-  margin: 3em auto;
-  overflow-x: auto;
+#categories {
+  width: 20%;
+}
+#categoriesContainer {
+  display: flex;
 }
 
 #categoryTable {
   width: 100%;
+}
+
+.category {
+  width: 35%;
+  margin: 3em auto;
+  overflow-x: auto;
 }
 
 #cartTable {
@@ -83,6 +88,7 @@ a:hover {
 #reviewBtn {
   color: white !important;
 }
+
 #review {
   display: flex;
   flex-flow: column wrap;
@@ -121,4 +127,69 @@ a:hover {
 
 #productView {
   box-shadow: 0px 0px 30px -8px rgba(0, 0, 0, 0.75);
+}
+
+#home {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+#extra {
+  margin: auto;
+  display: block;
+}
+
+#notFound {
+  text-align: center;
+}
+
+.titles {
+  display: block;
+  margin-right: 70%;
+}
+
+#iframe {
+  background-color: rgb(231, 201, 201);
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  align-items: center;
+  box-shadow: 0px 0px 50px -14px rgba(0, 0, 0, 0.75);
+}
+
+#iframe h2 {
+  color: white;
+  margin-left: 8em;
+}
+
+/* NAVBAR */
+nav {
+  width: 100vw;
+  display: flex;
+  flex-flow: row;
+  z-index: 1;
+  box-shadow: 0px 10px 25px -14px rgba(0, 0, 0, 0.75);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.first {
+  background-image: url("SOVIETICA1.svg");
+  background-size: cover;
+  height: 25vh;
+  transition: 0.5s ease !important;
+}
+.first a {
+  color: white !important;
+}
+
+.second {
+  position: fixed !important;
+  background-image: url("LOGOSOVIETICA.svg");
+  height: 8vh;
+  transition: 0.5s ease !important;
+}
+
+#content {
+  padding-top: 20vh;
 }
