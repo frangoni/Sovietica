@@ -15,6 +15,7 @@ class ProductContainer extends React.Component {
     this.state = {
       talle: "",
       color: "",
+      refresh: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeTalle = this.handleChangeTalle.bind(this);
@@ -58,7 +59,7 @@ class ProductContainer extends React.Component {
         })
         .then(() => this.props.history.push("/cart"));
     }
-    return this.props.history.push("/cart")
+    return this.props.history.push("/cart");
   }
 
   render() {
