@@ -7,6 +7,15 @@
   bottom: 0; */
 }
 
+#toggledCart {
+  padding: 20px;
+  background-color: white;
+  position: absolute;
+
+  right: 0;
+  top: 0;
+}
+
 #row {
   float: right;
   margin-left: 40px;
@@ -27,4 +36,8 @@
 #cards {
   width: 60%;
   height: 100%;
+}
+
+.boton {
+  background-color: red;
 }

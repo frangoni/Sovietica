@@ -9,18 +9,18 @@ import SearchContainer from "../containers/SearchContainer";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import CartContainer from "../containers/CartContainer";
 import ProductContainer from "../containers/ProductContainer";
-import Footer from "../components/Footer"
-import AdminUsersContainer from "../containers/AdminUsersContainer"
-import CheckoutContainer from "../containers/CheckoutContainer"
-import AdminAddProductsContainer from "../containers/AdminAddProductsContainer"
-import AdminAddStockContainer from "../containers/AdminAddStockContainer"
-import AdminStockContainer from "../containers/AdminStockContainer"
-import AdminProductsContainer from "../containers/AdminProductsContainer"
-import AdminCategoriesContainer from "../containers/AdminCategoriesContainer"
+import Footer from "../components/Footer";
+import AdminUsersContainer from "../containers/AdminUsersContainer";
+import CheckoutContainer from "../containers/CheckoutContainer";
+import AdminAddProductsContainer from "../containers/AdminAddProductsContainer";
+import AdminAddStockContainer from "../containers/AdminAddStockContainer";
+import AdminStockContainer from "../containers/AdminStockContainer";
+import AdminProductsContainer from "../containers/AdminProductsContainer";
+import AdminCategoriesContainer from "../containers/AdminCategoriesContainer";
 import OrdersContainer from "../containers/OrdersContainer";
 import ReviewContainer from "../containers/ReviewContainer";
 import CategoriesContainer from "../containers/CategoriesContainer";
-
+import AdminOrdersContainer from "../containers/AdminOrdersContainer";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -45,18 +45,35 @@ class Main extends React.Component {
         ></img>
         <Switch>
           <Route exact path="/categories" component={CategoriesContainer} />
-          <Route exact path="/admincategories" component={AdminCategoriesContainer} />
+          <Route
+            exact
+            path="/admincategories"
+            component={AdminCategoriesContainer}
+          />
+          <Route exact path="/adminorders" component={AdminOrdersContainer} />
           <Route exact path="/home" component={SearchContainer} />
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
           <Route exact path="/cart" component={CartContainer} />
           <Route exact path="/products/:id" component={ProductContainer} />
           <Route exact path="/adminusers" component={AdminUsersContainer} />
-          <Route exact path="/adminaddproducts" component={AdminAddProductsContainer} />
-          <Route exact path="/adminaddstock" component={AdminAddStockContainer} />
+          <Route
+            exact
+            path="/adminaddproducts"
+            component={AdminAddProductsContainer}
+          />
+          <Route
+            exact
+            path="/adminaddstock"
+            component={AdminAddStockContainer}
+          />
           <Route exact path="/admineditstock" component={AdminStockContainer} />
-          <Route exact path="/admineditproducts" component={AdminProductsContainer} />
-          <Route exact path="/checkout" component={CheckoutContainer}/>
+          <Route
+            exact
+            path="/admineditproducts"
+            component={AdminProductsContainer}
+          />
+          <Route exact path="/checkout" component={CheckoutContainer} />
           <Route exact path="/orders" component={OrdersContainer} />
           <Route exact path="/review/:id" component={ReviewContainer} />
 

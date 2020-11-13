@@ -7,6 +7,21 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
 export default function AdminUsers({
   users,
@@ -14,11 +29,10 @@ export default function AdminUsers({
   handleSubmit,
   deleteUsers,
 }) {
+  const classes = useStyles();
   return (
     <>
-      
       <Paper id="cart">
-      
         <Table id="cartTable">
           <TableHead>
             <TableRow>
@@ -49,25 +63,25 @@ export default function AdminUsers({
 
                   <TableCell>
                     <Button
-                      size="small"
+                      type="submit"
                       variant="contained"
-                      color="secondary"
+                      size="small"
+                      style={{ backgroundColor: "lightpink" }}
+                      className={classes.margin}
                       onClick={() => handleSubmit(user._id)}
                     >
-                      Actualizar
+                      ACTUALIZAR
                     </Button>
                   </TableCell>
 
                   <TableCell>
-                    <Button
-                      size="small"
-                      variant="contained"
-                      color="secondary"
-                      className="botonCarrito"
+                    <IconButton
+                      aria-label="delete"
+                      className={classes.margin}
                       onClick={() => deleteUsers(user._id)}
                     >
                       <DeleteIcon />
-                    </Button>
+                    </IconButton>
                   </TableCell>
                 </TableRow>
               </>

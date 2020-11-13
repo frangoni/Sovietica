@@ -135,16 +135,16 @@ export default function AdminProducts({
             </Grid>
           </Grid>
           <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
-            >
-              Añadir Stock
-            </Button>
+            type="submit"
+            fullWidth
+            variant="contained"
+            size="small"
+            style={{ backgroundColor: "lightpink" }}
+            className={classes.margin}
+          >
+            AÑADIR STOCK
+          </Button>
         </form>
-
       </div>
     </Container>
   );

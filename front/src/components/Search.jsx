@@ -41,6 +41,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  margin: {
+    margin: theme.spacing(0),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(0),
+  },
 }));
 
 export default function Album({ products }) {
@@ -68,8 +74,12 @@ export default function Album({ products }) {
                   </CardContent>
                   <CardActions>
                     <Link to={`/products/${product._id}`}>
-                      <Button size="small" color="secondary">
-                        Detalle
+                      <Button
+                        size="large"
+                        type="submit"
+                        className={classes.margin}
+                      >
+                        <p style={{ color: "lightpink" }}>DETALLE</p>
                       </Button>
                     </Link>
                   </CardActions>

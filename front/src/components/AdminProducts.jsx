@@ -6,9 +6,25 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Avatar from "@material-ui/core/Avatar";
+import EditIcon from "@material-ui/icons/Edit";
 
+import Avatar from "@material-ui/core/Avatar";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
 export default function AdminProducts({
   products,
@@ -19,6 +35,7 @@ export default function AdminProducts({
   handleFoto,
   handleDescripcion,
 }) {
+  const classes = useStyles();
   return (
     <>
       <Paper id="cart">
@@ -36,77 +53,73 @@ export default function AdminProducts({
           </TableHead>
 
           <TableBody>
-            {products && products.map((product) => (
-              <>
-                <TableRow key={product._id}>
-                  {/* FOTO */}
-                  <TableCell>
-                    <Avatar src={product.foto} />
-                  </TableCell>
-
-                  {/* NOMBRE */}
-                  <TableCell>
-                  <form action="">
-                      <input
-                        type="text"
-                        onChange={handleNombre}
-                        placeholder={product.nombre}
-                        style={{border:"none", width:"100%"}}
-                      />
-                    </form>
+            {products &&
+              products.map((product) => (
+                <>
+                  <TableRow key={product._id}>
+                    {/* FOTO */}
+                    <TableCell>
+                      <Avatar src={product.foto} />
                     </TableCell>
 
-                  {/* PRECIO */}
-                  <TableCell>
-                    <form action="">
-                      <input
-                        type="text"
-                        onChange={handlePrecio}
-                        placeholder={product.precio}
-                        style={{border:"none", width:"30%"}}
-                      />
-                    </form>
+                    {/* NOMBRE */}
+                    <TableCell>
+                      <form action="">
+                        <input
+                          type="text"
+                          onChange={handleNombre}
+                          placeholder={product.nombre}
+                          style={{ border: "none", width: "100%" }}
+                        />
+                      </form>
                     </TableCell>
 
-
-                  {/* DESCRIPCION */}
-                  <TableCell > 
-                  <form >
-                      <textarea
-                        type="text"
-                        onChange={handleDescripcion}
-                        placeholder={product.descripcion}
-                        style={{border:"none", width: "100%"}}
-                        
-                      />
-                    </form>
+                    {/* PRECIO */}
+                    <TableCell>
+                      <form action="">
+                        <input
+                          type="text"
+                          onChange={handlePrecio}
+                          placeholder={product.precio}
+                          style={{ border: "none", width: "30%" }}
+                        />
+                      </form>
                     </TableCell>
 
-                  <TableCell>
-                    <Button
-                      size="small"
-                      variant="contained"
-                      color="secondary"
-                      onClick={() => handleSubmit(product._id)}
-                    >
-                      Edit
-                    </Button>
-                  </TableCell>
+                    {/* DESCRIPCION */}
+                    <TableCell>
+                      <form>
+                        <textarea
+                          type="text"
+                          onChange={handleDescripcion}
+                          placeholder={product.descripcion}
+                          style={{ border: "none", width: "100%" }}
+                        />
+                      </form>
+                    </TableCell>
 
-                  <TableCell>
-                    <Button
-                      size="small"
-                      variant="contained"
-                      color="secondary"
-                      className="botonCarrito"
-                      onClick={() => deleteProducts(product._id)}
-                    >
-                      <DeleteIcon />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              </>
-            ))}
+                    <TableCell>
+                      <IconButton
+                        aria-label="delete"
+                        className={classes.margin}
+                        onClick={() => handleSubmit(product._id)}
+                      >
+                        <EditIcon style={{ color: "lightpink" }} />
+                      </IconButton>
+                    </TableCell>
+
+                    <TableCell>
+                      <IconButton
+                        aria-label="delete"
+                        className={classes.margin}
+                        onClick={() => deleteProducts(product._id)}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                </>
+              ))}
           </TableBody>
         </Table>
       </Paper>

@@ -9,12 +9,13 @@ class OrdersContainer extends React.Component {
   }
 
   render() {
-    return <Order orders={this.props.orders} />;
+    return <Order orders={this.props.orders} user={this.props.user} />;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
+    user: state.user.user,
     orders: state.order.orders,
   };
 };

@@ -9,13 +9,29 @@ import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 
-export default function Order({ orders, user }) {
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+export default function Order({ orders, user, handleChange, handleSubmit }) {
   const fecha = (fecha) => {
     let newFecha = "";
     newFecha = fecha.slice(0, 10);
     return newFecha;
   };
+
+  const classes = useStyles();
   return (
     <>
       <Typography variant="h6" align="center" gutterBottom>
@@ -34,12 +50,13 @@ export default function Order({ orders, user }) {
                     <TableCell>Color</TableCell>
                     <TableCell>Talle</TableCell>
                     <TableCell>Precio</TableCell>
+                    <TableCell>Estado</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {order.productos &&
                     order.productos.map((product) => {
-                      console.log(product);
+                      console.log(order);
                       return (
                         <>
                           <TableRow key={product._id}>
@@ -53,19 +70,26 @@ export default function Order({ orders, user }) {
                               ${product.productos[0].precio}
                             </TableCell>
                             <TableCell>
+                              <select name="estado" onChange={handleChange}>
+                                <option value="" selected></option>
+                                <option value="En preparacion">
+                                  En preparacion
+                                </option>
+                                <option value="Despachado">Despachado</option>
+                                <option value="Entregado">Entregado</option>
+                              </select>
+                            </TableCell>
+                            <TableCell>
                               <Button
+                                className="botonCarrito"
                                 type="submit"
                                 variant="contained"
                                 size="small"
                                 style={{ backgroundColor: "lightpink" }}
                                 className={classes.margin}
+                                onClick={() => handleSubmit(order._id)}
                               >
-                                <Link
-                                  id="reviewBtn"
-                                  to={`/review/${product.productos[0]._id}`}
-                                >
-                                  ADD REVIEW!
-                                </Link>
+                                ACTUALIZAR
                               </Button>
                             </TableCell>
                           </TableRow>
@@ -78,31 +102,15 @@ export default function Order({ orders, user }) {
                   <TableCell>Total</TableCell>
                   <TableCell>${order.total}</TableCell>
                 </TableRow>
-                {/* {user && user.rol == "admin" ? (
-                  <TableRow>
-                    <TableCell>Estado</TableCell>
-                    <select name="estado" onChange={handleChangeTalle}>
-                      <option value="" selected></option>
-                      <option value="En preparacion">En preparacion</option>
-                      <option value="Despachado">Despachado</option>
-                      <option value="Entregado">Entregado</option>
-                    </select>
-                  </TableRow>
-                ) : (
-                  <TableRow>
-                    <TableCell>Estado</TableCell>
-                    <TableCell>{order.estado}</TableCell>
-                  </TableRow>
-                )} */}
-                <TableRow>
-                  <TableCell>Estado</TableCell>
-                  <TableCell>{order.estado}</TableCell>
-                </TableRow>
                 <TableRow>
                   <TableCell>Fecha</TableCell>
                   <TableCell>{fecha(order.fecha)}</TableCell>
                 </TableRow>
               </Table>
+              <TableRow>
+                <TableCell>Estado</TableCell>
+                <TableCell>{order.estado}</TableCell>
+              </TableRow>
             </Paper>
           );
         })}
