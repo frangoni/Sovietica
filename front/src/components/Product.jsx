@@ -143,10 +143,11 @@ const Product = ({
                   onClick={handleSubmit}
                   type="submit"
                   variant="contained"
-                  color="secondary"
-                  className={classes.submit}
+                  size="small"
+                  style={{ backgroundColor: "lightpink" }}
+                  className={classes.margin}
                 >
-                  Agregar a Carrito
+                  AGREGAR AL CARRITO
                 </Button>
               </ul>
             </span>

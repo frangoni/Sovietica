@@ -13,6 +13,35 @@ const orderControllers = {
       .then((orders) => res.status(200).send(orders))
       .catch((err) => res.status(500).send(err));
   },
+  
+  //////////// TRAE TODAS LAS ORDERS DEL PANERL DE ADMIN
+  findAll(req, res) {
+    OrderModel.find()
+    .populate("usuarios")
+    .populate({
+      path: "productos",
+      populate: { path: "productos" },
+    })
+      
+      .then((orders) => res.status(200).send(orders))
+      .catch((err) => res.status(500).send(err));
+  },
+
+  updateOrder(req, res) {
+    OrderModel.findByIdAndUpdate(req.params.id, req.body)
+      .then((a) => {
+        
+        return OrderModel.find()
+        .populate("usuarios")
+        .populate({
+          path: "productos",
+          populate: { path: "productos" },
+        })
+      })
+      .then((user) => res.status(200).send(user))
+      .catch((err) => res.send(err));
+  },
+
   //CREA ORDEN LUEGO DE CONFIRMAR LA COMPRA
   createOrder(req, res) {
     CartModel.find({ usuarios: req.user.id })

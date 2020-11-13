@@ -7,6 +7,15 @@
   bottom: 0; */
 }
 
+#toggledCart {
+  padding: 20px;
+  background-color: white;
+  position: absolute;
+
+  right: 0;
+  top: 0;
+}
+
 #row {
   float: right;
   margin-left: 40px;
@@ -29,11 +38,13 @@
   height: 100%;
 }
 
+.boton {
+  background-color: red;
+}
 
-#footer { 
+#footer {
   display: flex;
   flex-direction: row-reverse;
   margin-top: 20%;
   align-items: center;
-} 
-
+}

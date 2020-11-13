@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -96,51 +97,52 @@ export default function Categories({ categorias, handleClick }) {
           maxWidth="lg"
         >
           <Grid container spacing={4}>
-            {categorias.map((categoria) => (
-              <Link
-                to={`/categories/${categoria._id}`}
-                id="categories"
-                onClick={() => handleClick(categoria._id)}
-              >
-                <ButtonBase
-                  focusRipple
-                  key={categoria.nombre}
-                  className={classes.image}
-                  focusVisibleClassName={classes.focusVisible}
-                  style={{
-                    display: "flex",
-                    flexWrap: "nowrap",
-                    flexDirection: "row",
-                    backgroundColor: "",
-                    justifyContent: "space-between",
-                    margin: "10px",
-                    width: "200px",
-                    height: "260px",
-                  }}
+            {categorias &&
+              categorias.map((categoria) => (
+                <Link
+                  to={`/categories/${categoria._id}`}
+                  id="categories"
+                  onClick={() => handleClick(categoria._id)}
                 >
-                  <span
-                    className={classes.imageSrc}
+                  <ButtonBase
+                    focusRipple
+                    key={categoria.nombre}
+                    className={classes.image}
+                    focusVisibleClassName={classes.focusVisible}
                     style={{
-                      backgroundImage: `url(${categoria.foto})`,
-                      borderRadius: "15px",
+                      display: "flex",
+                      flexWrap: "nowrap",
+                      flexDirection: "row",
+                      backgroundColor: "",
+                      justifyContent: "space-between",
+                      margin: "10px",
+                      width: "200px",
+                      height: "260px",
                     }}
-                  />
+                  >
+                    <span
+                      className={classes.imageSrc}
+                      style={{
+                        backgroundImage: `url(${categoria.foto})`,
+                        borderRadius: "15px",
+                      }}
+                    />
 
-                  <span className={classes.imageBackdrop} />
-                  <span className={classes.imageButton}>
-                    <Typography
-                      component="span"
-                      variant="subtitle1"
-                      color="inherit"
-                      className={classes.imageTitle}
-                    >
-                      {categoria.nombre}
-                      <span className={classes.imageMarked} />
-                    </Typography>
-                  </span>
-                </ButtonBase>
-              </Link>
-            ))}
+                    <span className={classes.imageBackdrop} />
+                    <span className={classes.imageButton}>
+                      <Typography
+                        component="span"
+                        variant="subtitle1"
+                        color="inherit"
+                        className={classes.imageTitle}
+                      >
+                        {categoria.nombre}
+                        <span className={classes.imageMarked} />
+                      </Typography>
+                    </span>
+                  </ButtonBase>
+                </Link>
+              ))}
           </Grid>
         </Container>
       </main>

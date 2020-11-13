@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import LockOpenOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -21,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   avatar: {
-    margin: theme.spacing(5),
-    backgroundColor: theme.palette.secondary.main,
+    margin: theme.spacing(1),
+    backgroundColor: "",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -40,8 +41,8 @@ export default function SignIn({ handleEmail, handleSubmit, handleClave }) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+        <Avatar style={{ backgroundColor: "lightpink" }}>
+          <LockOpenOutlinedIcon />
         </Avatar>
 
         <Typography component="h1" variant="h4">
@@ -82,17 +83,18 @@ export default function SignIn({ handleEmail, handleSubmit, handleClave }) {
             type="submit"
             fullWidth
             variant="contained"
-            color="secondary"
-            className={classes.submit}
+            size="small"
+            style={{ backgroundColor: "lightpink" }}
+            className={classes.margin}
           >
             INICIAR SESIÓN
           </Button>
           <Grid container justify="center">
-            <Grid item>
+            <Grid item style={{ margin: "20px" }}>
               <Link
                 href="/register"
                 variant="body3"
-                style={{ color: "#880e4f" }}
+                style={{ color: "lightpink" }}
               >
                 {"No tiene cuenta? Registrese Acá"}
               </Link>

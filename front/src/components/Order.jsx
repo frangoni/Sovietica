@@ -10,7 +10,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 
-export default function Order({ orders }) {
+export default function Order({ orders, user }) {
   const fecha = (fecha) => {
     let newFecha = "";
     newFecha = fecha.slice(0, 10);
@@ -54,15 +54,17 @@ export default function Order({ orders }) {
                             </TableCell>
                             <TableCell>
                               <Button
-                                className="botonCarrito"
+                                type="submit"
                                 variant="contained"
-                                color="secondary"
+                                size="small"
+                                style={{ backgroundColor: "lightpink" }}
+                                className={classes.margin}
                               >
                                 <Link
                                   id="reviewBtn"
                                   to={`/review/${product.productos[0]._id}`}
                                 >
-                                  Add review!
+                                  ADD REVIEW!
                                 </Link>
                               </Button>
                             </TableCell>
@@ -71,10 +73,27 @@ export default function Order({ orders }) {
                       );
                     })}
                 </TableBody>
+
                 <TableRow>
                   <TableCell>Total</TableCell>
                   <TableCell>${order.total}</TableCell>
                 </TableRow>
+                {/* {user && user.rol == "admin" ? (
+                  <TableRow>
+                    <TableCell>Estado</TableCell>
+                    <select name="estado" onChange={handleChangeTalle}>
+                      <option value="" selected></option>
+                      <option value="En preparacion">En preparacion</option>
+                      <option value="Despachado">Despachado</option>
+                      <option value="Entregado">Entregado</option>
+                    </select>
+                  </TableRow>
+                ) : (
+                  <TableRow>
+                    <TableCell>Estado</TableCell>
+                    <TableCell>{order.estado}</TableCell>
+                  </TableRow>
+                )} */}
                 <TableRow>
                   <TableCell>Estado</TableCell>
                   <TableCell>{order.estado}</TableCell>

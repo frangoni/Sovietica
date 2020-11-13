@@ -1,15 +1,32 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  Button,
-  NavDropdown,
-} from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import HamburgerMenu from "react-hamburger-menu";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import IconButton from "@material-ui/core/IconButton";
+import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { useState } from "react";
+import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import { Icon } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+  margin: {
+    margin: theme.spacing(1),
+  },
+}));
 
 export default ({
   handleSubmit,
@@ -21,6 +38,7 @@ export default ({
   toggle,
   handleState,
 }) => {
+  const classes = useStyles();
   const [scroll, setScroll] = useState("first");
 
   const changeNav = () => {
@@ -123,13 +141,13 @@ export default ({
             <Nav>
               <Nav.Link className="text-dark">
                 <Link to={"/login"} className="text-dark">
-                  Log In
+                  LOG IN
                 </Link>
               </Nav.Link>
 
               <Nav.Link className="text-dark">
                 <Link to={"/register"} className="text-dark ">
-                  Register
+                  REGISTER
                 </Link>
               </Nav.Link>
             </Nav>
@@ -137,23 +155,38 @@ export default ({
         </Nav>
         <Nav.Link>
           <Link to={"/home"} onClick={handleState} className="text-dark">
-            Home
+            <IconButton>
+              <HomeOutlinedIcon fontSize="large" />
+            </IconButton>
           </Link>
         </Nav.Link>
 
-        <Form onSubmit={handleSubmit} inline>
-          <FormControl
+        <form
+          onSubmit={handleSubmit}
+          className={classes.root}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            className={classes.root}
+            noValidate
+            autoComplete="off"
             type="text"
-            placeholder="Buscar Prenda"
-            className="mr-sm-3 "
+            placeholder="BUSCAR PRENDA"
             onChange={handleChange}
             value={value}
             onFocus={handleState}
           />
-          <Button type="submit" variant="dark">
-            Search
-          </Button>
-        </Form>
+
+          <SearchOutlinedIcon style={{ margin: "10px" }} />
+
+          {/* <IconButton>
+            <ShoppingCartOutlinedIcon
+              isOpen={toggle}
+              menuClicked={handleToggle}
+            />
+          </IconButton> */}
+        </form>
       </Navbar>
     </div>
   );
