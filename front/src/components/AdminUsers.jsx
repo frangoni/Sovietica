@@ -7,6 +7,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Typography from "@material-ui/core/Typography";
 
 export default function AdminUsers({
   users,
@@ -15,10 +16,12 @@ export default function AdminUsers({
   deleteUsers,
 }) {
   return (
-    <>
-      
+    <div>
+    <Typography component="h1" variant="h5" style={{textAlign:"center"}}>
+        Usuarios Registrados
+      </Typography>
+
       <Paper id="cart">
-      
         <Table id="cartTable">
           <TableHead>
             <TableRow>
@@ -75,6 +78,6 @@ export default function AdminUsers({
           </TableBody>
         </Table>
       </Paper>
-    </>
+    </div>
   );
 }

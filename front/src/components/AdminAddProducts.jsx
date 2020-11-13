@@ -10,10 +10,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import { useSnackbar } from 'notistack';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -45,6 +45,7 @@ export default function AdminProducts({
   handleSubmit,
 }) {
   const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
 
   return (
     <Container component="main" maxWidth="xs">
@@ -126,6 +127,8 @@ export default function AdminProducts({
             variant="contained"
             color="secondary"
             className={classes.submit}
+            onClick={() => 
+              enqueueSnackbar('Producto Agregado !')}
           >
             Crear Producto
           </Button>

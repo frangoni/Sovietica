@@ -45,30 +45,9 @@ export default ({
               {user.rol == "admin" ? (
                 <>
                   <NavDropdown.Item>
-                    <Link to="/adminusers" className="text-dark">
-                      Users
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Link to="/adminaddproducts" className="text-dark">
-                      Añadir Products
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Link to="/adminaddstock" className="text-dark">
-                      Añadir Stock
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Link to="/admineditproducts" className="text-dark">
+                    <Link to="/admin" className="text-dark">
                       {" "}
-                      Editar Productos
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Link to="/admineditstock" className="text-dark">
-                      {" "}
-                      Editar Stock{" "}
+                      Panel Administrador
                     </Link>
                   </NavDropdown.Item>
                 </>
@@ -81,22 +60,10 @@ export default ({
                   </NavDropdown.Item>
 
                   <NavDropdown.Item>
-                    <Link to="/orders">Ordenes</Link>
+                    <Link to="/orders" className="text-dark" >Ordenes</Link>
                   </NavDropdown.Item>
                 </>
               )}
-
-              {user.rol == "admin" ? (
-                <NavDropdown.Item>
-                  <Link to="/admin">Panel</Link>
-                </NavDropdown.Item>
-              ) : null}
-
-              {user.rol == "admin" ? (
-                <NavDropdown.Item>
-                  <Link to="/admincategories">Categorias</Link>
-                </NavDropdown.Item>
-              ) : null}
 
               <NavDropdown.Divider />
 

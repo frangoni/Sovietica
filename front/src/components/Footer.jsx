@@ -44,3 +44,45 @@ export default function StickyFooter() {
     </div>
   );
 }
+
+// import React from "react";
+// import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+
+// const FooterPage = () => {
+//   return (
+//     <MDBFooter className="font-small pt-4 mt-6">
+//       <MDBContainer className="text-center text-md-left">
+//         <MDBRow>
+//         <MDBCol >
+            
+//           </MDBCol>
+          
+//           <MDBCol mb="3">
+//             <h5 className="title">Sovietica</h5>
+//             <p>
+              
+//             </p>
+//           </MDBCol>
+
+
+//           <MDBCol mb="3">
+//             <h5 className="title">Contactanos</h5>
+//             <p> 11 3451-6914 </p>
+//             <p> sovieticaindumentaria@gmail.com </p>
+//             <p> Villa Crespo </p>
+                
+//           </MDBCol>
+          
+          
+//         </MDBRow>
+//       </MDBContainer>
+//       <div className="footer-copyright text-center py-3">
+//         <MDBContainer fluid>
+//           &copy; {new Date().getFullYear()} Copyright: Grupo 6 "Los sovieticos"
+//         </MDBContainer>
+//       </div>
+//     </MDBFooter>
+//   );
+// }
+
+// export default FooterPage;

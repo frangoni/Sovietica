@@ -8,7 +8,17 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Avatar from "@material-ui/core/Avatar";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
+const useStyles = makeStyles(() => ({
+  paper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+}));
 
 export default function AdminProducts({
   products,
@@ -19,10 +29,17 @@ export default function AdminProducts({
   handleFoto,
   handleDescripcion,
 }) {
+  const classes = useStyles();
+
   return (
     <>
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h5">
+        Lista de Productos
+        </Typography>
+
       <Paper id="cart">
-        <h1>Listado de Productos</h1>
         <Table id="cartTable">
           <TableHead>
             <TableRow>
@@ -110,6 +127,7 @@ export default function AdminProducts({
           </TableBody>
         </Table>
       </Paper>
-    </>
+       </div>
+</>
   );
 }
