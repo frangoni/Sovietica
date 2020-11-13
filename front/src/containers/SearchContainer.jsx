@@ -16,9 +16,9 @@ const mapDispatchToProps = function (dispatch) {
 };
 
 class SearchContainer extends React.Component {
-  componentDidMount() {
+  /*  componentDidMount() {
     this.props.fetchCategories();
-  }
+  } */
 
   render() {
     return <Search products={this.props.products} />;

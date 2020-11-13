@@ -19,11 +19,12 @@ export default ({
   handleLogout,
   handleToggle,
   toggle,
+  handleState,
 }) => {
   const [scroll, setScroll] = useState("first");
 
   const changeNav = () => {
-    if (window.scrollY >= 50) {
+    if (window.scrollY >= 5) {
       setScroll("second");
     } else {
       setScroll("first");
@@ -135,7 +136,7 @@ export default ({
           )}
         </Nav>
         <Nav.Link>
-          <Link to={"/home"} className="text-dark">
+          <Link to={"/home"} onClick={handleState} className="text-dark">
             Home
           </Link>
         </Nav.Link>
@@ -147,6 +148,7 @@ export default ({
             className="mr-sm-3 "
             onChange={handleChange}
             value={value}
+            onFocus={handleState}
           />
           <Button type="submit" variant="dark">
             Search
