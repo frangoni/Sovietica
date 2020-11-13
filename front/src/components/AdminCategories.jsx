@@ -77,6 +77,8 @@ export default function AdminCategories({
           name="foto"
         />
 
+<hr/>
+
         <Button
           variant="contained"
           size="small"

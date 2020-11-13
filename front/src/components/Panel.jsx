@@ -15,6 +15,7 @@ import AdminAddStockContainer from "../containers/AdminAddStockContainer";
 import AdminAddProductsContainer from "../containers/AdminAddProductsContainer";
 import AdminProductsContainer from "../containers/AdminProductsContainer";
 import AdminStockContainer from "../containers/AdminStockContainer";
+import AdminOrdersContainer from "../containers/AdminOrdersContainer"
 
 // ICONOS
 import ListItem from "@material-ui/core/ListItem";
@@ -188,8 +189,13 @@ export default function Panel() {
           <Grid item xs={12}>
             {items == 6 && <AdminStockContainer />}
           </Grid>
+          <Grid item xs={12}>
+            {items == 7 && <AdminOrdersContainer />}
+          </Grid>
         </Grid>
       </Container>
     </div>
   );
 }
+
+
