@@ -37,7 +37,6 @@ export const fetchCategories = () => (dispatch) => {
     .get('/api/categories')
     .then((res) => res.data)
     .then((categories) => {
-
       dispatch(receiveCategories(categories));
 
     });

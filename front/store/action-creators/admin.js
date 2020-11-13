@@ -23,3 +23,6 @@ export const deleteUsers = (id)=>(dispatch)=>{
   .then(res => res.data)
   .then(users=> dispatch(searchUsers(users)))
 }
+
+
+
