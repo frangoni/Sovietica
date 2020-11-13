@@ -11,6 +11,17 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Avatar from "@material-ui/core/Avatar";
+import Typography from "@material-ui/core/Typography";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  paper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+}));
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,8 +47,12 @@ export default function AdminStock({
   const classes = useStyles();
   return (
     <>
+    <CssBaseline />
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h5">
+        Lista de Inventario
+        </Typography>
       <Paper id="cart">
-        <h1>Listado de Stock de Productos</h1>
         <Table id="cartTable">
           <TableHead>
             <TableRow>
@@ -130,6 +145,7 @@ export default function AdminStock({
           </TableBody>
         </Table>
       </Paper>
+      </div>
     </>
   );
 }

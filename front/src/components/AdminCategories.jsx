@@ -13,6 +13,7 @@ import TextField from "@material-ui/core/TextField";
 import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
+import Typography from "@material-ui/core/Typography";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -100,7 +101,12 @@ export default function AdminCategories({
   );
 
   return (
+    
     <div>
+      <Typography component="h1" variant="h5" style={{textAlign:"center"}}>
+          Categorias
+        </Typography>
+
       <Paper className="category">
         <Table id="categoryTable">
           <TableHead>

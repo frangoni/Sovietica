@@ -1,18 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import AdminAddProducts from "../components/AdminAddProducts";
-import {createProducts, fetchCategories} from "../../store/action-creators/admin"
+import {createProducts, fetchCategories} from "../../store/action-creators/admin";
+import { SnackbarProvider } from 'notistack';
 
 const mapStateToProps = function (state) {
   return {
-      // products : state.admin.products,
       categories : state.admin.categories
   };
 };
 
 const mapDispatchToProps = function (dispatch) {
   return {
-      // fetchProducts : () => dispatch(fetchProducts()),
       fetchCategories : () => dispatch(fetchCategories()),
       createProducts : (data) => dispatch(createProducts(data)),
   };
@@ -81,16 +80,14 @@ class AdminAddProductsContainer extends React.Component {
     handleSubmit(e){
         e.preventDefault()
         this.props.createProducts(this.state)
-        return this.props.history.push("/adminaddstock");
+        e.target.reset()
     }
 
 
-   
-
   render() {
     return (
+      <SnackbarProvider maxSnack={3}>
       <AdminAddProducts 
-        // products = {this.props.products}
         categories = {this.props.categories}
         handleNombre = {this.handleNombre}
         handleFoto = {this.handleFoto}
@@ -99,7 +96,7 @@ class AdminAddProductsContainer extends React.Component {
         handleCategoria = {this.handleCategoria}
         handleSubmit = {this.handleSubmit}
       />
-     
+      </SnackbarProvider>
     );
   }
 }

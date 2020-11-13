@@ -12,6 +12,8 @@ import EditIcon from "@material-ui/icons/Edit";
 
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,14 +34,18 @@ export default function AdminProducts({
   handleSubmit,
   handleNombre,
   handlePrecio,
-  handleFoto,
   handleDescripcion,
 }) {
   const classes = useStyles();
   return (
     <>
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h5">
+        Lista de Productos
+        </Typography>
+
       <Paper id="cart">
-        <h1>Listado de Productos</h1>
         <Table id="cartTable">
           <TableHead>
             <TableRow>
@@ -123,6 +129,7 @@ export default function AdminProducts({
           </TableBody>
         </Table>
       </Paper>
-    </>
+       </div>
+</>
   );
 }

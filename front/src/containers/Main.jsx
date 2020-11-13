@@ -10,20 +10,13 @@ import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import CartContainer from "../containers/CartContainer";
 import ProductContainer from "../containers/ProductContainer";
 import Footer from "../components/Footer";
-import AdminUsersContainer from "../containers/AdminUsersContainer";
 import CheckoutContainer from "../containers/CheckoutContainer";
-import AdminAddProductsContainer from "../containers/AdminAddProductsContainer";
-import AdminAddStockContainer from "../containers/AdminAddStockContainer";
-import AdminStockContainer from "../containers/AdminStockContainer";
-import AdminProductsContainer from "../containers/AdminProductsContainer";
-import AdminCategoriesContainer from "../containers/AdminCategoriesContainer";
 import OrdersContainer from "../containers/OrdersContainer";
 import ReviewContainer from "../containers/ReviewContainer";
-import CategoriesContainer from "../containers/CategoriesContainer";
-import AdminOrdersContainer from "../containers/AdminOrdersContainer";
 import notAuthorized from "../components/notAuthorized";
 import HomeContainer from "./HomeContainer";
 import notFound from "../components/notFound";
+import Panel from "../components/Panel"
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -84,10 +77,10 @@ class Main extends React.Component {
               }
             />
             {/* ADMIN */}
-            {/*  <Route
+             <Route
               path="/admin"
               component={this.props.user.rol == "admin" ? Panel : notAuthorized}
-            /> */}
+            /> 
             <Route path="/notFound" component={notFound} />
             <Redirect to="/home" exact from="/" />
             <Redirect to="/notFound" from="/*" />

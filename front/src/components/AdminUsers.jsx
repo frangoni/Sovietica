@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,7 +32,11 @@ export default function AdminUsers({
 }) {
   const classes = useStyles();
   return (
-    <>
+    <div>
+    <Typography component="h1" variant="h5" style={{textAlign:"center"}}>
+        Usuarios Registrados
+      </Typography>
+
       <Paper id="cart">
         <Table id="cartTable">
           <TableHead>
@@ -89,6 +94,6 @@ export default function AdminUsers({
           </TableBody>
         </Table>
       </Paper>
-    </>
+    </div>
   );
 }

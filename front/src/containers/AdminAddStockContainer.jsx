@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import AdminAddStock from "../components/AdminAddStock";
-import {fetchProducts,createStock} from "../../store/action-creators/admin"
+import {fetchProducts,createStock} from "../../store/action-creators/admin";
+import { SnackbarProvider } from 'notistack';
 
 const mapStateToProps = function (state) {
   return {
@@ -9,14 +10,13 @@ const mapStateToProps = function (state) {
   };
 };
 
-
 const mapDispatchToProps = function (dispatch) {
   return {
       fetchProducts : () => dispatch(fetchProducts()),
-      // fetchCategories : () => dispatch(fetchCategories()),
-      createStock : (data) => dispatch(createStock(data))
+      createStock : (data) => dispatch(createStock(data)),
   };
 };
+
 
 class AdminAddStockContainer extends React.Component {
 
@@ -37,7 +37,6 @@ class AdminAddStockContainer extends React.Component {
 
   componentDidMount(){
       this.props.fetchProducts()
-      // this.props.fetchCategories()
   }
 
     handleTalle(e){
@@ -66,29 +65,26 @@ class AdminAddStockContainer extends React.Component {
         this.setState({
             productos: value
         })
-       
     }
 
     handleStock(e){
         e.preventDefault()
         this.props.createStock(this.state)
-        return this.props.history.push("/adminedit");
+        e.target.reset()
     }
-
     
   render() {
     return (
+      <SnackbarProvider maxSnack={3}>
       <AdminAddStock
         products = {this.props.products}
-        // categories = {this.props.categories}
         handleTalle = {this.handleTalle}
         handleColor = {this.handleColor}
         handleCantidad = {this.handleCantidad}
         handleProducto = {this.handleProducto}
         handleStock = {this.handleStock}
-
       />
-     
+      </SnackbarProvider>
     );
   }
 }

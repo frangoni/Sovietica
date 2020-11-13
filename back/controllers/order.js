@@ -44,6 +44,7 @@ const orderControllers = {
 
   //CREA ORDEN LUEGO DE CONFIRMAR LA COMPRA
   createOrder(req, res) {
+    // BUSCA EN EL CARRITO AQUELLOS QUE SEA DEL USUARIO
     CartModel.find({ usuarios: req.user.id })
       .then((cart) => {
         let orderProducts = [];
@@ -60,35 +61,45 @@ const orderControllers = {
           productos: orderProducts,
         });
       })
-      .then(() => {
-        CartModel.deleteMany({ usuarios: req.user.id });
-      })
+
+// ENVIA EL MAIL
       .then(() => {
         const transporter = nodemailer.createTransport({
-          host: "localhost",
-          port: 1025,
+          service: "Gmail",
           auth: {
-            user: "project.1",
-            pass: "secret.1",
+            user: "sovietica.2020@gmail.com",
+            pass: "Plataforma5#",
           },
         });
 
         const mailOptions = {
-          from: "sovieticaindumentaria@gmail.com",
-          to: req.body.email,
-          subject: "SOVIETICA",
-          text: "Gracias por su compra, vuelva pronto!",
+          from: "sovietica.2020@gmail.com",
+          to: req.user.email, 
+          subject: `GRACIAS POR TU COMPRA ${req.user.nombre}!`,
+          html: '<img src="https://cdn.discordapp.com/attachments/763879090729779211/776593090525659136/GRACIAS_POR_TU_COMPRA.jpg"/>',
+          attachments: [
+            {
+              filename: "image.png",
+              cid: "https://cdn.discordapp.com/attachments/763879090729779211/776593090525659136/GRACIAS_POR_TU_COMPRA.jpg", 
+              //same cid value as in the html img src
+            },
+          ],
         };
 
         transporter.sendMail(mailOptions, function (error, info) {
           if (error) {
             console.log(error);
           } else {
-            console.log("Email sent: ");
+            console.log("----- Email enviadoo ----- ");
           }
-          res.status(200).send("Orden creada");
         });
       })
+
+      // ELIMINA TODO EL CARRITO DEL USUARIO
+      .then(() => {
+        return CartModel.deleteMany({ usuarios: req.user.id });
+      })
+      .then(() => res.status(200).send("Orden creada"))
       .catch((err) => res.status(500).send(err));
   },
 };

@@ -1,16 +1,15 @@
 import React from "react";
-import { Navbar, Nav, Form, FormControl, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import HamburgerMenu from "react-hamburger-menu";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { useState } from "react";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
-import { Icon } from "@material-ui/core";
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -76,33 +75,12 @@ export default ({
               >
                 {user.rol == "admin" ? (
                   <>
-                    <NavDropdown.Item>
-                      <Link to="/adminusers" className="text-dark">
-                        Users
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/adminaddproducts" className="text-dark">
-                        Añadir Products
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/adminaddstock" className="text-dark">
-                        Añadir Stock
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/admineditproducts" className="text-dark">
-                        {" "}
-                        Editar Productos
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/admineditstock" className="text-dark">
-                        {" "}
-                        Editar Stock{" "}
-                      </Link>
-                    </NavDropdown.Item>
+                     <NavDropdown.Item>
+                    <Link to="/admin" className="text-dark">
+                      {" "}
+                      Panel Administrador
+                    </Link>
+                  </NavDropdown.Item>
                   </>
                 ) : (
                   <>
@@ -113,22 +91,10 @@ export default ({
                     </NavDropdown.Item>
 
                     <NavDropdown.Item>
-                      <Link to="/orders">Ordenes</Link>
+                      <Link to="/orders" className="text-dark" >Ordenes</Link>
                     </NavDropdown.Item>
                   </>
                 )}
-
-                {user.rol == "admin" ? (
-                  <NavDropdown.Item>
-                    <Link to="/admin">Panel</Link>
-                  </NavDropdown.Item>
-                ) : null}
-
-                {user.rol == "admin" ? (
-                  <NavDropdown.Item>
-                    <Link to="/admincategories">Categorias</Link>
-                  </NavDropdown.Item>
-                ) : null}
 
                 <NavDropdown.Divider />
 

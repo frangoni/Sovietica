@@ -10,10 +10,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
+import { useSnackbar } from 'notistack';
+
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -42,9 +44,10 @@ export default function AdminProducts({
   handleColor,
   handleCantidad,
   handleProducto,
+
 }) {
   const classes = useStyles();
-
+  const { enqueueSnackbar } = useSnackbar();
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -134,6 +137,7 @@ export default function AdminProducts({
               />
             </Grid>
           </Grid>
+
           <Button
             type="submit"
             fullWidth
@@ -141,11 +145,14 @@ export default function AdminProducts({
             size="small"
             style={{ backgroundColor: "lightpink" }}
             className={classes.margin}
+            onClick={() => 
+                enqueueSnackbar('Stock Agregado !')}
           >
             AÑADIR STOCK
           </Button>
         </form>
       </div>
     </Container>
+
   );
 }
