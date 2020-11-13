@@ -1,24 +1,22 @@
 import axios from "axios";
-import { GET_PRODUCTS_BY_CAT, FETCH_CATEGORIES, ADD_CATEGORIES } from "../constants";
-
-
+import {
+  GET_PRODUCTS_BY_CAT,
+  FETCH_CATEGORIES,
+  ADD_CATEGORIES,
+} from "../constants";
 
 const receiveCategories = (categories) => ({
   type: FETCH_CATEGORIES,
   categories,
 });
 
-/* const addCategory = (categories) => ({
-  type: ADD_CATEGORIES,
-  categories,
-}); */
-
-export const addCategory = (data) => (dispatch) =>  {
-  console.log("llego al action ", data)
+export const addCategory = (data) => (dispatch) => {
+  console.log("llego al action ", data);
   axios
-    .post('/api/categories', data)
+    .post("/api/categories", data)
     .then((res) => res.data)
     .then((category) => {
+      console.log(category);
       dispatch(receiveCategories(category));
     });
 };
@@ -31,13 +29,11 @@ export const deleteCategory = (idCategory) => {
   };
 };
 
-
 export const fetchCategories = () => (dispatch) => {
   axios
-    .get('/api/categories')
+    .get("/api/categories")
     .then((res) => res.data)
     .then((categories) => {
       dispatch(receiveCategories(categories));
-
     });
 };

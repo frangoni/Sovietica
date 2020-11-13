@@ -11,19 +11,30 @@ import Icon from "@material-ui/core/Icon";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 
-function Cart({ products, deleteCart, updateCart }) {
+function Cart({ products, deleteCart, updateCart, user, handleRefresh }) {
+  const parsedLocalCart = JSON.parse(localStorage.getItem("producto"));
+  const verif = () => {
+    if (parsedLocalCart) {
+      const localProducts = products.concat(parsedLocalCart);
+      return localProducts;
+    } else {
+      return products;
+    }
+  };
+  const finalProducts = verif();
   const total = () => {
     let resultado = 0;
-    products.map((product) => {
-      resultado += product.productos[0].productos[0].precio * product.cantidad;
-    });
+    finalProducts[0] &&
+      finalProducts.map((product) => {
+        resultado +=
+          product.productos[0].productos[0].precio * product.cantidad;
+      });
     return resultado;
   };
-
   return (
     <>
       <Paper id="cart">
-        <Table id="cartTable">
+        <Table>
           <TableHead>
             <TableRow>
               <TableCell>Foto</TableCell>
@@ -35,12 +46,12 @@ function Cart({ products, deleteCart, updateCart }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products &&
-              products.map((product) => (
+            {finalProducts[0] &&
+              finalProducts.map((product) => (
                 <>
                   <TableRow key={product._id}>
                     <TableCell>
-                      <Avatar src={product.productos[0].productos[0].foto} />{" "}
+                      <Avatar src={product.productos[0].productos[0].foto} />
                     </TableCell>
                     <TableCell>
                       {product.productos[0].productos[0].nombre}{" "}
@@ -49,11 +60,27 @@ function Cart({ products, deleteCart, updateCart }) {
                     <TableCell> {product.productos[0].talle} </TableCell>
                     <TableCell>
                       <Icon
-                        className="botonCarrito"
                         color="action"
                         onClick={() => {
                           if (product.cantidad > 1) {
-                            updateCart(product._id, product.cantidad - 1);
+                            if (user._id) {
+                              updateCart(product._id, product.cantidad - 1);
+                            } else {
+                              const updateLocal = JSON.parse(
+                                localStorage.getItem("producto")
+                              );
+                              const ind = updateLocal.findIndex(
+                                (obj) =>
+                                  obj.productos[0]._id ==
+                                  product.productos[0]._id
+                              );
+                              updateLocal[ind].cantidad -= 1;
+                              localStorage.setItem(
+                                "producto",
+                                JSON.stringify(updateLocal)
+                              );
+                              handleRefresh();
+                            }
                           }
                         }}
                       >
@@ -61,11 +88,27 @@ function Cart({ products, deleteCart, updateCart }) {
                       </Icon>
                       {product.cantidad}
                       <Icon
-                        className="botonCarrito"
                         color="secondary"
                         onClick={() => {
                           if (product.cantidad < 5) {
-                            updateCart(product._id, product.cantidad + 1);
+                            if (user._id) {
+                              updateCart(product._id, product.cantidad + 1);
+                            } else {
+                              const updateLocal = JSON.parse(
+                                localStorage.getItem("producto")
+                              );
+                              const ind = updateLocal.findIndex(
+                                (obj) =>
+                                  obj.productos[0]._id ==
+                                  product.productos[0]._id
+                              );
+                              updateLocal[ind].cantidad += 1;
+                              localStorage.setItem(
+                                "producto",
+                                JSON.stringify(updateLocal)
+                              );
+                              handleRefresh();
+                            }
                           }
                         }}
                       >
@@ -73,15 +116,33 @@ function Cart({ products, deleteCart, updateCart }) {
                       </Icon>
                     </TableCell>
                     <TableCell>
-                      ${product.productos[0].productos[0].precio}{" "}
+                      $
+                      {product.productos[0].productos[0].precio *
+                        product.cantidad}
                     </TableCell>
                     <Button
                       size="small"
                       variant="contained"
+                      id="eliminar"
                       color="secondary"
-                      className="botonCarrito"
                       onClick={() => {
-                        deleteCart(product._id);
+                        if (user._id) {
+                          deleteCart(product._id);
+                        } else {
+                          const updateLocal = JSON.parse(
+                            localStorage.getItem("producto")
+                          );
+                          const ind = updateLocal.findIndex(
+                            (obj) =>
+                              obj.productos[0]._id == product.productos[0]._id
+                          );
+                          updateLocal.splice(ind, 1);
+                          localStorage.setItem(
+                            "producto",
+                            JSON.stringify(updateLocal)
+                          );
+                          handleRefresh();
+                        }
                       }}
                     >
                       Eliminar

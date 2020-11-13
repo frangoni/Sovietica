@@ -11,8 +11,13 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { Link } from "react-router-dom";
 
-export default function Review({ review, product }) {
-  console.log(product);
+export default function Review({
+  review,
+  product,
+  handleReview,
+  handleRating,
+  rating,
+}) {
   const StyledRating = withStyles({
     iconFilled: {
       color: "#ff6d75",
@@ -39,26 +44,29 @@ export default function Review({ review, product }) {
           </CardActionArea>
         </Card>
       </Link>
-      <form id="review">
+      <form id="review" onSubmit={handleReview}>
         <TextField
           id="outlined-multiline-static"
-          label="Review"
+          label={review.length ? "" : "Review"}
           multiline
           rows={4}
-          placeholder="Deje su reseña"
+          placeholder={review.length ? "" : "Deje su reseña"}
           variant="outlined"
+          value={review.length ? review[0].review : null}
         />
         <Box component="fieldset" mb={3} borderColor="transparent">
           <Typography component="legend">Dele amor!</Typography>
           <StyledRating
             name="customized-color"
-            defaultValue={2}
-            getLabelText={(value) => `${value} Heart${value !== 1 ? "s" : ""}`}
-            precision={0.5}
+            defaultValue={review.length ? review[0].calificacion : rating}
+            onChange={(e, value) => handleRating(value)}
+            getLabelText={(value) => value}
+            precision={0.25}
             icon={<FavoriteIcon fontSize="inherit" />}
+            disabled={review.length}
           />
         </Box>
-        <input type="submit" value="Enviar reseña" />
+        <input disabled={review.length} type="submit" value="Enviar reseña" />
       </form>
     </div>
   );

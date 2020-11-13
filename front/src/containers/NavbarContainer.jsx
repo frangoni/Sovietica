@@ -3,7 +3,6 @@ import { fetchSearchProducts } from "../../store/action-creators/products";
 import { connect } from "react-redux";
 import Navbar from "../components/Navbar";
 import { fetchLogout } from "../../store/action-creators/users";
-
 import ToggledMenu from "../containers/ToggledMenu";
 
 const mapStateToProps = function (state, { history }) {
@@ -35,7 +34,6 @@ class NavbarContainer extends React.Component {
   }
 
   handleChange(evt) {
-    console.log(evt.target.value);
     const value = evt.target.value;
     this.setState({
       value: value,
@@ -44,7 +42,10 @@ class NavbarContainer extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.fetchSearchProducts(this.state.value);
+    if (this.state.value) {
+      this.props.fetchSearchProducts(this.state.value);
+    }
+    this.props.history.push("/search");
   }
 
   handleLogout() {
