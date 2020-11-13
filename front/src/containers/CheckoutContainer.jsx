@@ -11,6 +11,9 @@ import Checkout2 from "../components/Checkout2";
 import Checkout3 from "../components/Checkout3";
 import { createOrder } from "../../store/action-creators/order";
 
+
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -22,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
+  margin: {
+    margin: theme.spacing(1),
+   },
+        
 }));
 
 function getSteps() {
@@ -74,7 +81,7 @@ export default function CheckoutContainer() {
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>
-              Gracias por su compra
+              Gracias por su compra, mandamos toda la info a su correo!
             </Typography>
             <Link to="/home">Volver</Link>
           </div>
@@ -91,13 +98,20 @@ export default function CheckoutContainer() {
               >
                 Atras
               </Button>
+
+
+
               <Button
-                variant="contained"
-                color="secondary"
                 onClick={handleNext}
+                variant="contained"
+                  size="small"
+                  style={{ backgroundColor: "lightpink" }}
+                  className={classes.margin}
               >
                 {activeStep === steps.length - 1 ? (
-                  <Button id="checkoutButton" onClick={handlePurchase}>
+                  <Button 
+                  onClick={handlePurchase} 
+                  >
                     Comprar
                   </Button>
                 ) : (
@@ -111,3 +125,5 @@ export default function CheckoutContainer() {
     </div>
   );
 }
+
+

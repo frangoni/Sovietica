@@ -69,6 +69,7 @@ a:hover {
   flex-flow: row;
   justify-content: space-evenly;
   width: 50%;
+  margin-top: 20px;
 }
 #eliminar {
   margin-top: 15px;
