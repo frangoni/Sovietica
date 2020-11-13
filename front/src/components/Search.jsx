@@ -46,48 +46,58 @@ const useStyles = makeStyles((theme) => ({
   },
   extendedIcon: {
     marginRight: theme.spacing(0),
+    title: {
+      textAlign: "center",
+    },
   },
 }));
 
-export default function Album({ products }) {
+export default function Search({ products }) {
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <CssBaseline />
       <main>
-        <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={4}>
-            {products.map((product) => (
-              <Grid item key={product._id} xs={12} sm={6} md={3}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={product.foto}
-                    title={product.nombre}
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {product.nombre}
-                    </Typography>
-                    <Typography>${product.precio}</Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Link to={`/products/${product._id}`}>
-                      <Button
-                        size="large"
-                        type="submit"
-                        className={classes.margin}
-                      >
-                        <p style={{ color: "lightpink" }}>DETALLE</p>
-                      </Button>
-                    </Link>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
+        {products.length == 0 ? (
+          <h2 className={classes.title}>
+            No encontramos su producto! Vuelva a buscar
+          </h2>
+        ) : (
+          <Container className={classes.cardGrid} maxWidth="md">
+            <Grid container spacing={4}>
+              {products &&
+                products.map((product) => (
+                  <Grid item key={product._id} xs={12} sm={6} md={3}>
+                    <Card className={classes.card}>
+                      <CardMedia
+                        className={classes.cardMedia}
+                        image={product.foto}
+                        title={product.nombre}
+                      />
+                      <CardContent className={classes.cardContent}>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {product.nombre}
+                        </Typography>
+                        <Typography>${product.precio}</Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Link to={`/products/${product._id}`}>
+                          <Button
+                            size="large"
+                            type="submit"
+                            className={classes.margin}
+                          >
+                            <p style={{ color: "lightpink" }}>DETALLE</p>
+                          </Button>
+                        </Link>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))}
+            </Grid>
+          </Container>
+        )}
       </main>
     </React.Fragment>
   );

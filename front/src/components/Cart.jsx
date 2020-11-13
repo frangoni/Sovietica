@@ -51,6 +51,12 @@ function Cart({ products, deleteCart, updateCart, user, handleRefresh }) {
 
   return (
     <>
+      <h4 className="titles" id="titleCart">
+        CARRITO
+      </h4>
+      <hr />
+      <br />
+      <br />
       <Paper id="cart">
         <Table>
           <TableHead>

@@ -7,6 +7,10 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+import { useState } from "react";
+import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import { Icon } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -24,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ({
+export default ({
   handleSubmit,
   handleChange,
   value,
@@ -32,11 +36,23 @@ export default function ({
   handleLogout,
   handleToggle,
   toggle,
-}) {
+  handleState,
+}) => {
   const classes = useStyles();
+  const [scroll, setScroll] = useState("first");
+
+  const changeNav = () => {
+    if (window.scrollY >= 5) {
+      setScroll("second");
+    } else {
+      setScroll("first");
+    }
+  };
+  window.addEventListener("scroll", changeNav);
+
   return (
     <div>
-      <Navbar bg="light" variant="light">
+      <Navbar className={scroll} bg="light" variant="light">
         <Nav className="mr-auto">
           <Nav.Link>
             <HamburgerMenu
@@ -46,7 +62,7 @@ export default function ({
               height={16}
               strokeWidth={1}
               rotate={0}
-              color={"black"}
+              color={"fuchsia"}
               animationDuration={0.5}
               borderRadius={0}
             />
@@ -113,11 +129,6 @@ export default function ({
                     <Link to="/admincategories">Categorias</Link>
                   </NavDropdown.Item>
                 ) : null}
-                {user.rol == "admin" ? (
-                  <NavDropdown.Item>
-                    <Link to="/adminorders">Ordenes de compra</Link>
-                  </NavDropdown.Item>
-                ) : null}
 
                 <NavDropdown.Divider />
 
@@ -143,8 +154,10 @@ export default function ({
           )}
         </Nav>
         <Nav.Link>
-          <Link to={"/home"} className="text-dark">
-            HOME
+          <Link to={"/home"} onClick={handleState} className="text-dark">
+            <IconButton>
+              <HomeOutlinedIcon fontSize="large" />
+            </IconButton>
           </Link>
         </Nav.Link>
 
@@ -159,22 +172,22 @@ export default function ({
             noValidate
             autoComplete="off"
             type="text"
-            placeholder="Pantalon APA"
+            placeholder="BUSCAR PRENDA"
             onChange={handleChange}
             value={value}
+            onFocus={handleState}
           />
 
-          <Button type="submit" size="small" className={classes.margin}>
-            SEARCH
-          </Button>
-          <IconButton>
+          <SearchOutlinedIcon style={{ margin: "10px" }} />
+
+          {/* <IconButton>
             <ShoppingCartOutlinedIcon
               isOpen={toggle}
               menuClicked={handleToggle}
             />
-          </IconButton>
+          </IconButton> */}
         </form>
       </Navbar>
     </div>
   );
-}
+};
