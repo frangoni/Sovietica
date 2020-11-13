@@ -6,6 +6,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Avatar from "@material-ui/core/Avatar";
 import TextField from "@material-ui/core/TextField";
@@ -77,25 +78,23 @@ export default function AdminCategories({
         />
 
         <Button
-          style={{ margin: "15px" }}
-          size="small"
           variant="contained"
-          color="secondary"
-          className="botonCarrito"
+          size="small"
+          style={{ backgroundColor: "lightpink", margin: "15px" }}
+          className={classes.margin}
           type="submit"
         >
-          Crear Categoria
+          CREAR
         </Button>
         <Button
-          style={{ margin: "15px" }}
-          size="small"
           variant="contained"
-          color="secondary"
-          className="botonCarrito"
+          size="small"
+          style={{ backgroundColor: "lightgrey", margin: "15px" }}
+          className={classes.margin}
           type="submit"
           onClick={handleClose}
         >
-          Cancelar
+          CANCELAR
         </Button>
       </form>
     </div>
@@ -126,18 +125,17 @@ export default function AdminCategories({
                   </TableCell>
                   <TableCell>{categories.nombre} </TableCell>
                   <TableCell>
-                    <Button
+                    <IconButton
+                      aria-label="delete"
+                      type="submit"
                       size="small"
-                      variant="contained"
-                      color="secondary"
-                      className="botonCarrito"
+                      className={classes.margin}
                       onClick={() => {
                         deleteCategory(categories._id);
                       }}
                     >
-                      Eliminar
                       <DeleteIcon />
-                    </Button>
+                    </IconButton>
                   </TableCell>
                 </TableRow>
               ))}

@@ -18,6 +18,8 @@ export const SEARCH_USERS = "SEARCH_USERS";
 
 //Order
 export const GET_ORDER = "GET_ORDER";
+export const UPDATE_ORDERS = "UPDATE_ORDERS";
+
 
 //Review
 export const GET_REVIEW = "GET_REVIEW";

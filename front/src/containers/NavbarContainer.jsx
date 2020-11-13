@@ -3,7 +3,6 @@ import { fetchSearchProducts } from "../../store/action-creators/products";
 import { connect } from "react-redux";
 import Navbar from "../components/Navbar";
 import { fetchLogout } from "../../store/action-creators/users";
-
 import ToggledMenu from "../containers/ToggledMenu";
 
 const mapStateToProps = function (state, { history }) {
@@ -32,28 +31,50 @@ class NavbarContainer extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
+    this.handleState = this.handleState.bind(this);
   }
+  /*  componentDidMount() {
+    if (!this.props.products.length) {
+      this.props.fetchSearchProducts(this.state.value);
+    }
+  } */
 
   handleChange(evt) {
-    console.log(evt.target.value);
     const value = evt.target.value;
     this.setState({
       value: value,
     });
+    console.log(this.state.value);
+    if (this.state.value.length >= 2) {
+      this.props.history.push("/search");
+      this.props.fetchSearchProducts(this.state.value);
+    } else if (this.state.value.length < 1) {
+      this.props.history.push("/home");
+    }
+    if (this.props.products.length == 1) {
+      this.props.history.push(`/products/${this.props.products[0]._id}`);
+      location.reload();
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.fetchSearchProducts(this.state.value);
+    /*    if (this.state.value) {
+      this.props.fetchSearchProducts(this.state.value);
+    }
+    this.props.history.push("/search"); */
   }
 
   handleLogout() {
     this.props.fetchLogout();
-    this.props.history.push("/home");
+    location.reload();
   }
 
   handleToggle() {
     this.setState({ toggle: !this.state.toggle });
+  }
+  handleState() {
+    this.setState({ value: "" });
   }
 
   render() {
@@ -68,6 +89,7 @@ class NavbarContainer extends React.Component {
           user={this.props.user}
           handleToggle={this.handleToggle}
           toggle={this.state.toggle}
+          handleState={this.handleState}
         />
         {this.state.toggle ? <ToggledMenu /> : null}
       </>

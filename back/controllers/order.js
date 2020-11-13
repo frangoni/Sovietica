@@ -14,6 +14,34 @@ const orderControllers = {
       .catch((err) => res.status(500).send(err));
   },
   
+  //////////// TRAE TODAS LAS ORDERS DEL PANERL DE ADMIN
+  findAll(req, res) {
+    OrderModel.find()
+    .populate("usuarios")
+    .populate({
+      path: "productos",
+      populate: { path: "productos" },
+    })
+      
+      .then((orders) => res.status(200).send(orders))
+      .catch((err) => res.status(500).send(err));
+  },
+
+  updateOrder(req, res) {
+    OrderModel.findByIdAndUpdate(req.params.id, req.body)
+      .then((a) => {
+        
+        return OrderModel.find()
+        .populate("usuarios")
+        .populate({
+          path: "productos",
+          populate: { path: "productos" },
+        })
+      })
+      .then((user) => res.status(200).send(user))
+      .catch((err) => res.send(err));
+  },
+
   //CREA ORDEN LUEGO DE CONFIRMAR LA COMPRA
   createOrder(req, res) {
     // BUSCA EN EL CARRITO AQUELLOS QUE SEA DEL USUARIO
@@ -46,7 +74,7 @@ const orderControllers = {
 
         const mailOptions = {
           from: "sovietica.2020@gmail.com",
-          to: "chenchristian7@gmail.com", //req.user.email
+          to: req.user.email, 
           subject: `GRACIAS POR TU COMPRA ${req.user.nombre}!`,
           html: '<img src="https://cdn.discordapp.com/attachments/763879090729779211/776593090525659136/GRACIAS_POR_TU_COMPRA.jpg"/>',
           attachments: [

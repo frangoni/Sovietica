@@ -10,6 +10,21 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import Icon from "@material-ui/core/Icon";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
 function Cart({ products, deleteCart, updateCart, user, handleRefresh }) {
   const parsedLocalCart = JSON.parse(localStorage.getItem("producto"));
@@ -31,8 +46,17 @@ function Cart({ products, deleteCart, updateCart, user, handleRefresh }) {
       });
     return resultado;
   };
+
+  const classes = useStyles();
+
   return (
     <>
+      <h4 className="titles" id="titleCart">
+        CARRITO
+      </h4>
+      <hr />
+      <br />
+      <br />
       <Paper id="cart">
         <Table>
           <TableHead>
@@ -120,11 +144,10 @@ function Cart({ products, deleteCart, updateCart, user, handleRefresh }) {
                       {product.productos[0].productos[0].precio *
                         product.cantidad}
                     </TableCell>
-                    <Button
-                      size="small"
-                      variant="contained"
+                    <IconButton
+                      aria-label="delete"
+                      className={classes.margin}
                       id="eliminar"
-                      color="secondary"
                       onClick={() => {
                         if (user._id) {
                           deleteCart(product._id);
@@ -145,9 +168,8 @@ function Cart({ products, deleteCart, updateCart, user, handleRefresh }) {
                         }
                       }}
                     >
-                      Eliminar
                       <DeleteIcon />
-                    </Button>
+                    </IconButton>
                   </TableRow>
                 </>
               ))}
@@ -160,11 +182,25 @@ function Cart({ products, deleteCart, updateCart, user, handleRefresh }) {
       </Paper>
       <div id="cartBoton">
         <Link to="/">
-          <Button variant="outlined">Seguir comprando</Button>
+          <Button
+            type="submit"
+            variant="outlined"
+            size="small"
+            className={classes.margin}
+          >
+            SEGUIR COMPRANDO
+          </Button>
         </Link>
         <Link to="/checkout">
-          <Button variant="contained" color="secondary">
-            Comprar
+          <Button
+            variant="contained"
+            type="submit"
+            variant="contained"
+            size="small"
+            style={{ backgroundColor: "lightpink" }}
+            className={classes.margin}
+          >
+            COMPRAR
           </Button>
         </Link>
       </div>

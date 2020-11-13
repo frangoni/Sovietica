@@ -30,9 +30,15 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   formControl: {
-        margin: theme.spacing(1),
-        width:"100%",
-      }
+    margin: theme.spacing(1),
+    width: "100%",
+  },
+  margin: {
+    margin: theme.spacing(0),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
 }));
 
 export default function AdminProducts({
@@ -100,24 +106,25 @@ export default function AdminProducts({
             </Grid>
 
             <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Categorias</InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              name="categorias"
-              fullWidth
-              onChange={handleCategoria}
-              label="Categorias"
-
-            >
-              <MenuItem value="">
-              <em> </em>
-              </MenuItem>
-              {categories &&
-                categories.map((category) => (
-                  <MenuItem value={category._id}>{category.nombre}</MenuItem>
-                ))}
-            </Select>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Categorias
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                name="categorias"
+                fullWidth
+                onChange={handleCategoria}
+                label="Categorias"
+              >
+                <MenuItem value="">
+                  <em> </em>
+                </MenuItem>
+                {categories &&
+                  categories.map((category) => (
+                    <MenuItem value={category._id}>{category.nombre}</MenuItem>
+                  ))}
+              </Select>
             </FormControl>
           </Grid>
 
@@ -125,16 +132,16 @@ export default function AdminProducts({
             type="submit"
             fullWidth
             variant="contained"
-            color="secondary"
-            className={classes.submit}
+            size="small"
+            style={{ backgroundColor: "lightpink" }}
+            className={classes.margin}
             onClick={() => 
               enqueueSnackbar('Producto Agregado !')}
           >
-            Crear Producto
+            CREAR
           </Button>
         </form>
       </div>
     </Container>
   );
 }
-

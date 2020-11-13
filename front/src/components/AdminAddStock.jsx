@@ -139,18 +139,18 @@ export default function AdminProducts({
           </Grid>
 
           <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
-              onClick={() => 
+            type="submit"
+            fullWidth
+            variant="contained"
+            size="small"
+            style={{ backgroundColor: "lightpink" }}
+            className={classes.margin}
+            onClick={() => 
                 enqueueSnackbar('Stock Agregado !')}
-            >
-              Añadir Stock
-            </Button>
+          >
+            AÑADIR STOCK
+          </Button>
         </form>
-
       </div>
     </Container>
 

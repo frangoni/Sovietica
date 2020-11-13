@@ -1,10 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import Categories from "../components/Categories";
-
 import { fetchCategories } from "../../store/action-creators/categories";
 import { fetchProductsByCat } from "../../store/action-creators/products";
-import Search from "../components/Search";
 
 class CategoriesContainer extends React.Component {
   constructor(props) {
@@ -27,14 +25,12 @@ class CategoriesContainer extends React.Component {
           categorias={this.props.categorias}
           handleClick={this.handleClick}
         />
-        <Search products={this.props.productos} />
       </div>
     );
   }
 }
 
 const mapStateToProps = function (state) {
-  console.log("state de CATEGORIES", state.categories.categories);
   return {
     productos: state.products.products,
     categorias: state.categories.categories,
