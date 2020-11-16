@@ -91009,23 +91009,26 @@ var NavbarContainer = /*#__PURE__*/function (_React$Component) {
   _createClass(NavbarContainer, [{
     key: "handleChange",
     value: function handleChange(evt) {
+      var _this2 = this;
+
       var value = evt.target.value;
       this.setState({
         value: value
+      }, function () {
+        if (_this2.state.value.length >= 2) {
+          _this2.props.history.push("/search");
+
+          _this2.props.fetchSearchProducts(_this2.state.value);
+        } else if (_this2.state.value.length = 0) {
+          _this2.props.history.push("/home");
+        }
+
+        if (_this2.props.products.length == 1) {
+          _this2.props.history.push("/products/".concat(_this2.props.products[0]._id));
+
+          location.reload();
+        }
       });
-      console.log(this.state.value);
-
-      if (this.state.value.length >= 2) {
-        this.props.history.push("/search");
-        this.props.fetchSearchProducts(this.state.value);
-      } else if (this.state.value.length < 1) {
-        this.props.history.push("/home");
-      }
-
-      if (this.props.products.length == 1) {
-        this.props.history.push("/products/".concat(this.props.products[0]._id));
-        location.reload();
-      }
     }
   }, {
     key: "handleSubmit",

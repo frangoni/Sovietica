@@ -36,20 +36,23 @@ class NavbarContainer extends React.Component {
 
   handleChange(evt) {
     const value = evt.target.value;
-    this.setState({
-      value: value,
-    });
-    console.log(this.state.value);
-    if (this.state.value.length >= 2) {
-      this.props.history.push("/search");
-      this.props.fetchSearchProducts(this.state.value);
-    } else if (this.state.value.length < 1) {
-      this.props.history.push("/home");
-    }
-    if (this.props.products.length == 1) {
-      this.props.history.push(`/products/${this.props.products[0]._id}`);
-      location.reload();
-    }
+    this.setState(
+      {
+        value: value,
+      },
+      () => {
+        if (this.state.value.length >= 2) {
+          this.props.history.push("/search");
+          this.props.fetchSearchProducts(this.state.value);
+        } else if ((this.state.value.length = 0)) {
+          this.props.history.push("/home");
+        }
+        if (this.props.products.length == 1) {
+          this.props.history.push(`/products/${this.props.products[0]._id}`);
+          location.reload();
+        }
+      }
+    );
   }
 
   handleSubmit(e) {
