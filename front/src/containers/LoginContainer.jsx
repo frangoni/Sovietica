@@ -46,7 +46,6 @@ class LoginContainer extends React.Component {
           });
         })
       );
-    return this.props.history.push("/home");
   }
 
   handleEmail(e) {

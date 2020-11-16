@@ -31,9 +31,7 @@ class HomeContainer extends React.Component {
       <div id="home">
         <h4 className="titles">CATEGORIAS</h4>
         <hr />
-        <br />
         <CategoriesContainer />
-        <br /> <br />
         <h4 className="titles">PRODUCTOS</h4>
         <hr />
         <SearchContainer />
