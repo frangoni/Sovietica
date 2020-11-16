@@ -47,7 +47,9 @@ class ProductContainer extends React.Component {
 
   handleSubmit() {
     if (this.props.user._id) {
-      this.props.addCart(this.props.idProducto, this.state);
+      this.props
+        .addCart(this.props.idProducto, this.state)
+        .then(() => this.props.history.push("/cart"));
     } else {
       Axios.post(`/api/cart/local/${this.props.idProducto}`, this.state).then(
         (producto) => {
@@ -55,10 +57,10 @@ class ProductContainer extends React.Component {
           if (storage == null) storage = [];
           storage.push({ cantidad: 1, productos: [producto.data] });
           localStorage.setItem("producto", JSON.stringify(storage));
+          this.props.history.push("/cart");
         }
       );
     }
-    return this.props.history.push("/cart");
   }
 
   render() {

@@ -91039,7 +91039,6 @@ var NavbarContainer = /*#__PURE__*/function (_React$Component) {
     key: "handleLogout",
     value: function handleLogout() {
       this.props.fetchLogout();
-      location.reload();
     }
   }, {
     key: "handleToggle",
@@ -91268,8 +91267,12 @@ var ProductContainer = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
+      var _this2 = this;
+
       if (this.props.user._id) {
-        this.props.addCart(this.props.idProducto, this.state);
+        this.props.addCart(this.props.idProducto, this.state).then(function () {
+          return _this2.props.history.push("/cart");
+        });
       } else {
         axios__WEBPACK_IMPORTED_MODULE_5___default.a.post("/api/cart/local/".concat(this.props.idProducto), this.state).then(function (producto) {
           var storage = JSON.parse(localStorage.getItem("producto"));
@@ -91279,10 +91282,10 @@ var ProductContainer = /*#__PURE__*/function (_React$Component) {
             productos: [producto.data]
           });
           localStorage.setItem("producto", JSON.stringify(storage));
+
+          _this2.props.history.push("/cart");
         });
       }
-
-      return this.props.history.push("/cart");
     }
   }, {
     key: "render",
@@ -92154,6 +92157,13 @@ var getOrder = function getOrder(orders) {
   };
 };
 
+var changeOrders = function changeOrders(order) {
+  return {
+    type: "UPDATE_ORDERS",
+    order: order
+  };
+};
+
 var createOrder = function createOrder(data) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/order", data).then(function (rta) {
     rta.data;
@@ -92180,14 +92190,6 @@ var fetchAdminOrders = function fetchAdminOrders() {
     });
   };
 };
-
-var changeOrders = function changeOrders(order) {
-  return {
-    type: "UPDATE_ORDERS",
-    order: order
-  };
-};
-
 var updateOrders = function updateOrders(id, estado) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/order/admin/".concat(id), {

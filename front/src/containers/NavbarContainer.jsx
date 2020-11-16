@@ -61,7 +61,6 @@ class NavbarContainer extends React.Component {
 
   handleLogout() {
     this.props.fetchLogout();
-    location.reload();
   }
 
   handleToggle() {

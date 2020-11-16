@@ -1,20 +1,12 @@
 //       /order
-const express = require("express")
+const express = require("express");
 
-const router = express.Router()
-const orderControllers = require("../controllers/order")
+const router = express.Router();
+const orderControllers = require("../controllers/order");
 
-router.get("/" , orderControllers.findAll)
-router.post("/" , orderControllers.createOrder)
-router.get("/admin", orderControllers.findAll)
-router.put("/admin/:id", orderControllers.updateOrder)
+router.get("/", orderControllers.findAllxUser);
+router.post("/", orderControllers.createOrder);
+router.get("/admin", orderControllers.findAll);
+router.put("/admin/:id", orderControllers.updateOrder);
 
-module.exports = router
-
-
-
-
-
-
-
-
+module.exports = router;

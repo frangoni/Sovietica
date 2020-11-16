@@ -4,8 +4,8 @@ const nodemailer = require("nodemailer");
 
 const orderControllers = {
   //MUESTRA LAS ORDENES DEL USUARIO
-  findAll(req, res) {
-    OrderModel.find({ usuarios: req.user.id })
+  findAllxUser(req, res) {
+    OrderModel.find({ usuarios: req.user._id })
       .populate({
         path: "productos",
         populate: { path: "productos" },

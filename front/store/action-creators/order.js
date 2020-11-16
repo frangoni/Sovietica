@@ -6,6 +6,10 @@ const getOrder = (orders) => {
     payload: orders,
   };
 };
+const changeOrders = (order) => ({
+  type: "UPDATE_ORDERS",
+  order,
+});
 
 export const createOrder = (data) => {
   axios
@@ -38,11 +42,6 @@ export const fetchAdminOrders = () => {
       .catch((err) => err);
   };
 };
-
-const changeOrders = (order) => ({
-  type: "UPDATE_ORDERS",
-  order,
-});
 
 export const updateOrders = (id, estado) => (dispatch) => {
   axios
