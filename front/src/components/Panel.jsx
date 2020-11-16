@@ -2,7 +2,6 @@ import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
@@ -15,7 +14,7 @@ import AdminAddStockContainer from "../containers/AdminAddStockContainer";
 import AdminAddProductsContainer from "../containers/AdminAddProductsContainer";
 import AdminProductsContainer from "../containers/AdminProductsContainer";
 import AdminStockContainer from "../containers/AdminStockContainer";
-import AdminOrdersContainer from "../containers/AdminOrdersContainer"
+import AdminOrdersContainer from "../containers/AdminOrdersContainer";
 
 // ICONOS
 import ListItem from "@material-ui/core/ListItem";
@@ -99,20 +98,21 @@ export default function Panel() {
     <div className={classes.root}>
       <CssBaseline />
       <Drawer
+        id="panel"
         variant="permanent"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
         }}
       >
         {open ? (
-          <div className={classes.toolbarIcon} >
-            <IconButton onClick={handleDrawerOpen} style={{outline:"none"}} >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerOpen} style={{ outline: "none" }}>
               <ChevronLeftIcon />
             </IconButton>
           </div>
         ) : (
-          <div className={classes.toolbarIcon} >
-            <IconButton onClick={handleDrawerOpen} style={{outline:"none"}}>
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerOpen} style={{ outline: "none" }}>
               <ChevronRightIcon />
             </IconButton>
           </div>
@@ -197,5 +197,3 @@ export default function Panel() {
     </div>
   );
 }
-
-

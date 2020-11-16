@@ -176,6 +176,7 @@ nav {
   box-shadow: 0px 10px 25px -14px rgba(0, 0, 0, 0.75);
   background-repeat: no-repeat;
   background-position: center;
+  position: fixed !important;
 }
 .first {
   background-image: url("SOVIETICA1.svg");
@@ -184,12 +185,11 @@ nav {
 }
 
 .second {
-  position: fixed !important;
   background-image: url("LOGOSOVIETICA.svg");
   height: 8vh;
 }
 
 #content {
-  padding-top: 20vh;
+  padding-top: 25vh;
   transition: 0.7s ease !important;
 }

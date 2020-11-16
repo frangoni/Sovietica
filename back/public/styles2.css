@@ -1,10 +1,16 @@
 #toggledMenu {
   padding: 20px;
   background-color: white;
-  position: absolute;
-
+  position: fixed;
+  z-index: 5;
+  margin-top: 12vh;
   /* right: 0;
   bottom: 0; */
+}
+
+#panel {
+  position: fixed;
+  left: 0;
 }
 
 #toggledCart {
@@ -45,6 +51,6 @@
 #footer {
   display: flex;
   flex-direction: row-reverse;
-  margin-top: 20%;
+  margin-top: 17%;
   align-items: center;
 }

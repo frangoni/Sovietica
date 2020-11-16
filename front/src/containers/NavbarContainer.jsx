@@ -33,11 +33,6 @@ class NavbarContainer extends React.Component {
     this.handleToggle = this.handleToggle.bind(this);
     this.handleState = this.handleState.bind(this);
   }
-  /*  componentDidMount() {
-    if (!this.props.products.length) {
-      this.props.fetchSearchProducts(this.state.value);
-    }
-  } */
 
   handleChange(evt) {
     const value = evt.target.value;
@@ -59,10 +54,6 @@ class NavbarContainer extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    /*    if (this.state.value) {
-      this.props.fetchSearchProducts(this.state.value);
-    }
-    this.props.history.push("/search"); */
   }
 
   handleLogout() {

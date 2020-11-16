@@ -45,7 +45,6 @@ class LoginContainer extends React.Component {
           });
         })
       );
-    localStorage.clear();
     return this.props.history.push("/home");
   }
 
