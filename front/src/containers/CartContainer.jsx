@@ -15,14 +15,17 @@ class CartContainer extends React.Component {
     };
     this.handleRefresh = this.handleRefresh.bind(this);
   }
+
   componentDidMount() {
     this.props.fetchCart();
   }
+
   handleRefresh() {
     this.setState((prevState) => ({
       refresh: !prevState.refresh,
     }));
   }
+
   render() {
     return (
       <Cart

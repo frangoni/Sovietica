@@ -91265,11 +91265,8 @@ var ProductContainer = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      var _this2 = this;
-
       if (this.props.user._id) {
         this.props.addCart(this.props.idProducto, this.state);
-        this.props.history.push("/cart");
       } else {
         axios__WEBPACK_IMPORTED_MODULE_5___default.a.post("/api/cart/local/".concat(this.props.idProducto), this.state).then(function (producto) {
           var storage = JSON.parse(localStorage.getItem("producto"));
@@ -91279,8 +91276,6 @@ var ProductContainer = /*#__PURE__*/function (_React$Component) {
             productos: [producto.data]
           });
           localStorage.setItem("producto", JSON.stringify(storage));
-        }).then(function () {
-          return _this2.props.history.push("/cart");
         });
       }
 

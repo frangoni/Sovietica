@@ -16,7 +16,7 @@ import ReviewContainer from "../containers/ReviewContainer";
 import notAuthorized from "../components/notAuthorized";
 import HomeContainer from "./HomeContainer";
 import notFound from "../components/notFound";
-import Panel from "../components/Panel"
+import Panel from "../components/Panel";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -77,10 +77,10 @@ class Main extends React.Component {
               }
             />
             {/* ADMIN */}
-             <Route
+            <Route
               path="/admin"
               component={this.props.user.rol == "admin" ? Panel : notAuthorized}
-            /> 
+            />
             <Route path="/notFound" component={notFound} />
             <Redirect to="/home" exact from="/" />
             <Redirect to="/notFound" from="/*" />
