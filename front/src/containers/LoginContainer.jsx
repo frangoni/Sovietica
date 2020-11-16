@@ -36,6 +36,7 @@ class LoginContainer extends React.Component {
     }
     this.props
       .fetchLogin(this.state.email, this.state.clave, this.state.nombre)
+      .then(() => localStorage.clear())
       .then(() =>
         storage.map((cart) => {
           this.props.addCart(cart.productos[0].productos[0]._id, {

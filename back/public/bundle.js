@@ -90711,6 +90711,8 @@ var LoginContainer = /*#__PURE__*/function (_React$Component) {
       }
 
       this.props.fetchLogin(this.state.email, this.state.clave, this.state.nombre).then(function () {
+        return localStorage.clear();
+      }).then(function () {
         return storage.map(function (cart) {
           _this2.props.addCart(cart.productos[0].productos[0]._id, {
             talle: cart.productos[0].talle,
