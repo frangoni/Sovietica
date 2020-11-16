@@ -134,6 +134,7 @@ a:hover {
   display: flex;
   flex-flow: column;
   align-items: center;
+  margin: 0 auto;
 }
 
 #extra {
@@ -148,6 +149,7 @@ a:hover {
 .titles {
   display: block;
   margin-right: 70%;
+  margin-top: 100px;
 }
 #titleCart {
   margin-left: 10%;
@@ -190,6 +192,6 @@ nav {
 }
 
 #content {
-  padding-top: 25vh;
+  padding-top: 15vh;
   transition: 0.7s ease !important;
 }
