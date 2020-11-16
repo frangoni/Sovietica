@@ -11,9 +11,6 @@ import Checkout2 from "../components/Checkout2";
 import Checkout3 from "../components/Checkout3";
 import { createOrder } from "../../store/action-creators/order";
 
-
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -27,8 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   margin: {
     margin: theme.spacing(1),
-   },
-        
+  },
 }));
 
 function getSteps() {
@@ -63,7 +59,6 @@ export default function CheckoutContainer() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   const handlePurchase = () => {
-    console.log(total);
     let data = { total, direccion };
     createOrder(data);
   };
@@ -99,21 +94,15 @@ export default function CheckoutContainer() {
                 Atras
               </Button>
 
-
-
               <Button
                 onClick={handleNext}
                 variant="contained"
-                  size="small"
-                  style={{ backgroundColor: "lightpink" }}
-                  className={classes.margin}
+                size="small"
+                style={{ backgroundColor: "lightpink" }}
+                className={classes.margin}
               >
                 {activeStep === steps.length - 1 ? (
-                  <Button 
-                  onClick={handlePurchase} 
-                  >
-                    Comprar
-                  </Button>
+                  <Button onClick={handlePurchase}>Comprar</Button>
                 ) : (
                   "Siguiente"
                 )}
@@ -125,5 +114,3 @@ export default function CheckoutContainer() {
     </div>
   );
 }
-
-

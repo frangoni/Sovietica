@@ -14,7 +14,6 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -39,104 +38,103 @@ export default function AdminStock({
   const classes = useStyles();
   return (
     <>
-    <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-        Lista de Inventario
-        </Typography>
-      <Paper id="cart">
-        <Table id="cartTable">
-          <TableHead>
-            <TableRow>
-              <TableCell>Foto</TableCell>
-              <TableCell>Nombre</TableCell>
-              <TableCell>Talle</TableCell>
-              <TableCell>Color</TableCell>
-              <TableCell>Cantidad</TableCell>
-              <TableCell>Editar</TableCell>
-              <TableCell>Eliminar</TableCell>
-            </TableRow>
-          </TableHead>
+      <CssBaseline />
+      <div className={classes.paper} id="home">
+        <h4 className="titles"> LISTA DE INVENTARIO</h4>
+        <hr />
+        <Paper id="cart">
+          <Table id="cartTable">
+            <TableHead>
+              <TableRow>
+                <TableCell>Foto</TableCell>
+                <TableCell>Nombre</TableCell>
+                <TableCell>Talle</TableCell>
+                <TableCell>Color</TableCell>
+                <TableCell>Cantidad</TableCell>
+                <TableCell>Editar</TableCell>
+                <TableCell>Eliminar</TableCell>
+              </TableRow>
+            </TableHead>
 
-          <TableBody>
-            {stocks &&
-              stocks.map((stock) => (
-                <>
-                  <TableRow key={stock._id}>
-                    {/* FOTO */}
-                    <TableCell>
-                      <Avatar src={stock.productos[0].foto} />
-                    </TableCell>
+            <TableBody>
+              {stocks &&
+                stocks.map((stock) => (
+                  <>
+                    <TableRow key={stock._id}>
+                      {/* FOTO */}
+                      <TableCell>
+                        <Avatar src={stock.productos[0].foto} />
+                      </TableCell>
 
-                    {/* NOMBRE */}
-                    <TableCell>{stock.productos[0].nombre}</TableCell>
+                      {/* NOMBRE */}
+                      <TableCell>{stock.productos[0].nombre}</TableCell>
 
-                    {/* TALLE */}
-                    <TableCell>
-                      <form action="">
-                        <input
-                          type="text"
-                          onChange={handleTalle}
-                          placeholder={stock.talle}
-                          style={{ border: "none", width: "50%" }}
-                        />
-                      </form>
-                    </TableCell>
+                      {/* TALLE */}
+                      <TableCell>
+                        <form action="">
+                          <input
+                            type="text"
+                            onChange={handleTalle}
+                            placeholder={stock.talle}
+                            style={{ border: "none", width: "50%" }}
+                          />
+                        </form>
+                      </TableCell>
 
-                    {/* COLOR */}
-                    <TableCell>
-                      <form action="">
-                        <input
-                          type="text"
-                          onChange={handleColor}
-                          placeholder={stock.color}
-                          style={{ border: "none", width: "50%" }}
-                        />
-                      </form>
-                    </TableCell>
+                      {/* COLOR */}
+                      <TableCell>
+                        <form action="">
+                          <input
+                            type="text"
+                            onChange={handleColor}
+                            placeholder={stock.color}
+                            style={{ border: "none", width: "50%" }}
+                          />
+                        </form>
+                      </TableCell>
 
-                    {/* CANTIDAD */}
-                    <TableCell>
-                      <form action="">
-                        <input
-                          type="text"
-                          onChange={handleCantidad}
-                          placeholder={stock.cantidad}
-                          style={{ border: "none", width: "50%" }}
-                        />
-                      </form>
-                    </TableCell>
+                      {/* CANTIDAD */}
+                      <TableCell>
+                        <form action="">
+                          <input
+                            type="text"
+                            onChange={handleCantidad}
+                            placeholder={stock.cantidad}
+                            style={{ border: "none", width: "50%" }}
+                          />
+                        </form>
+                      </TableCell>
 
-                    <TableCell>
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        size="small"
-                        style={{ backgroundColor: "lightpink" }}
-                        className={classes.margin}
-                        onClick={() => handleSubmit(stock._id)}
-                      >
-                        ACTUALIZAR
-                      </Button>
-                    </TableCell>
+                      <TableCell>
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          size="small"
+                          style={{ backgroundColor: "lightpink" }}
+                          className={classes.margin}
+                          onClick={() => handleSubmit(stock._id)}
+                        >
+                          ACTUALIZAR
+                        </Button>
+                      </TableCell>
 
-                    <TableCell>
-                      <IconButton
-                        aria-label="delete"
-                        className={classes.margin}
-                        onClick={() => {
-                          deleteStock(stock._id);
-                        }}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                </>
-              ))}
-          </TableBody>
-        </Table>
-      </Paper>
+                      <TableCell>
+                        <IconButton
+                          aria-label="delete"
+                          className={classes.margin}
+                          onClick={() => {
+                            deleteStock(stock._id);
+                          }}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  </>
+                ))}
+            </TableBody>
+          </Table>
+        </Paper>
       </div>
     </>
   );

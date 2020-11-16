@@ -23,11 +23,11 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: "",
+    backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(6),
+    marginTop: theme.spacing(3),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -44,8 +44,7 @@ export default function SignIn({ handleEmail, handleSubmit, handleClave }) {
         <Avatar style={{ backgroundColor: "lightpink" }}>
           <LockOpenOutlinedIcon />
         </Avatar>
-
-        <Typography component="h1" variant="h4">
+        <Typography component="h1" variant="h5">
           Inicie Sesión
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>

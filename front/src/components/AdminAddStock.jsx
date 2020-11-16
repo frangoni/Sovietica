@@ -10,9 +10,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
-import { useSnackbar } from 'notistack';
-
-
+import { useSnackbar } from "notistack";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -44,17 +42,15 @@ export default function AdminProducts({
   handleColor,
   handleCantidad,
   handleProducto,
-
 }) {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Añadir Stock
-        </Typography>
+      <div className={classes.paper} id="home">
+        <h4 className="titles"> AÑADIR STOCK</h4>
+        <hr />
 
         <form className={classes.form} onSubmit={handleStock}>
           <Grid container spacing={2}>
@@ -145,14 +141,12 @@ export default function AdminProducts({
             size="small"
             style={{ backgroundColor: "lightpink" }}
             className={classes.margin}
-            onClick={() => 
-                enqueueSnackbar('Stock Agregado !')}
+            onClick={() => enqueueSnackbar("Stock Agregado !")}
           >
             AÑADIR STOCK
           </Button>
         </form>
       </div>
     </Container>
-
   );
 }

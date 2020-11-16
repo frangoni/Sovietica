@@ -8,7 +8,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Order({ orders, user, handleChange, handleSubmit }) {
+export default function Order({ orders, handleChange, handleSubmit }) {
   const fecha = (fecha) => {
     let newFecha = "";
     newFecha = fecha.slice(0, 10);
@@ -33,10 +32,9 @@ export default function Order({ orders, user, handleChange, handleSubmit }) {
 
   const classes = useStyles();
   return (
-    <>
-      <Typography variant="h6" align="center" gutterBottom>
-        ORDENES DE COMPRA
-      </Typography>
+    <div id="home">
+      <h4 className="titles"> ORDENES DE COMPRA</h4>
+      <hr />
       {orders &&
         orders.map((order) => {
           return (
@@ -114,6 +112,6 @@ export default function Order({ orders, user, handleChange, handleSubmit }) {
             </Paper>
           );
         })}
-    </>
+    </div>
   );
 }

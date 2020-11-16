@@ -120,11 +120,11 @@ export default ({
           )}
         </Nav>
         <Nav.Link>
-          <Link to={"/home"} onClick={handleState} className="text-dark">
-            <IconButton>
+          <IconButton>
+            <Link to={"/home"} onClick={handleState} className="text-dark">
               <HomeOutlinedIcon fontSize="large" />
-            </IconButton>
-          </Link>
+            </Link>
+          </IconButton>
         </Nav.Link>
 
         <form

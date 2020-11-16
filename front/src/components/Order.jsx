@@ -1,5 +1,4 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -10,17 +9,16 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 
-export default function Order({ orders, user }) {
+export default function Order({ orders }) {
   const fecha = (fecha) => {
     let newFecha = "";
     newFecha = fecha.slice(0, 10);
     return newFecha;
   };
   return (
-    <>
-      <Typography variant="h6" align="center" gutterBottom>
-        ORDENES DE COMPRA
-      </Typography>
+    <div id="home">
+      <h4 className="titles"> ORDENES DE COMPRA</h4>
+      <hr />
       {orders &&
         orders.map((order) => {
           return (
@@ -39,7 +37,6 @@ export default function Order({ orders, user }) {
                 <TableBody>
                   {order.productos &&
                     order.productos.map((product) => {
-                      console.log(product);
                       return (
                         <>
                           <TableRow key={product._id}>
@@ -64,7 +61,7 @@ export default function Order({ orders, user }) {
                                   id="reviewBtn"
                                   to={`/review/${product.productos[0]._id}`}
                                 >
-                                  ADD REVIEW!
+                                  ADD REVIEW
                                 </Link>
                               </Button>
                             </TableCell>
@@ -106,6 +103,6 @@ export default function Order({ orders, user }) {
             </Paper>
           );
         })}
-    </>
+    </div>
   );
 }

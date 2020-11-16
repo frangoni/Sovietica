@@ -6,11 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import { useSnackbar } from 'notistack';
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import { useSnackbar } from "notistack";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -56,10 +56,9 @@ export default function AdminProducts({
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Añadir Producto
-        </Typography>
+      <div className={classes.paper} id="home">
+        <h4 className="titles"> AÑADIR PRODUCTOS</h4>
+        <hr />
 
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -135,8 +134,7 @@ export default function AdminProducts({
             size="small"
             style={{ backgroundColor: "lightpink" }}
             className={classes.margin}
-            onClick={() => 
-              enqueueSnackbar('Producto Agregado !')}
+            onClick={() => enqueueSnackbar("Producto Agregado !")}
           >
             CREAR
           </Button>

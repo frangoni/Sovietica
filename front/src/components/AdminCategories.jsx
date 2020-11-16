@@ -77,7 +77,7 @@ export default function AdminCategories({
           name="foto"
         />
 
-<hr/>
+        <hr />
 
         <Button
           variant="contained"
@@ -103,11 +103,9 @@ export default function AdminCategories({
   );
 
   return (
-    
-    <div>
-      <Typography component="h1" variant="h5" style={{textAlign:"center"}}>
-          Categorias
-        </Typography>
+    <div id="home">
+      <h4 className="titles"> CATEGORIAS</h4>
+      <hr />
 
       <Paper className="category">
         <Table id="categoryTable">
