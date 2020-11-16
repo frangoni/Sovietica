@@ -13,6 +13,7 @@ const userController = {
 
   login(req, res) {
     res.send(req.user);
+    localStorage.clear();
   },
 
   logout(req, res) {

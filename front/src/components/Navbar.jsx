@@ -10,7 +10,6 @@ import { useState } from "react";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -41,7 +40,7 @@ export default ({
   const [scroll, setScroll] = useState("first");
 
   const changeNav = () => {
-    if (window.scrollY >= 5) {
+    if (window.scrollY >= 20) {
       setScroll("second");
     } else {
       setScroll("first");
@@ -75,12 +74,11 @@ export default ({
               >
                 {user.rol == "admin" ? (
                   <>
-                     <NavDropdown.Item>
-                    <Link to="/admin" className="text-dark">
-                      {" "}
-                      Panel Administrador
-                    </Link>
-                  </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <Link to="/admin" className="text-dark">
+                        Panel Administrador
+                      </Link>
+                    </NavDropdown.Item>
                   </>
                 ) : (
                   <>
@@ -91,7 +89,9 @@ export default ({
                     </NavDropdown.Item>
 
                     <NavDropdown.Item>
-                      <Link to="/orders" className="text-dark" >Ordenes</Link>
+                      <Link to="/orders" className="text-dark">
+                        Ordenes
+                      </Link>
                     </NavDropdown.Item>
                   </>
                 )}
@@ -146,12 +146,15 @@ export default ({
 
           <SearchOutlinedIcon style={{ margin: "10px" }} />
 
-          {/* <IconButton>
-            <ShoppingCartOutlinedIcon
-              isOpen={toggle}
-              menuClicked={handleToggle}
-            />
-          </IconButton> */}
+          <IconButton>
+            <Link to="/cart" className="text-dark">
+              <ShoppingCartOutlinedIcon
+                isOpen={toggle}
+                menuClicked={handleToggle}
+                fontSize="large"
+              />
+            </Link>
+          </IconButton>
         </form>
       </Navbar>
     </div>
