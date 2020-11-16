@@ -39,7 +39,7 @@ a:hover {
 /* CARRITO */
 #cart {
   width: 70%;
-  margin: 0 auto;
+  margin: 1em auto;
 }
 
 #categories {
@@ -138,7 +138,7 @@ a:hover {
 }
 
 #extra {
-  margin: auto;
+  margin: 8em auto;
   display: block;
 }
 
@@ -192,6 +192,6 @@ nav {
 }
 
 #content {
-  padding-top: 15vh;
+  padding-top: 20vh;
   transition: 0.7s ease !important;
 }

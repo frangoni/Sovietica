@@ -9,8 +9,7 @@ export default function Checkout1() {
   return (
     <>
       <Typography variant="h6" gutterBottom>
-        {" "}
-        Método de pago{" "}
+        Método de pago
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>

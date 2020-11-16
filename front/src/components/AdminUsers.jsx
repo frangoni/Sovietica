@@ -32,11 +32,9 @@ export default function AdminUsers({
 }) {
   const classes = useStyles();
   return (
-    <div>
-    <Typography component="h1" variant="h5" style={{textAlign:"center"}}>
-        Usuarios Registrados
-      </Typography>
-
+    <div id="home">
+      <h4 className="titles"> USUARIOS REGISTRADOS</h4>
+      <hr />
       <Paper id="cart">
         <Table id="cartTable">
           <TableHead>

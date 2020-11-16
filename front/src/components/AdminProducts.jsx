@@ -5,7 +5,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
@@ -40,96 +39,94 @@ export default function AdminProducts({
   return (
     <>
       <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-        Lista de Productos
-        </Typography>
+      <div className={classes.paper} id="home">
+        <h4 className="titles"> LISTA DE PRODUCTOS</h4>
+        <hr />
+        <Paper id="cart">
+          <Table id="cartTable">
+            <TableHead>
+              <TableRow>
+                <TableCell>Foto</TableCell>
+                <TableCell>Nombre</TableCell>
+                <TableCell>Precio</TableCell>
+                <TableCell>Descripcion</TableCell>
+                <TableCell>Editar</TableCell>
+                <TableCell>Eliminar</TableCell>
+              </TableRow>
+            </TableHead>
 
-      <Paper id="cart">
-        <Table id="cartTable">
-          <TableHead>
-            <TableRow>
-              <TableCell>Foto</TableCell>
-              <TableCell>Nombre</TableCell>
-              <TableCell>Precio</TableCell>
-              <TableCell>Descripcion</TableCell>
-              <TableCell>Editar</TableCell>
-              <TableCell>Eliminar</TableCell>
-            </TableRow>
-          </TableHead>
+            <TableBody>
+              {products &&
+                products.map((product) => (
+                  <>
+                    <TableRow key={product._id}>
+                      {/* FOTO */}
+                      <TableCell>
+                        <Avatar src={product.foto} />
+                      </TableCell>
 
-          <TableBody>
-            {products &&
-              products.map((product) => (
-                <>
-                  <TableRow key={product._id}>
-                    {/* FOTO */}
-                    <TableCell>
-                      <Avatar src={product.foto} />
-                    </TableCell>
+                      {/* NOMBRE */}
+                      <TableCell>
+                        <form action="">
+                          <input
+                            type="text"
+                            onChange={handleNombre}
+                            placeholder={product.nombre}
+                            style={{ border: "none", width: "100%" }}
+                          />
+                        </form>
+                      </TableCell>
 
-                    {/* NOMBRE */}
-                    <TableCell>
-                      <form action="">
-                        <input
-                          type="text"
-                          onChange={handleNombre}
-                          placeholder={product.nombre}
-                          style={{ border: "none", width: "100%" }}
-                        />
-                      </form>
-                    </TableCell>
+                      {/* PRECIO */}
+                      <TableCell>
+                        <form action="">
+                          <input
+                            type="text"
+                            onChange={handlePrecio}
+                            placeholder={product.precio}
+                            style={{ border: "none", width: "30%" }}
+                          />
+                        </form>
+                      </TableCell>
 
-                    {/* PRECIO */}
-                    <TableCell>
-                      <form action="">
-                        <input
-                          type="text"
-                          onChange={handlePrecio}
-                          placeholder={product.precio}
-                          style={{ border: "none", width: "30%" }}
-                        />
-                      </form>
-                    </TableCell>
+                      {/* DESCRIPCION */}
+                      <TableCell>
+                        <form>
+                          <textarea
+                            type="text"
+                            onChange={handleDescripcion}
+                            placeholder={product.descripcion}
+                            style={{ border: "none", width: "100%" }}
+                          />
+                        </form>
+                      </TableCell>
 
-                    {/* DESCRIPCION */}
-                    <TableCell>
-                      <form>
-                        <textarea
-                          type="text"
-                          onChange={handleDescripcion}
-                          placeholder={product.descripcion}
-                          style={{ border: "none", width: "100%" }}
-                        />
-                      </form>
-                    </TableCell>
+                      <TableCell>
+                        <IconButton
+                          aria-label="delete"
+                          className={classes.margin}
+                          onClick={() => handleSubmit(product._id)}
+                        >
+                          <EditIcon style={{ color: "lightpink" }} />
+                        </IconButton>
+                      </TableCell>
 
-                    <TableCell>
-                      <IconButton
-                        aria-label="delete"
-                        className={classes.margin}
-                        onClick={() => handleSubmit(product._id)}
-                      >
-                        <EditIcon style={{ color: "lightpink" }} />
-                      </IconButton>
-                    </TableCell>
-
-                    <TableCell>
-                      <IconButton
-                        aria-label="delete"
-                        className={classes.margin}
-                        onClick={() => deleteProducts(product._id)}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                </>
-              ))}
-          </TableBody>
-        </Table>
-      </Paper>
-       </div>
-</>
+                      <TableCell>
+                        <IconButton
+                          aria-label="delete"
+                          className={classes.margin}
+                          onClick={() => deleteProducts(product._id)}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  </>
+                ))}
+            </TableBody>
+          </Table>
+        </Paper>
+      </div>
+    </>
   );
 }
