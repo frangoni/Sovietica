@@ -46,11 +46,13 @@ const Product = ({
     talles.push(stocks[i].talle);
   }
   let singleTalles = [...new Set(talles)];
+
   //CANTIDAD EXACTA DE ITEMS
   let q = 0;
   for (let i = 0; i < stocks.length; i++) {
     q += stocks[i].cantidad;
   }
+
   //REVIEWS PROMEDIO
   let calificacion = 0;
   for (let i = 0; i < reviews.length; i++) {
