@@ -51,6 +51,12 @@ const Product = ({
   for (let i = 0; i < stocks.length; i++) {
     q += stocks[i].cantidad;
   }
+  //REVIEWS PROMEDIO
+  let calificacion = 0;
+  for (let i = 0; i < reviews.length; i++) {
+    calificacion += reviews[i].calificacion / reviews.length;
+  }
+  if (!calificacion) calificacion = 2.5;
 
   const classes = useStyles();
   return (
@@ -69,6 +75,14 @@ const Product = ({
                 <h2> {nombre} </h2>
                 <br />
                 <h4>${precio}</h4>
+                <br />
+                <StyledRating
+                  readOnly
+                  name="read-only"
+                  value={calificacion}
+                  precision={0.25}
+                  icon={<FavoriteIcon fontSize="inherit" />}
+                />
                 <br />
                 {descripcion}
                 <br />
@@ -174,6 +188,7 @@ const Product = ({
                 readOnly
                 name="read-only"
                 value={review.calificacion}
+                precision={0.25}
                 icon={<FavoriteIcon fontSize="inherit" />}
               />
               <br />
