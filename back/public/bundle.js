@@ -91019,7 +91019,7 @@ var NavbarContainer = /*#__PURE__*/function (_React$Component) {
           _this2.props.history.push("/search");
 
           _this2.props.fetchSearchProducts(_this2.state.value);
-        } else if (_this2.state.value.length = 0) {
+        } else if (_this2.state.value.length < 0) {
           _this2.props.history.push("/home");
         }
 

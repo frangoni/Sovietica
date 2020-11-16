@@ -44,7 +44,7 @@ class NavbarContainer extends React.Component {
         if (this.state.value.length >= 2) {
           this.props.history.push("/search");
           this.props.fetchSearchProducts(this.state.value);
-        } else if ((this.state.value.length = 0)) {
+        } else if (this.state.value.length < 0) {
           this.props.history.push("/home");
         }
         if (this.props.products.length == 1) {
