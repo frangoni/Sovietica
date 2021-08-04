@@ -17,6 +17,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/system": "^4.9.14",
     "axios": "^0.21.0",
+    "chokidar": "^3.5.2",
     "clsx": "^1.1.1",
     "mdbreact": "^4.27.0",
     "notistack": "^1.0.1",

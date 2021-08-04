@@ -87669,21 +87669,21 @@ function Copyright() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_2__["default"], {
     variant: "body2",
     color: "textSecondary"
-  }, "Copyright © ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, 'Copyright © ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_5__["default"], {
     color: "inherit",
     href: "https://material-ui.com/"
-  }, "Grupo 6 \"Los sovieticos\""), " ", new Date().getFullYear(), ".");
+  }, "Grupo 6 \"Los sovieticos\""), new Date().getFullYear());
 }
 
 var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__["makeStyles"])(function (theme) {
   return {
     footer: {
-      bottom: "0",
-      width: "100%",
-      position: "relative",
-      marginTop: "100px",
+      bottom: '0',
+      width: '100%',
+      position: 'relative',
+      marginTop: '100px',
       padding: theme.spacing(3, 2),
-      backgroundColor: theme.palette.type === "light" ? theme.palette.grey[200] : theme.palette.grey[800]
+      backgroundColor: theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800]
     }
   };
 });
@@ -90890,7 +90890,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
         component: this.props.user._id ? _HomeContainer__WEBPACK_IMPORTED_MODULE_16__["default"] : _containers_RegisterContainer__WEBPACK_IMPORTED_MODULE_5__["default"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/admin",
-        component: this.props.user.rol == "admin" ? _components_Panel__WEBPACK_IMPORTED_MODULE_18__["default"] : _components_notAuthorized__WEBPACK_IMPORTED_MODULE_15__["default"]
+        component: this.props.user.rol == 'admin' ? _components_Panel__WEBPACK_IMPORTED_MODULE_18__["default"] : _components_notAuthorized__WEBPACK_IMPORTED_MODULE_15__["default"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/notFound",
         component: _components_notFound__WEBPACK_IMPORTED_MODULE_17__["default"]
@@ -90902,7 +90902,8 @@ var Main = /*#__PURE__*/function (_React$Component) {
         to: "/notFound",
         from: "/*"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://api.whatsapp.com/send/?phone=5491165604567&text&app_absent=0"
+        href: "https://api.whatsapp.com/send/?phone=5491165604567&text&app_absent=0",
+        target: "_blank"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_WhatsApp__WEBPACK_IMPORTED_MODULE_8___default.a, {
         id: "wpp"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_11__["default"], null));
